@@ -1,0 +1,966 @@
+---
+layout: page
+title: Year 7–10 Maths | Free Demo
+description: Short maths demo for Years 7 to 10.
+lang: en
+nav_key: main
+body_class: page-demo page-demo-7-10
+permalink: /demo/7-10/
+---
+<div class="card">
+
+  <div id="pill" class="pill">🧩 Year 7 – Year 10 • Soccer</div>
+  <h1 id="titleH1">Soccer Maths Practice (Free Demo)</h1>
+
+  <p class="intro">
+    Type your answer, press <b>Check</b>, then press <b>Next</b>.
+    <span class="note">Some questions will show a fraction box (numerator / denominator).</span>
+  </p>
+
+  <!-- START -->
+  <div id="startMsg" class="q">Enter your details, choose Year 7–10, then press <b>Start</b> ⚽</div>
+
+  <div id="profileBox">
+    <div class="row2">
+      <div class="field">
+        <label>Student name</label>
+        <input id="studentName" placeholder="e.g., Alex">
+      </div>
+
+      <div class="field">
+        <label>Year level</label>
+        <select id="studentGrade">
+          <option value="">Select…</option>
+          <option>Year 7</option>
+          <option>Year 8</option>
+          <option>Year 9</option>
+          <option>Year 10</option>
+        </select>
+        <div class="note util-mt-8" id="gradeHint">Please choose Year 7, 8, 9, or 10.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      This short demo helps us understand how your child thinks. No email or phone number is collected.
+    </div>
+  </div>
+
+  <div id="startButtons" class="btnrow">
+    <button id="startBtn" onclick="start()" disabled>Start</button>
+    <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="qa" class="hide">
+    <div id="qCounter" class="note util-note-strong"></div>
+    <div id="q" class="q"></div>
+
+    <!-- Input A: number/decimal -->
+    <div id="numBox">
+      <input id="ans" inputmode="decimal" placeholder="Type a number (decimals OK)">
+    </div>
+
+    <!-- Input B: fraction -->
+    <div id="fracBox" class="hide">
+      <div class="fracRow">
+        <input id="fracNum" inputmode="numeric" pattern="[0-9]*" placeholder="Numerator">
+        <span class="fracSlash">/</span>
+        <input id="fracDen" inputmode="numeric" pattern="[0-9]*" placeholder="Denominator">
+      </div>
+      <div class="fracHint">Tip: simplify the fraction if you can.</div>
+    </div>
+
+    <div id="precisionNote" class="note util-mt-8"></div>
+
+    <div class="note util-mt-10">
+      <b>Tips:</b> You can press <b>Next</b> to skip and come back with <b>Previous</b>.<br>
+      <b>Finish:</b> You can press <b>Finish</b> any time to see your results.<br>
+      <b>Keyboard:</b> <b>Enter</b> = Check, then <b>Enter</b> again = Next • <b>Shift+Enter</b> = Previous • <b>Ctrl/Cmd+Enter</b> = Next (skip checking)
+    </div>
+
+    <div class="btnrow">
+      <button id="checkBtn" onclick="check()">Check</button>
+      <button id="prevBtn" class="secondary" onclick="prev()" disabled>Previous</button>
+      <button id="nextBtn" class="secondary" onclick="next()">Next</button>
+      <button id="finishBtn" class="secondary" onclick="finishEarly()">Finish</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+  </div>
+
+  <div id="fb"></div>
+  <div id="hint" class="hint"></div>
+
+  <!-- END / RESULTS -->
+  <div id="end" class="cta hide">
+    <div id="finalLine"></div>
+
+    <div class="resultBox">
+      <div class="resultTitle">Results overview</div>
+      <div id="pctText"></div>
+      <canvas id="chart" width="900" height="260"></canvas>
+      <div class="note">Blue = correct (✔) • Red = incorrect (✘) • Grey outline = unanswered (U)</div>
+    </div>
+
+    <!-- ✅ ADDED: Student Summary (same style as Year 11–12) -->
+    <div class="resultBox">
+      <div class="resultTitle">🧑‍🎓 Student Summary</div>
+
+      <p id="studentOverview" class="util-mb-10"></p>
+
+      <p class="util-m-0"><b>✅ What you did well:</b></p>
+      <ul id="studentWellList"></ul>
+
+      <p class="util-mt-10-reset"><b>🎯 What to practise next:</b></p>
+      <ul id="studentNextList"></ul>
+
+      <p class="note util-mt-10">
+        Tip: Try to finish any unanswered questions, then press <b>Finish</b>.
+      </p>
+    </div>
+
+    <div class="resultBox">
+      <div class="resultTitle">👨‍👩‍👧 Parent Summary</div>
+
+      <p id="parentOverview"></p>
+      <p><b>Unanswered questions:</b> <span id="unansweredLine"></span></p>
+
+      <p><b>What your child did well:</b></p>
+      <ul id="strengthList"></ul>
+
+      <p><b>What to practise next:</b></p>
+      <ul id="nextList"></ul>
+
+      <p class="note">
+        This demo is <b>not a test</b>. It helps us plan calm, confidence-building lessons.
+      </p>
+    </div>
+
+    <div class="toggleRow">
+      <input id="includeReport" type="checkbox" checked>
+      <label for="includeReport">Include a printable report (PDF)</label>
+    </div>
+
+    <div class="btnrow">
+      <button onclick="printOrSkip()">🖨️ Print / Save PDF</button>
+      <button class="secondary" onclick="restart()">Try again</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+
+    <div id="saveStatus" class="note"></div>
+
+    <details class="note util-mt-10">
+      <summary class="util-summary-strong">
+        Privacy &amp; what we save (tap to read)
+      </summary>
+      <div class="util-copy-muted">
+        <p class="util-mb-8">
+          This demo can save results to <b>Magic Math Master’s internal records (Google Sheets)</b> so we can review progress.
+          <b>No email is sent</b> from this page.
+        </p>
+        <p class="util-mb-6"><b>We save:</b></p>
+        <ul class="util-list-offset">
+          <li>Student name (as typed here)</li>
+          <li>Year level selected</li>
+          <li>Total score and percentage</li>
+          <li>Per-question result (correct / incorrect / unanswered)</li>
+          <li>Which demo/page was used (page URL)</li>
+        </ul>
+        <p class="util-m-0">
+          <b>We do not collect</b> email address or phone number on this demo page.
+        </p>
+      </div>
+    </details>
+
+    <div class="note">
+      Interested in more practice and support?
+      <a href="{{ '/contact.html' | relative_url }}" target="_blank" rel="noopener">Enquire / Register →</a>
+    </div>
+  </div>
+
+  <!-- PRINT REPORT -->
+  <div id="printReport" class="printReport">
+    <h2>Maths Practice Report</h2>
+    <p class="small">
+      <b>Student:</b> <span id="rName"></span><br>
+      <b>Grade:</b> <span id="rGrade"></span><br>
+      <b>Date:</b> <span id="rDate"></span><br>
+      <b>Demo:</b> <span id="rDemo"></span>
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>Summary</h3>
+    <p id="rSummary"></p>
+    <p class="small"><b>Unanswered:</b> <span id="rUnanswered"></span></p>
+
+    <h3>What your child did well</h3>
+    <ul id="rStrengths"></ul>
+
+    <h3>What to practise next</h3>
+    <ul id="rNext"></ul>
+
+    <div class="divider"></div>
+
+    <p class="small">
+      This short demo is not a test. It helps us plan calm, confidence-building lessons.<br>
+      Magic Math Master • Australia • {{ site.url | default: site.github.url | default: "www.magicmathmaster.com.au" }}
+    </p>
+  </div>
+
+  <div class="footer">Magic Math Master • Free Demo</div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const ENDPOINT_URL =
+  "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
+
+/* ================= QUESTION BANKS (HARDER BY GRADE) ================= */
+/* Year 7 (easiest) */
+const qs7 = [
+  { q:"⚽ Scoring rate: A striker scored 9 goals from 36 shots. What is the scoring rate as a percentage?", type:"number", a:25, skill:"Percentages", hint:"9/36 = 0.25 → 25%." },
+  { q:"📊 Mean goals: Goals per match were 2, 1, 3, 2. What is the mean (average)?", type:"number", a:2, skill:"Averages", hint:"Add = 8. 8/4 = 2." },
+  { q:"⏱️ Training fraction: Drills take 15 minutes out of a 90-minute session. What fraction is drills? (simplify)", type:"fraction", aN:1, aD:6, skill:"Fractions", hint:"15/90 simplifies to 1/6." },
+  { q:"🧩 Simplify: Write 24/36 as a simplified fraction.", type:"fraction", aN:2, aD:3, skill:"Fractions", hint:"Divide by 12 → 2/3." },
+  { q:"🧮 Algebra: p = 4x − 3. If x = 6, what is p?", type:"number", a:21, skill:"Algebra", hint:"4×6 − 3 = 21." },
+  { q:"🧠 Solve: x + 9 = 31. What is x?", type:"number", a:22, skill:"Equations", hint:"31 − 9 = 22." },
+  { q:"🏃 Distance: A player ran 5.6 km then 3.45 km. Total distance (km)?", type:"number", a:9.05, skill:"Decimals", hint:"5.6 + 3.45 = 9.05." },
+  { q:"📏 Perimeter: A rectangular field is 55 m long and 35 m wide. What is the perimeter?", type:"number", a:180, skill:"Measurement", hint:"2(55+35)=180." },
+  { q:"🎯 Probability: 2 red cards in 50 games. Probability as a simplified fraction?", type:"fraction", aN:1, aD:25, skill:"Probability", hint:"2/50 simplifies to 1/25." },
+  { q:"👥 Ratio: Defenders : Forwards = 2 : 1. If there are 15 players, how many defenders?", type:"number", a:10, skill:"Ratios", hint:"Total parts=3. Each part=5. Defenders=2×5=10." }
+];
+
+/* Year 8 (harder) */
+const qs8 = [
+  { q:"🧾 Discount: A jersey costs $75 and is reduced by 18%. What is the new price?", type:"number", a:61.5, skill:"Percentages", hint:"18% of 75 = 13.5. 75−13.5=61.5." },
+  { q:"📈 Increase: Attendance increased from 900 to 1080. What is the percentage increase?", type:"number", a:20, skill:"Percentages", hint:"Increase=180. 180/900=0.2 → 20%." },
+  { q:"⏱️ Speed: A player runs 7.2 km in 30 minutes. What is the average speed (km/h)?", type:"number", a:14.4, skill:"Rates", hint:"30 min = 0.5 h. 7.2/0.5 = 14.4." },
+  { q:"🧠 Solve: 3x + 7 = 28. What is x?", type:"number", a:7, skill:"Equations", hint:"3x=21 → x=7." },
+  { q:"🧠 Solve: 5x − 12 = 38. What is x?", type:"number", a:10, skill:"Equations", hint:"5x=50 → x=10." },
+  { q:"🏆 Points model: P = 2w + d. If P = 17 and d = 5, what is w?", type:"number", a:6, skill:"Algebra", hint:"2w+5=17 → 2w=12 → w=6." },
+  { q:"📐 Pythagoras: A right triangle has legs 5 and 12. What is the hypotenuse?", type:"number", a:13, skill:"Pythagoras", hint:"√(5²+12²)=√169=13." },
+  { q:"⭕ Circumference: Radius = 6 m. Using π ≈ 3.14, what is the circumference? (round to 2 decimals)", type:"number", a:37.68, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Measurement", hint:"C=2πr=2×3.14×6=37.68." },
+  { q:"🧩 Simplify: Write 42/56 as a simplified fraction.", type:"fraction", aN:3, aD:4, skill:"Fractions", hint:"Divide by 14 → 3/4." },
+  { q:"🎯 Probability: P(win)=0.7 and P(clean sheet)=0.4 (independent). Probability of both?", type:"number", a:0.28, skill:"Probability", hint:"0.7×0.4=0.28." }
+];
+
+/* Year 9 (harder) */
+const qs9 = [
+  { q:"📈 Gradient: A line passes through (2,3) and (8,15). What is the slope (gradient)?", type:"number", a:2, skill:"Linear Graphs", hint:"(15−3)/(8−2)=12/6=2." },
+  { q:"📉 Intercept: For y = 2x − 5, what is y when x = 0?", type:"number", a:-5, skill:"Linear Graphs", hint:"Substitute x=0: y=-5." },
+  { q:"🧠 Simultaneous: x + y = 11 and x − y = 3. What is x?", type:"number", a:7, skill:"Simultaneous Equations", hint:"Add: 2x=14 → x=7." },
+  { q:"🧮 Quadratic: Solve x² − 4x − 12 = 0. What is the positive solution?", type:"number", a:6, skill:"Quadratics", hint:"(x−6)(x+2)=0 → x=6." },
+  { q:"⚡ Indices: (2⁵ × 2³) ÷ 2⁴ = ?", type:"number", a:16, skill:"Indices", hint:"2⁵⁺³⁻⁴ = 2⁴ = 16." },
+  { q:"📈 Exponential growth: A club has 800 members and grows by 3% each year. After 5 years, how many members? (round to 2 decimals)", type:"number", a:927.42, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Exponential", hint:"800×1.03^5 ≈ 927.42." },
+  { q:"📊 Median: Find the median of 3, 7, 8, 10, 12, 15.", type:"number", a:9, skill:"Statistics", hint:"Middle two are 8 and 10. Median=(8+10)/2=9." },
+  { q:"🎯 Probability: P(score 1st half)=0.6 and P(score 2nd half)=0.5 (independent). Probability of both?", type:"number", a:0.3, skill:"Probability", hint:"0.6×0.5=0.3." },
+  { q:"📐 Pythagoras: Hypotenuse = 13 and one leg = 5. Find the other leg.", type:"number", a:12, skill:"Pythagoras", hint:"√(13²−5²)=√144=12." },
+  { q:"🧩 Simplify: Write 63/84 as a simplified fraction.", type:"fraction", aN:3, aD:4, skill:"Fractions", hint:"Divide by 21 → 3/4." }
+];
+
+/* Year 10 (top-end / hardest) */
+const qs10 = [
+  { q:"🧮 Quadratic: 2x² − 7x + 3 = 0. What is the larger solution?", type:"number", a:3, skill:"Quadratics", hint:"x = (7 ± √25)/4 → 3 or 0.5. Larger = 3." },
+  { q:"🧮 Quadratic: x² − 6x + 2 = 0. What is the smaller solution? (round to 2 decimals)", type:"number", a:0.35, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Quadratics", hint:"x = (6 − √28)/2 ≈ 0.354 → 0.35." },
+  { q:"📐 Cosine rule: Two sides are 12 and 9 with included angle 50°. Find the third side (round to 2 decimals).", type:"number", a:9.28, tol:0.05, note:"Answer tip: use a calculator and round to 2 decimals.", skill:"Trigonometry (Cosine Rule)", hint:"c² = 12² + 9² − 2·12·9·cos(50°). c ≈ 9.28." },
+  { q:"📐 Trig: A right triangle has hypotenuse 18 and angle 28°. Find the opposite side (round to 2 decimals).", type:"number", a:8.45, tol:0.05, note:"Answer tip: use a calculator and round to 2 decimals.", skill:"Trigonometry", hint:"Opp = 18·sin(28°) ≈ 8.45." },
+  { q:"📈 Modelling comparison: Linear L = 800 + 40t and Exponential E = 800×1.06ᵗ. At t = 10, how much larger is E than L? (round to 2 decimals)", type:"number", a:232.68, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Linear vs Exponential", hint:"L=1200. E≈1432.68. Difference ≈ 232.68." },
+  { q:"📉 Exponential decay: A level starts at 900 and decreases by 7% each hour. After 8 hours, what is the level? (round to 2 decimals)", type:"number", a:503.62, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Exponential Decay", hint:"900×0.93⁸ ≈ 503.62." },
+  { q:"🧠 Simultaneous equations: 2x + 3y = 19 and x − y = 1. What is x?", type:"number", a:4.4, tol:1e-6, skill:"Simultaneous Equations", hint:"x=y+1. Substitute: 2(y+1)+3y=19 → y=3.4 → x=4.4." },
+  { q:"⚡ Indices: (2⁴ × 8⁻¹) ÷ 4⁻² = ?", type:"number", a:32, skill:"Indices", hint:"16×(1/8)=2. 2 ÷ (1/16)=32." },
+  { q:"🎯 Total probability: 60% practise. If practise, 80% pass. If not practise, 50% pass. Probability a student passes? (decimal)", type:"number", a:0.68, tol:0.001, note:"Answer tip: decimals OK.", skill:"Probability", hint:"0.6×0.8 + 0.4×0.5 = 0.68." },
+  { q:"🔢 Arithmetic series: Row 1 has 20 seats, each next row has 2 more seats. There are 15 rows. How many seats total?", type:"number", a:510, skill:"Sequences (Arithmetic Series)", hint:"S = n/2[2a+(n−1)d] = 510." }
+];
+
+/* ================= STATE ================= */
+let qs = [];
+let i = -1;
+let score = 0;
+let student = { name:"", grade:"" };
+let gotCorrect = [];
+
+let numCache = [];
+let fracNumCache = [];
+let fracDenCache = [];
+
+let checkedThisView = false;
+
+const el = id => document.getElementById(id);
+
+/* ================= NAV ================= */
+function goToDemoHome(){
+  window.location.href = "{{ '/demo/' | relative_url }}";
+}
+
+/* ================= START READINESS ================= */
+function validateStart(){
+  const nameOk = el("studentName").value.trim().length > 0;
+  const gradeOk = !!el("studentGrade").value;
+  el("startBtn").disabled = !(nameOk && gradeOk);
+  el("gradeHint").textContent = gradeOk ? `Selected: ${el("studentGrade").value}` : "Please choose Year 7, 8, 9, or 10.";
+}
+
+/* ================= PARSERS ================= */
+function parseNumber(raw){
+  const s = (raw || "").trim().replace(/,/g,"").replace(/\s+/g,"");
+  if(!s) return NaN;
+
+  if(s.includes("/")){
+    const parts = s.split("/");
+    if(parts.length !== 2) return NaN;
+    const n = Number(parts[0]);
+    const d = Number(parts[1]);
+    if(!Number.isFinite(n) || !Number.isFinite(d) || d === 0) return NaN;
+    return n/d;
+  }
+
+  const v = Number(s);
+  return Number.isFinite(v) ? v : NaN;
+}
+function close(a,b,eps){ return Math.abs(a-b) < eps; }
+
+function gcd(a,b){
+  a = Math.abs(a); b = Math.abs(b);
+  while(b){ const t = a % b; a = b; b = t; }
+  return a || 1;
+}
+function fracValueEquals(n1,d1,n2,d2){
+  return (n1*d2) === (n2*d1);
+}
+
+/* ================= UI HELPERS ================= */
+function updatePrecisionNote(qObj){
+  const noteEl = el("precisionNote");
+  if(!noteEl) return;
+
+  if(qObj && qObj.note){
+    noteEl.textContent = qObj.note;
+    return;
+  }
+  if(qObj && qObj.type === "fraction"){
+    noteEl.textContent = "Answer tip: enter a simplified fraction if you can.";
+    return;
+  }
+  if(qObj && typeof qObj.tol === "number"){
+    noteEl.textContent = "Answer tip: round to 2 decimal places.";
+    return;
+  }
+  noteEl.textContent = "";
+}
+
+function stashAnswer(){
+  const qObj = qs[i];
+  if(!qObj) return;
+
+  if(qObj.type === "fraction"){
+    fracNumCache[i] = el("fracNum").value;
+    fracDenCache[i] = el("fracDen").value;
+  }else{
+    numCache[i] = el("ans").value;
+  }
+}
+
+function showInputForQuestion(qObj){
+  const isFrac = qObj.type === "fraction";
+  el("numBox").style.display = isFrac ? "none" : "block";
+  el("fracBox").classList.toggle("hide", !isFrac);
+
+  if(isFrac){
+    el("fracNum").value = fracNumCache[i] ?? "";
+    el("fracDen").value = fracDenCache[i] ?? "";
+  }else{
+    el("ans").value = numCache[i] ?? "";
+  }
+
+  updatePrecisionNote(qObj);
+
+  setTimeout(()=>{
+    if(isFrac) el("fracNum").focus();
+    else el("ans").focus();
+  }, 0);
+}
+
+function renderCurrentQuestion(){
+  checkedThisView = false;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+
+  const qObj = qs[i];
+
+  el("qCounter").textContent = `Question ${i+1} of ${qs.length}`;
+  el("q").textContent = qObj.q;
+
+  showInputForQuestion(qObj);
+
+  el("prevBtn").disabled = (i <= 0);
+  el("nextBtn").disabled = false;
+}
+
+/* ================= ANSWERED CHECK (typed = answered) ================= */
+function isAnswered(idx){
+  const qObj = qs[idx];
+  if(!qObj) return false;
+
+  if(qObj.type === "fraction"){
+    const n = (fracNumCache[idx] || "").trim();
+    const d = (fracDenCache[idx] || "").trim();
+    return (n !== "" && d !== "");
+  }
+  return ((numCache[idx] || "").trim() !== "");
+}
+
+function getUnanswered(){
+  const miss = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) miss.push(k+1);
+  }
+  return miss;
+}
+
+/* ================= AUTO-GRADING ================= */
+function gradeOne(idx){
+  const qObj = qs[idx];
+  if(!qObj) return null;
+
+  if(!isAnswered(idx)) return null;
+
+  if(qObj.type === "fraction"){
+    const nRaw = (fracNumCache[idx] || "").trim();
+    const dRaw = (fracDenCache[idx] || "").trim();
+    const n = Number(nRaw), d = Number(dRaw);
+    if(!Number.isInteger(n) || !Number.isInteger(d) || d === 0) return false;
+    return fracValueEquals(n, d, qObj.aN, qObj.aD);
+  }
+
+  const raw = (numCache[idx] || "").trim();
+  const user = parseNumber(raw);
+  if(!Number.isFinite(user)) return false;
+
+  const tol = (typeof qObj.tol === "number") ? qObj.tol : 1e-6;
+  return close(user, qObj.a, tol);
+}
+
+function autoGradeAll(){
+  score = 0;
+  gotCorrect = new Array(qs.length).fill(false);
+
+  for(let k=0;k<qs.length;k++){
+    const r = gradeOne(k);
+    if(r === true){
+      gotCorrect[k] = true;
+      score++;
+    }
+  }
+}
+
+function autoGradeIndex(idx){
+  if(idx < 0 || idx >= qs.length) return;
+  const r = gradeOne(idx);
+  if(r === null) return;
+
+  const newVal = (r === true);
+  if(newVal && !gotCorrect[idx]) score++;
+  if(!newVal && gotCorrect[idx]) score--;
+  gotCorrect[idx] = newVal;
+}
+
+/* ================= FINISH EARLY (button or last Next) ================= */
+function finishEarly(){
+  stashAnswer();
+  autoGradeAll();
+
+  const miss = getUnanswered();
+  if(miss.length){
+    const preview = miss.slice(0,12).map(n=>`Q${n}`).join(", ");
+    const suffix = miss.length > 12 ? ` (+${miss.length-12} more)` : "";
+    const ok = confirm(
+      `You still have unanswered questions: ${preview}${suffix}.\n\nFinish anyway?`
+    );
+    if(!ok){
+      i = miss[0]-1;
+      renderCurrentQuestion();
+      return;
+    }
+  }
+  finish();
+}
+
+/* ================= FLOW ================= */
+function start(){
+  student.name = el("studentName").value.trim();
+  student.grade = el("studentGrade").value;
+
+  if(!student.name){ alert("Please enter the student name."); return; }
+  if(!student.grade){ alert("Please choose a year level."); return; }
+
+  if(student.grade === "Year 7") qs = qs7;
+  else if(student.grade === "Year 8") qs = qs8;
+  else if(student.grade === "Year 9") qs = qs9;
+  else qs = qs10;
+
+  gotCorrect = new Array(qs.length).fill(false);
+  numCache     = new Array(qs.length).fill("");
+  fracNumCache = new Array(qs.length).fill("");
+  fracDenCache = new Array(qs.length).fill("");
+
+  i = -1;
+  score = 0;
+
+  el("pill").textContent = `🧩 ${student.grade} • Soccer`;
+  el("titleH1").textContent = `Soccer Maths Practice (Free Demo — ${student.grade})`;
+
+  el("profileBox").style.display = "none";
+  el("startButtons").style.display = "none";
+  el("startMsg").style.display = "none";
+
+  el("qa").style.display = "block";
+  el("qa").classList.remove("hide");
+  el("end").classList.add("hide");
+
+  next();
+}
+
+function next(){
+  stashAnswer();
+  if(i >= 0) autoGradeIndex(i);
+
+  if(i >= qs.length - 1){
+    finishEarly();
+    return;
+  }
+
+  i++;
+  renderCurrentQuestion();
+}
+
+function prev(){
+  if(i <= 0) return;
+  stashAnswer();
+  autoGradeIndex(i);
+  i--;
+  renderCurrentQuestion();
+}
+
+/* Manual check still works + updates score live */
+function check(){
+  if(i < 0) return;
+
+  stashAnswer();
+
+  const qObj = qs[i];
+  const box = el("fb");
+  el("hint").textContent = "";
+
+  let okNow = false;
+
+  if(qObj.type === "fraction"){
+    const nRaw = (fracNumCache[i] || "").trim();
+    const dRaw = (fracDenCache[i] || "").trim();
+    const n = Number(nRaw), d = Number(dRaw);
+
+    if(!Number.isInteger(n) || !Number.isInteger(d) || d === 0){
+      box.className = "feedback bad";
+      box.textContent = "Please type a numerator and denominator (whole numbers).";
+      checkedThisView = true;
+      return;
+    }
+
+    okNow = fracValueEquals(n, d, qObj.aN, qObj.aD);
+
+    if(okNow){
+      box.className = "feedback ok";
+      const g = gcd(n,d);
+      box.textContent = (g !== 1)
+        ? `✅ Correct! (Try simplifying next time: ${n/g}/${d/g})`
+        : "✅ Correct!";
+    }else{
+      box.className = "feedback bad";
+      box.textContent = "❌ Not quite.";
+      el("hint").textContent = "Hint: " + (qObj.hint || "Try simplifying and checking your fraction.");
+    }
+
+  }else{
+    const user = parseNumber((numCache[i] || "").trim());
+    if(!Number.isFinite(user)){
+      box.className = "feedback bad";
+      box.textContent = "Please enter a number (decimals are OK).";
+      checkedThisView = true;
+      return;
+    }
+
+    const tol = (typeof qObj.tol === "number") ? qObj.tol : 1e-6;
+    okNow = close(user, qObj.a, tol);
+
+    if(okNow){
+      box.className = "feedback ok";
+      box.textContent = "✅ Correct!";
+    }else{
+      box.className = "feedback bad";
+      box.textContent = "❌ Not quite.";
+      el("hint").textContent = "Hint: " + (qObj.hint || "Try again step by step.");
+    }
+  }
+
+  if(okNow && !gotCorrect[i]) score++;
+  if(!okNow && gotCorrect[i]) score--;
+  gotCorrect[i] = okNow;
+
+  checkedThisView = true;
+}
+
+/* ================= RESULTS ================= */
+function finish(){
+  stashAnswer();
+  autoGradeAll();
+
+  el("qa").style.display = "none";
+  el("end").classList.remove("hide");
+  el("precisionNote").textContent = "";
+
+  const pct = Math.round(score / qs.length * 100);
+  const miss = getUnanswered();
+
+  el("finalLine").textContent =
+    `Score: ${score}/${qs.length} (${pct}%) • Unanswered: ${miss.length}`;
+  el("pctText").textContent = `Percentage correct: ${pct}%`;
+
+  const states = qs.map((_,idx)=>{
+    if(gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+  drawChart(states);
+
+  // ✅ NEW: student summary first, then parent summary
+  buildStudentSummary();
+  buildParentSummary();
+  saveResult(pct);
+}
+
+/* ================= STUDENT SUMMARY (NEW) ================= */
+function buildStudentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let msg = "";
+  if(pct >= 85) msg = "🌟 Awesome work! You’re getting lots of questions right.";
+  else if(pct >= 60) msg = "👍 Good effort! You’re improving — keep going.";
+  else msg = "🌱 Nice try! The more you practise, the easier it will feel.";
+
+  if(unanswered.length){
+    msg += ` You left ${unanswered.length} unanswered — you can try them next time.`;
+  }
+  el("studentOverview").textContent = msg;
+
+  // Skill summary: top 2 strengths + top 2 next steps
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,2);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,2);
+
+  el("studentWellList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}</b> — great job!</li>`).join("")
+    : "<li>Sticking with the questions — that’s a strong learning skill.</li>";
+
+  el("studentNextList").innerHTML = nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}</b> — practise 2–3 more similar examples.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>";
+}
+
+/* ================= CHART ================= */
+function drawChart(states){
+  const c = el("chart"), ctx = c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+
+  const W=c.width, H=c.height;
+  const L=52, R=18, T=18, B=45;
+  const n=states.length;
+  const chartW=W-L-R, chartH=H-T-B;
+
+  ctx.strokeStyle="#111827";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(L,T);
+  ctx.lineTo(L,H-B);
+  ctx.lineTo(W-R,H-B);
+  ctx.stroke();
+
+  const gap=12;
+  const barW=Math.max(24, (chartW - gap*(n-1))/n);
+
+  const incorrectH  = 18;
+  const unansweredH = 18;
+
+  states.forEach((s,i)=>{
+    const x=L + i*(barW+gap);
+
+    if(s === 1){
+      const barH = chartH;
+      const y = (H-B) - barH;
+
+      ctx.fillStyle = "rgba(11,94,215,.85)";
+      ctx.fillRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✔", x+barW/2-4, y-6);
+
+    }else if(s === 0){
+      const barH = incorrectH;
+      const y = (H-B) - barH;
+
+      ctx.fillStyle = "rgba(239,68,68,.75)";
+      ctx.fillRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✘", x+barW/2-4, y-6);
+
+    }else{
+      const barH = unansweredH;
+      const y = (H-B) - barH;
+
+      ctx.strokeStyle = "rgba(148,163,184,.95)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("U", x+barW/2-4, y-6);
+    }
+
+    ctx.fillStyle="#111827";
+    ctx.font="12px system-ui";
+    ctx.fillText(`Q${i+1}`, x+6, H-B+18);
+  });
+}
+
+/* ================= CHANGE GRADE ================= */
+function backToGrade(){
+  qs = [];
+  gotCorrect = [];
+  numCache = [];
+  fracNumCache = [];
+  fracDenCache = [];
+  i = -1;
+  score = 0;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+  el("ans").value = "";
+  el("fracNum").value = "";
+  el("fracDen").value = "";
+  el("precisionNote").textContent = "";
+
+  el("qa").classList.add("hide");
+  el("qa").style.display = "none";
+  el("end").classList.add("hide");
+
+  el("profileBox").style.display = "block";
+  el("startButtons").style.display = "flex";
+  el("startMsg").style.display = "block";
+
+  el("studentGrade").value = "";
+  el("pill").textContent = "🧩 Year 7 – Year 10 • Soccer";
+  el("titleH1").textContent = "Soccer Maths Practice (Free Demo)";
+
+  validateStart();
+  el("studentName").focus();
+}
+
+/* ================= PARENT SUMMARY ================= */
+function buildParentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("unansweredLine").textContent = unanswered.length
+    ? unanswered.map(n=>`Q${n}`).join(", ")
+    : "None ✅";
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let overview = "";
+  if(pct >= 85) overview = "🌟 Strong work! Your child showed confident understanding across many Year 7–10 skills today.";
+  else if(pct >= 60) overview = "👍 Good progress. Your child is developing confidence, with a few skills to strengthen next.";
+  else overview = "🌱 Still building confidence — very normal. With steady practice, accuracy improves quickly.";
+
+  el("parentOverview").textContent = overview;
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,3);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,3);
+
+  el("strengthList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}:</b> showing confidence.</li>`).join("")
+    : "<li>Great effort and persistence — an important learning skill.</li>";
+
+  el("nextList").innerHTML = (unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>`
+    : ""
+  ) + (nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}:</b> practise a few more examples to build accuracy.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>"
+  );
+}
+
+/* ================= PRINT REPORT ================= */
+function printOrSkip(){
+  const include = el("includeReport").checked;
+  if(!include){
+    alert("Report is turned off. Tick 'Include a printable report' if you want to print/save a PDF.");
+    return;
+  }
+  buildPrintReport();
+  window.print();
+}
+
+function buildPrintReport(){
+  const pct = Math.round(score / qs.length * 100);
+  const results01 = gotCorrect.map(v=>v?1:0);
+
+  el("rName").textContent = student.name;
+  el("rGrade").textContent = student.grade || "—";
+  el("rDate").textContent = new Date().toLocaleDateString();
+  el("rDemo").textContent = `${student.grade} Soccer Maths (Free Demo)`;
+
+  el("rSummary").textContent =
+    `Score: ${score}/${qs.length} (${pct}%). ` +
+    (pct>=85 ? "Strong understanding across many skills."
+      : pct>=60 ? "Developing understanding with some areas to strengthen."
+      : "Still building confidence — very normal at this stage.");
+
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("rUnanswered").textContent = unanswered.length ? unanswered.map(n=>`Q${n}`).join(", ") : "None";
+
+  const strengths = qs.filter((_,i)=>results01[i]===1).map(q=>q.q.replace(/^[^ ]+ /,""));
+  const nextSteps  = qs.filter((_,i)=>results01[i]===0).map(q=>q.q.replace(/^[^ ]+ /,""));
+
+  el("rStrengths").innerHTML = strengths.length
+    ? strengths.map(s=>`<li>${s}</li>`).join("")
+    : "<li>Showing effort and persistence.</li>";
+
+  el("rNext").innerHTML = unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>` +
+      (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "")
+    : (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "<li>Continue practising to build accuracy and confidence.</li>");
+}
+
+/* ================= SAVE TO SHEET ================= */
+async function saveResult(pct){
+  el("saveStatus").textContent = "Saving your result to Magic Math Master records…";
+
+  const answers = qs.map((_, idx) => {
+    if (gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+
+  const unansweredQs = getUnanswered();
+
+  try{
+    await fetch(ENDPOINT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body:JSON.stringify({
+        group:"Year 7–10",
+        level:student.grade,
+        theme:"Soccer",
+        name:student.name,
+        grade:student.grade,
+        score:score,
+        total:qs.length,
+        percent:pct,
+        answers: answers,
+        unansweredQs: unansweredQs,
+        pageUrl: location.href,
+        userAgent: navigator.userAgent
+      })
+    });
+
+    el("saveStatus").textContent = "✅ Saved to Magic Math Master records (no email sent).";
+  }catch(e){
+    el("saveStatus").textContent = "⚠️ Could not save right now (no email sent).";
+  }
+}
+
+/* ================= RESET ================= */
+function restart(){ location.reload(); }
+
+/* ================= LISTENERS ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  validateStart();
+  el("studentName").addEventListener("input", validateStart);
+  el("studentGrade").addEventListener("change", validateStart);
+
+  el("ans").addEventListener("input", () => {
+    if(i >= 0 && i < numCache.length && qs[i] && qs[i].type !== "fraction"){
+      numCache[i] = el("ans").value;
+    }
+    checkedThisView = false;
+  });
+  el("fracNum").addEventListener("input", () => {
+    if(i >= 0 && i < fracNumCache.length && qs[i] && qs[i].type === "fraction"){
+      fracNumCache[i] = el("fracNum").value;
+    }
+    checkedThisView = false;
+  });
+  el("fracDen").addEventListener("input", () => {
+    if(i >= 0 && i < fracDenCache.length && qs[i] && qs[i].type === "fraction"){
+      fracDenCache[i] = el("fracDen").value;
+    }
+    checkedThisView = false;
+  });
+});
+
+/* Keyboard:
+   Enter = Check, then Enter again = Next
+   Shift+Enter = Previous
+   Ctrl/Cmd+Enter = Next (skip checking)
+*/
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+
+  const quizVisible =
+    !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
+  if (!quizVisible) return;
+
+  e.preventDefault();
+
+  if (e.shiftKey) { prev(); return; }
+  if (e.ctrlKey || e.metaKey) { next(); return; }
+
+  if (checkedThisView) next();
+  else check();
+});
+</script>

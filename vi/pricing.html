@@ -1,0 +1,369 @@
+---
+layout: page
+title: Học phí | Magic Math Master
+description: Học phí dạy kèm toán minh bạch tại Úc. Bảng giá tương tác cho Tiểu học,
+  Lớp 7–10 và VCE. Tuỳ chọn rõ ràng cho chương trình chuẩn, nâng cao, thi tuyển chọn
+  và AMC/AMO.
+lang: vi
+pricing_lang: vi
+nav_key: main_vi
+body_class: page-pricing page-vi
+show_page_hero: true
+hero_title: Học phí
+hero_subtitle: Chọn khối lớp và loại chương trình để xem học phí cập nhật. Nếu bạn
+  chưa chắc, chúng tôi có thể gợi ý lựa chọn phù hợp dựa trên mục tiêu và thời gian.
+permalink: /vi/pricing.html
+---
+<main class="container">
+<!-- ===== CHIP LINKS ===== -->
+<section class="section" id="jump-links">
+<div class="card util-p-16">
+<div aria-label="Liên kết nhanh" class="chip-links" role="navigation">
+<a class="chip-link" href="#detailed-fees">Học phí chi tiết</a>
+<a class="chip-link" href="#maths-club-fee">Phí Câu lạc bộ Toán</a>
+<a class="chip-link" href="#discounts-rewards">Giảm giá &amp; thưởng</a>
+</div>
+</div>
+</section>
+<!-- Interactive selectors + at-a-glance + table -->
+<section class="section price-tool" id="detailed-fees">
+<h2 class="section-title">Học phí tương tác</h2>
+<p class="section-sub">
+        Chọn khối lớp, môn VCE (nếu cần), và loại chương trình. Tất cả mức giá là <strong>theo từng học sinh</strong>.
+      </p>
+<!-- Controls -->
+<div class="wrap">
+<div class="bar">
+<!-- Year level selector -->
+<div aria-label="Chọn khối lớp" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-level="primary" role="tab">Tiểu học (Prep–Lớp 6)</button>
+<button aria-selected="false" data-level="mid" role="tab">Lớp 7–10</button>
+<button aria-selected="false" data-level="vce" role="tab">Lớp 11–12 (VCE)</button>
+</div>
+<!-- VCE subject selector -->
+<div aria-label="Chọn môn VCE" class="vceBox" id="vceBox">
+<div class="title">Môn VCE</div>
+<div aria-label="Môn VCE" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-vce="general" role="tab">Toán Tổng quát</button>
+<button aria-selected="false" data-vce="methods" role="tab">Toán Phương pháp</button>
+<button aria-selected="false" data-vce="specialist" role="tab">Toán Chuyên sâu</button>
+</div>
+<div class="hint">VCE có phụ phí trên mức giá cơ bản trong bảng.</div>
+</div>
+<!-- Program type selector -->
+<div aria-label="Chọn loại chương trình" class="vceBox util-block" id="trackBox">
+<div class="title">Loại chương trình</div>
+<div aria-label="Loại chương trình" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-track="standard" role="tab">Chuẩn</button>
+<button aria-selected="false" data-track="extension" role="tab">Nâng cao</button>
+<button aria-selected="false" data-track="selective" role="tab">Thi tuyển chọn</button>
+<button aria-selected="false" data-track="amc" role="tab">AMC/AMO</button>
+<button aria-selected="false" data-track="amointensive" role="tab">AMO Chuyên sâu</button>
+</div>
+<div class="hint">Phụ phí chương trình được cộng thêm vào mức giá cơ bản + điều chỉnh theo khối lớp.</div>
+</div>
+<!-- Note box -->
+<div class="note" id="ruleNote">
+<div class="badge-row">
+<span class="badge" id="badgeYear">Điều chỉnh Tiểu học</span>
+<span class="badge" id="badgeTrack">Chuẩn</span>
+<span class="badge warn" id="minBadge">Tối thiểu 60 phút cho 5+ học sinh</span>
+</div>
+<div>
+<strong id="ruleLine">
+                Toán Tiểu học: –$5 (30 phút) và –$10 (60 phút) mỗi học sinh.<br/>
+                Dạy kèm chuẩn: +$0.
+              </strong>
+<div class="sub" id="extraLine">Gợi ý: buổi 60 phút có thêm thời gian luyện tập + phản hồi.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Fees at a glance -->
+<section class="section" id="fees-glance">
+<h2 class="section-title">Tổng quan học phí</h2>
+<p class="section-sub">
+          Các thẻ này sẽ tự cập nhật theo lựa chọn ở trên — luôn khớp với bảng.
+        </p>
+<div class="price-grid">
+<!-- Online 60 (1-to-1) -->
+<div class="price-card" id="glance-online">
+<div class="price-top">
+<h3>Trực tuyến</h3>
+<span class="kicker" id="glance-badge-online">1 kèm 1 • 60 phút</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">Cấu trúc rõ</span>
+<span class="fee-chip">Linh hoạt</span>
+<span class="fee-chip">Phản hồi kỹ</span>
+</div>
+<div class="price" id="glance-price-online">$—</div>
+<div class="per" id="glance-per-online">mỗi 60 phút (mỗi học sinh)</div>
+<div class="parents-get">
+<strong>Phụ huynh nhận được:</strong> lộ trình rõ ràng + phản hồi tiến độ và bước tiếp theo.
+            </div>
+</div>
+<!-- In-person 60 (1-to-1) -->
+<div class="price-card featured" id="glance-inperson">
+<div class="price-top">
+<h3>Trực tiếp</h3>
+<span class="kicker" id="glance-badge-inperson">1 kèm 1 • 60 phút</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">Hỗ trợ sát</span>
+<span class="fee-chip">Luyện có hướng dẫn</span>
+<span class="fee-chip">Tự tin</span>
+</div>
+<div class="price" id="glance-price-inperson">$—</div>
+<div class="per" id="glance-per-inperson">mỗi 60 phút (mỗi học sinh)</div>
+<div class="parents-get">
+<strong>Trực tiếp bao gồm:</strong> thời gian di chuyển/chuẩn bị (tuỳ tình trạng sắp xếp).
+            </div>
+</div>
+<!-- 30-min snapshot (1-to-1) -->
+<div class="price-card" id="glance-30">
+<div class="price-top">
+<h3>Buổi ngắn</h3>
+<span class="kicker" id="glance-badge-30">1 kèm 1 • 30 phút</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip" id="glance-30-note">Hiển thị khi có lựa chọn 30 phút</span>
+</div>
+<div class="price util-fs-34" id="glance-price-30">$—</div>
+<div class="per" id="glance-per-30">mỗi 30 phút (trực tuyến / trực tiếp)</div>
+<div class="parents-get" id="glance-30-helper">
+              Gợi ý: 60 phút thường hiệu quả hơn (nhiều thời gian luyện tập + phản hồi).
+            </div>
+</div>
+<!-- 5+ students -->
+<div class="price-card" id="glance-5plus">
+<div class="price-top">
+<h3>5+ học sinh</h3>
+<span class="kicker" id="glance-badge-5plus">5+ • tối thiểu 60 phút</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">Giá tốt</span>
+<span class="fee-chip">Cùng trình độ</span>
+<span class="fee-chip">Nề nếp hằng tuần</span>
+</div>
+<div class="price util-fs-34" id="glance-price-5plus">$—</div>
+<div class="per" id="glance-per-5plus">mỗi 60 phút (mỗi học sinh)</div>
+<div class="parents-get" id="glance-5plus-helper">
+<strong>Lưu ý:</strong> tối thiểu 60 phút cho nhóm 5+ để đảm bảo chất lượng buổi học.
+            </div>
+</div>
+</div>
+</section>
+<!-- FEES TABLE -->
+<div class="wrap">
+<div class="table-wrap fees-table-wrap">
+<table aria-label="Bảng học phí" class="fees-table">
+<colgroup>
+<col class="util-w-90" />
+<col class="util-w-240" />
+<col/>
+<col/>
+</colgroup>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Chương trình</th>
+<th>30 phút / học sinh</th>
+<th>60 phút / học sinh</th>
+</tr>
+</thead>
+<tbody id="priceBody"></tbody>
+</table>
+</div>
+<div class="tool-footer">
+<strong>Ghi chú:</strong> Mức phí học trực tiếp đã bao gồm thời gian di chuyển/chuẩn bị.
+          Với lớp nhóm, học sinh nên có trình độ tương đương.
+          <strong>Nhóm 5+:</strong> tối thiểu 60 phút để đảm bảo chất lượng buổi học.
+        </div>
+<!-- Value cards -->
+<div class="triple-grid">
+<div class="info-card">
+<h3>Bao gồm những gì</h3>
+<ul class="util-list-relaxed">
+<li>Kế hoạch học cá nhân và mục tiêu</li>
+<li>Phản hồi đúng trọng tâm và bước tiếp theo rõ ràng</li>
+<li>Bài học phù hợp nhu cầu và thời gian của học sinh</li>
+</ul>
+<div class="parents-get util-mt-12">
+<strong>Phù hợp nhất cho:</strong> gia đình muốn có cấu trúc + thấy tiến bộ rõ.
+            </div>
+</div>
+<div class="info-card">
+<h3>Tự tin + đều đặn</h3>
+<div class="quote-box">
+              Tiến bộ đến từ <b>giải thích rõ + luyện tập đều</b> — không phải từ áp lực.
+              Buổi học luôn nhẹ nhàng, có cấu trúc và hỗ trợ.
+            </div>
+<div class="parents-get">
+<strong>Kết quả:</strong> học sinh hiểu bài, luyện tập tốt hơn và tự tin hơn theo từng tuần.
+            </div>
+</div>
+<div class="info-card">
+<h3>Điều cần biết</h3>
+<div class="notes-box">
+<ul>
+<li>Có lựa chọn trực tuyến và trực tiếp (tuỳ tình trạng sắp xếp).</li>
+<li>Lớp nhóm nhỏ thường là lựa chọn “giá tốt” để học đều hằng tuần.</li>
+<li>Hãy hỏi chúng tôi để gợi ý lộ trình phù hợp (bắt kịp / theo kịp / bứt phá).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Important Information -->
+<section aria-label="Thông tin quan trọng" class="imp-box">
+<div class="imp-head">
+<div class="imp-pin"></div>
+<h2 class="imp-title">Thông tin quan trọng (Tóm tắt)</h2>
+</div>
+<ul class="imp-list">
+<li><b>Thanh toán:</b> Học phí được thanh toán trước buổi học.</li>
+<li><b>Huỷ/đổi lịch:</b> Vui lòng báo trước ít nhất <b>24 giờ</b> để huỷ hoặc đổi lịch. Huỷ muộn có thể vẫn bị tính phí.</li>
+<li><b>Hoàn tiền:</b> Có thể hoàn tiền cho buổi học huỷ với <b>24+ giờ</b> báo trước hoặc có giấy xác nhận y tế hợp lệ.</li>
+<li><b>Hành vi:</b> Học sinh cần lịch sự, tôn trọng và tích cực để mọi người học thoải mái.</li>
+<li><b>Trao đổi:</b> Chúng tôi cập nhật thường xuyên cho gia đình; phụ huynh có thể liên hệ <b>Dr Tuyet Vu</b> nếu có thắc mắc.</li>
+</ul>
+<p class="imp-footer">
+        Xem đầy đủ tại trang <a class="imp-link" href="policies.html">Chính sách</a>.
+      </p>
+</section>
+<!-- Maths Club (Standalone) -->
+<section class="club-section section" id="maths-club-fee">
+<h2 class="section-title util-center-mt-0">🌈 Phí Câu lạc bộ Toán</h2>
+<p class="club-sub">
+        Dành cho học sinh <b>chưa đăng ký dạy kèm</b> nhưng muốn bồi dưỡng hằng tuần, luyện tập có cấu trúc và được hỗ trợ Toán liên tục.<br/>
+<em>Senior Maths Club bao gồm phần ôn tập nâng cao và luyện tập đến hết Lớp 12.</em>
+</p>
+<div class="club-grid">
+<div class="club-card">
+<h3>✨ Học sinh tiểu học</h3>
+<p class="price-lines">
+            $7 / tuần<br/>
+            $28 / tháng<br/>
+<span>$250 / năm</span> <span class="best-value">Giá tốt nhất</span>
+</p>
+<p class="util-copy-small">
+            Phù hợp cho học sinh đang xây dựng sự tự tin, độ trôi chảy và nền tảng vững chắc.
+          </p>
+</div>
+<div class="club-card">
+<h3>✨ Học sinh Lớp 7–10</h3>
+<p class="price-lines">
+            $10 / tuần<br/>
+            $40 / tháng<br/>
+<span>$350 / năm</span> <span class="best-value">Giá tốt nhất</span>
+</p>
+<p class="util-copy-small">
+            Phù hợp để bồi dưỡng kỹ năng đều đặn, giải quyết vấn đề và duy trì việc luyện tập hằng tuần.
+          </p>
+</div>
+<div class="club-card">
+<h3>🎓 Senior Maths Club (Lớp 11–12)</h3>
+<p class="price-lines">
+            $13 / tuần<br/>
+            $50 / tháng<br/>
+<span>$450 / năm</span> <span class="best-value">Giá tốt nhất</span>
+</p>
+<p class="util-copy-small">
+            Phù hợp cho ôn tập có cấu trúc, luyện đề và tài liệu xem lại đến trình độ Lớp 12.
+          </p>
+</div>
+</div>
+</section>
+<!-- Discounts & Rewards -->
+<section class="discounts-section section" id="discounts-rewards">
+<h2 class="section-title util-center-mt-0">Giảm giá &amp; thưởng</h2>
+<p class="discounts-subtitle">
+        Chúng tôi mong muốn hỗ trợ gia đình và ghi nhận nỗ lực, tiến bộ và sự trưởng thành của học sinh.
+      </p>
+<div class="discounts-row">
+<div class="discount-card">
+<h3>1. Giảm giá đặt theo gói (Dạy kèm)</h3>
+<p>
+            Giảm <b>10%</b> khi đặt gói <b>từ 10 buổi dạy kèm trở lên</b> và thanh toán trước.
+          </p>
+<ul>
+<li>Áp dụng cho lớp 1 kèm 1 và lớp nhóm.</li>
+<li>Giúp gia đình chủ động kế hoạch và giảm tổng chi phí.</li>
+</ul>
+</div>
+<div class="discount-card">
+<h3>2. Giảm giá cho gia đình</h3>
+<p>Hỗ trợ gia đình có nhiều hơn một con học cùng chúng tôi:</p>
+<ul>
+<li><b>Con thứ 2:</b> giảm 10%</li>
+<li><b>Con thứ 3:</b> giảm 20%</li>
+</ul>
+<div class="example-box">
+<strong>Ví dụ – 3 con</strong><br/><br/>
+            Bé A: học phí cao nhất → không giảm theo gia đình<br/>
+            Bé B: học phí trung bình → giảm 10%<br/>
+            Bé C: học phí thấp nhất → giảm 20%<br/><br/>
+            Mức giảm tối đa cho mỗi bé mỗi kỳ: <strong>20%</strong>.
+          </div>
+</div>
+<div class="discount-card">
+<h3>3. Hỗ trợ cho gia đình</h3>
+<p>
+            Nếu ngân sách của bạn hạn chế, hãy liên hệ — chúng tôi có thể ghép lớp nhóm nhỏ hoặc gợi ý phương án phù hợp.
+          </p>
+<ul>
+<li>Nhóm nhỏ có thể giảm chi phí mà vẫn đảm bảo chất lượng.</li>
+<li>Chúng tôi có thể đề xuất kế hoạch hiệu quả nhất theo mục tiêu.</li>
+</ul>
+</div>
+</div>
+<div class="discount-card-wide">
+<h3>4. Thưởng tiến bộ &amp; thành tích</h3>
+<p>Học sinh có thể nhận tối đa <b>10%</b> giảm cho kỳ học phí kế tiếp.</p>
+<ul>
+<li><b>Duy trì kết quả tốt – 5%</b>: kết quả ổn định, mạnh.</li>
+<li><b>Cải thiện điểm ở trường – 5%</b>: cải thiện rõ (ví dụ C→B, B→A).</li>
+<li><b>Tiến bộ đều – 5%</b>: tự tin, độ chính xác, lập luận, mức độ tham gia.</li>
+</ul>
+<p class="util-m-0">Nếu đạt nhiều tiêu chí, mức thưởng tối đa là <b>10%</b>.</p>
+</div>
+<div class="discount-card-green">
+<h3>5. Cách áp dụng giảm giá</h3>
+<ul>
+<li>Mỗi kỳ thanh toán, mỗi bé chỉ áp dụng <b>một</b> loại giảm giá.</li>
+<li>Nếu có nhiều loại giảm giá, sẽ áp dụng mức <b>cao nhất</b>.</li>
+<li>Mức giảm tối đa cho mỗi bé là <b>20%</b> mỗi kỳ.</li>
+</ul>
+</div>
+</section>
+<!-- Policies summary -->
+<section class="section" id="policies-summary">
+<div class="card">
+<h2 class="section-title util-mt-0">Tóm tắt chính sách</h2>
+<ul class="policy-list">
+<li>Buổi học được thanh toán trước và xếp lịch trước.</li>
+<li>Vui lòng báo trước ít nhất <strong>24 giờ</strong> khi huỷ/đổi lịch.</li>
+<li>Chúng tôi duy trì môi trường học tôn trọng và hỗ trợ.</li>
+</ul>
+<p class="section-sub util-mt-12-reset">
+          Xem chi tiết tại <a href="policies.html">Chính sách</a>.
+        </p>
+</div>
+</section>
+<!-- Bottom CTAs -->
+<section class="section" id="cta-bottom">
+<div class="card util-p-22">
+<h2 class="section-title util-mb-10">Chưa chắc lựa chọn nào phù hợp nhất cho con bạn?</h2>
+<p class="section-sub util-mb-14">
+          Cho chúng tôi biết khối lớp + mục tiêu (bắt kịp / theo kịp / bứt phá). Chúng tôi sẽ gợi ý điểm bắt đầu phù hợp nhất.
+        </p>
+<div class="btn-row">
+<a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
+<a class="btn btn-amber" href="register.html">Đăng ký</a>
+<a class="btn btn-amber" href="programs.html">Quay lại Chương trình</a>
+</div>
+</div>
+</section>
+</main>

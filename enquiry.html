@@ -1,0 +1,94 @@
+---
+layout: page
+title: Enquiry | Magic Math Master
+description: Send an enquiry to Magic Math Master. Ask questions and we’ll recommend
+  the best next step for your child.
+lang: en
+nav_key: main
+body_class: page-enquiry
+permalink: /enquiry.html
+---
+<main>
+<div class="container">
+<!-- ===== HERO ===== -->
+<section aria-label="Enquiry hero" class="hero-card">
+<div class="hero-banner form-hero-banner" aria-hidden="true">
+  <img class="form-hero-banner__mark" src="{{ '/assets/brand-mark.svg' | relative_url }}" alt="" />
+  <div class="form-hero-banner__wordmark">Magic Math Master</div>
+  <div class="form-hero-banner__tagline">Inspire Curiosity. Think Smarter.</div>
+</div>
+<div class="hero-copy">
+<h1 class="hero-title">Enquiry</h1>
+<p class="hero-desc">
+          Send your questions — we’ll reply as soon as possible.<br/>
+          Tell us your child’s <strong>year level</strong>, your goal
+          (<strong>catch up / keep up / get ahead</strong>), and any topics you’d like help with.
+        </p>
+<div class="hero-pills">
+<span class="hero-pill">Clear next steps</span>
+<span class="hero-pill">Friendly communication</span>
+<span class="hero-pill">Confidence-first teaching</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-amber" href="register.html">Register for Tutoring</a>
+<a class="btn btn-secondary" href="club-register.html">
+            Maths Club Registration
+            <span class="badge">Club only</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ===== FORM ===== -->
+<section class="wrap" id="enquiry-form">
+<div class="form-card">
+<div class="form-card-head">
+<h2 class="form-card-title">Tutoring Enquiry Form</h2>
+</div>
+<div class="form-card-body">
+<p class="note">
+            This enquiry form is for <strong>tutoring</strong> (one-to-one, group tutoring, competition training).
+            Maths Club has a separate registration form.
+          </p>
+<iframe name="enquirySubmitFrame" class="util-hidden"></iframe>
+<form action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec" id="enquiryForm" method="post" novalidate="" target="enquirySubmitFrame">
+<input name="formType" type="hidden" value="tutoring-enquiry"/>
+<div class="grid-2">
+<div>
+<label class="required">Parent / Guardian Name</label>
+<input name="parent_name" required="" type="text"/>
+</div>
+<div>
+<label>Student Name (optional)</label>
+<input name="student_name" type="text"/>
+</div>
+</div>
+<div class="grid-2">
+<div>
+<label class="required">Email</label>
+<input name="email" required="" type="email"/>
+</div>
+<div>
+<label>Mobile (optional)</label>
+<input name="mobile" type="tel"/>
+</div>
+</div>
+<label class="required">Your enquiry</label>
+<textarea name="message" placeholder="Tell us what support you’re looking for, preferred lesson type, and any specific topics..." required=""></textarea>
+<label class="option">
+<input name="consent" required="" type="checkbox" value="Yes"/>
+              I consent to Magic Math Master contacting me about this enquiry.
+            </label>
+<button class="btn btn-amber" type="submit">Submit enquiry</button>
+</form>
+</div>
+</div>
+</section>
+</div>
+</main>
+<div id="thankYouModal">
+<div class="modal-card">
+<h3>Thank you!</h3>
+<p>Your enquiry has been received. We will contact you shortly.</p>
+<button class="btn btn-amber" onclick="document.getElementById('thankYouModal').style.display='none'">OK</button>
+</div>
+</div>

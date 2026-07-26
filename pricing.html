@@ -1,0 +1,352 @@
+---
+layout: page
+title: Fees | Magic Math Master
+description: Transparent maths tutoring fees in Australia. Interactive pricing for
+  Primary, Years 7–10, and VCE. Clear options for standard, extension, selective tests,
+  and AMC/AMO programs.
+lang: en
+pricing_lang: en
+nav_key: main
+body_class: page-pricing
+show_page_hero: true
+hero_title: Fees
+hero_subtitle: Choose year level and program type to see live pricing. If you’re unsure,
+  we can recommend the best option based on goals and timeline.
+show_pricing_grid: true
+permalink: /pricing.html
+---
+<main class="container">
+<section class="section" id="jump-links">
+<div class="card util-p-16">
+<div aria-label="Jump links" class="chip-links" role="navigation">
+<a class="chip-link" href="#detailed-fees">💲 Detailed fees</a>
+<a class="chip-link" href="#maths-club-fee">🌈 Maths Club fee</a>
+<a class="chip-link" href="#discounts-rewards">🎁 Discounts &amp; rewards</a>
+</div>
+</div>
+</section>
+<section class="section price-tool" id="detailed-fees">
+<h2 class="section-title">Interactive fees</h2>
+<p class="section-sub">
+        Select year level, VCE subject (if relevant), and program type. All prices are <strong>per student</strong>.
+      </p>
+<div class="wrap">
+<div class="bar">
+<div aria-label="Year level selector" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-level="primary" role="tab">Primary (Prep–Y6)</button>
+<button aria-selected="false" data-level="mid" role="tab">Years 7–10</button>
+<button aria-selected="false" data-level="vce" role="tab">Year 11–12 (VCE)</button>
+</div>
+<div aria-label="VCE subject selector" class="vceBox" id="vceBox">
+<div class="title">VCE subject</div>
+<div aria-label="VCE subject" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-vce="general" role="tab">General</button>
+<button aria-selected="false" data-vce="methods" role="tab">Methods</button>
+<button aria-selected="false" data-vce="specialist" role="tab">Specialist</button>
+</div>
+<div class="hint">VCE adds load on top of the base table.</div>
+</div>
+<div aria-label="Program type selector" class="vceBox util-block" id="trackBox">
+<div class="title">Program type</div>
+<div aria-label="Program type" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-track="standard" role="tab">Standard</button>
+<button aria-selected="false" data-track="extension" role="tab">Extension</button>
+<button aria-selected="false" data-track="selective" role="tab">Selective tests</button>
+<button aria-selected="false" data-track="amc" role="tab">AMC/AMO</button>
+<button aria-selected="false" data-track="amointensive" role="tab">AMO Intensive</button>
+</div>
+<div class="hint">Program add-ons apply on top of the base table + year level adjustment.</div>
+</div>
+<div class="note" id="ruleNote">
+<div class="badge-row">
+<span class="badge" id="badgeYear">Primary adjustment</span>
+<span class="badge" id="badgeTrack">Standard</span>
+<span class="badge warn" id="minBadge">60-min minimum for 5+ students</span>
+</div>
+<div>
+<strong id="ruleLine">
+                Primary Maths: –$5 (30 min) and –$10 (60 min) per student.<br/>Standard tutoring: +$0.
+              </strong>
+<div class="sub" id="extraLine">Tip: 60-minute sessions allow more practice + feedback.</div>
+</div>
+</div>
+</div>
+</div>
+<section class="section" id="fees-glance">
+<h2 class="section-title">Fees at a glance</h2>
+<p class="section-sub">
+          These cards update automatically based on your selections above — so they always match the table.
+        </p>
+<div class="price-grid">
+<div class="price-card" id="glance-online">
+<div class="price-top">
+<h3>Online</h3>
+<span class="kicker" id="glance-badge-online">1-to-1 • 60 min</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">Clear structure</span>
+<span class="fee-chip">Flexible</span>
+<span class="fee-chip">Strong feedback</span>
+</div>
+<div class="price" id="glance-price-online">$—</div>
+<div class="per" id="glance-per-online">per 60 minutes (per student)</div>
+<div class="parents-get">👨‍👩‍👧‍👦 <strong>Parents get:</strong> a clear plan + progress feedback and next steps.</div>
+</div>
+<div class="price-card featured" id="glance-inperson">
+<div class="price-top">
+<h3>In-person</h3>
+<span class="kicker" id="glance-badge-inperson">1-to-1 • 60 min</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">Hands-on support</span>
+<span class="fee-chip">Guided practice</span>
+<span class="fee-chip">Confidence</span>
+</div>
+<div class="price" id="glance-price-inperson">$—</div>
+<div class="per" id="glance-per-inperson">per 60 minutes (per student)</div>
+<div class="parents-get">📍 <strong>In-person includes:</strong> travel/setup time (subject to availability).</div>
+</div>
+<div class="price-card" id="glance-30">
+<div class="price-top">
+<h3>Short session</h3>
+<span class="kicker" id="glance-badge-30">1-to-1 • 30 min</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip" id="glance-30-note">Shown when 30-min is available</span>
+</div>
+<div class="price util-fs-34" id="glance-price-30">$—</div>
+<div class="per" id="glance-per-30">per 30 minutes (online / in-person)</div>
+<div class="parents-get" id="glance-30-helper">
+              Tip: 60 minutes usually gives better progress (more time for practice + feedback).
+            </div>
+</div>
+<div class="price-card" id="glance-5plus">
+<div class="price-top">
+<h3>5+ students</h3>
+<span class="kicker" id="glance-badge-5plus">5+ • 60 min minimum</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">Best value</span>
+<span class="fee-chip">Similar level</span>
+<span class="fee-chip">Weekly routine</span>
+</div>
+<div class="price util-fs-34" id="glance-price-5plus">$—</div>
+<div class="per" id="glance-per-5plus">per 60 minutes (per student)</div>
+<div class="parents-get" id="glance-5plus-helper">
+<strong>Note:</strong> 60 minutes minimum for 5+ students to keep lesson quality high.
+            </div>
+</div>
+</div>
+</section>
+<div class="wrap">
+<div class="table-wrap fees-table-wrap">
+<table aria-label="Tutoring price table" class="fees-table">
+<colgroup>
+<col class="util-w-90" />
+<col class="util-w-240" />
+<col/>
+<col/>
+</colgroup>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Program</th>
+<th>30 minutes / student</th>
+<th>60 minutes / student</th>
+</tr>
+</thead>
+<tbody id="priceBody"></tbody>
+</table>
+</div>
+<div class="tool-footer">
+<strong>Notes:</strong>
+          In-person pricing includes travel/setup. For group sessions, students should be at a similar level.
+          <strong>5+ students:</strong> 60-minute minimum to keep lesson quality high.
+        </div>
+<div class="triple-grid">
+<div class="info-card">
+<h3>📘 What’s included</h3>
+<ul class="util-list-relaxed">
+<li>Personalised learning plan and goals</li>
+<li>Targeted feedback and clear next steps</li>
+<li>Lessons aligned to your child’s needs and timeline</li>
+</ul>
+<div class="parents-get util-mt-12">
+<strong>Best for:</strong> families who want structure + visible progress.
+            </div>
+</div>
+<div class="info-card">
+<h3>🌈 Confidence + consistency</h3>
+<div class="quote-box">
+              Progress comes from <b>clear teaching + consistent practice</b> — not stress.
+              We keep sessions calm, structured, and supportive.
+            </div>
+<div class="parents-get">
+<strong>Result:</strong> students understand, practise, and feel more confident week by week.
+            </div>
+</div>
+<div class="info-card">
+<h3>✅ Good to know</h3>
+<div class="notes-box">
+<ul>
+<li>Online and in-person options (depending on availability).</li>
+<li>Small groups can be the best value for steady weekly learning.</li>
+<li>Ask us to recommend the best pathway (catch up / keep up / get ahead).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section aria-label="Important information" class="imp-box">
+<div class="imp-head">
+<div class="imp-pin">📌</div>
+<h2 class="imp-title">Important Information (Short Summary)</h2>
+</div>
+<ul class="imp-list">
+<li><b>Payment:</b> Fees are paid before lessons.</li>
+<li><b>Cancellations:</b> Please provide at least <b>24 hours’ notice</b> to cancel or change a lesson. Late cancellations may still be charged.</li>
+<li><b>Refunds:</b> Refunds may be available for lessons cancelled with <b>24+ hours’ notice</b> or with a valid medical certificate.</li>
+<li><b>Behaviour:</b> Students are expected to be kind, respectful, and positive so everyone can learn comfortably.</li>
+<li><b>Communication:</b> We keep families updated, and parents are welcome to contact <b>Dr Tuyet Vu</b> with any questions.</li>
+</ul>
+<p class="imp-footer">
+        For full details, please read our
+        <a class="imp-link" href="policies.html">Policies</a>.
+      </p>
+</section>
+<section class="club-section section" id="maths-club-fee">
+<h2 class="section-title util-center-mt-0">🌈 Maths Club fee</h2>
+<p class="club-sub">
+        For students <b>not currently enrolled in tutoring</b> who want weekly enrichment, structured practice, and ongoing maths support.<br/>
+<em>Senior Maths Club includes higher-level review and practice up to Year 12.</em>
+</p>
+<div class="club-grid">
+<div class="club-card">
+<h3>✨ Primary students</h3>
+<p class="price-lines">
+            $7 / week<br/>
+            $28 / month<br/>
+<span>$250 / year</span> <span class="best-value">Best value</span>
+</p>
+<p class="util-copy-small">
+            Best for students building confidence, fluency, and strong foundations.
+          </p>
+</div>
+<div class="club-card">
+<h3>✨ Years 7–10 students</h3>
+<p class="price-lines">
+            $10 / week<br/>
+            $40 / month<br/>
+<span>$350 / year</span> <span class="best-value">Best value</span>
+</p>
+<p class="util-copy-small">
+            Best for steady skill building, problem solving, and regular weekly practice.
+          </p>
+</div>
+<div class="club-card">
+<h3>🎓 Senior Maths Club (Year 11–12)</h3>
+<p class="price-lines">
+            $13 / week<br/>
+            $50 / month<br/>
+<span>$450 / year</span> <span class="best-value">Best value</span>
+</p>
+<p class="util-copy-small">
+            Best for structured revision, exam-style practice, and review materials up to Year 12 level.
+          </p>
+</div>
+</div>
+<div class="btn-row util-mt-16">
+<a class="btn btn-outline" href="mathclub.html">Learn more</a>
+<a class="btn btn-amber" href="club-register.html">Register for Maths Club</a>
+<a class="btn btn-amber" href="mathclub.html">Maths Club details</a>
+</div>
+</section>
+<section class="discounts-section section" id="discounts-rewards">
+<h2 class="section-title util-center-mt-0">🎁 Discounts &amp; rewards</h2>
+<p class="discounts-subtitle">
+        We aim to support families and recognise students’ effort, progress, and growth.
+      </p>
+<div class="discounts-row">
+<div class="discount-card">
+<h3>💛 1. Block Booking Discount (Tutoring)</h3>
+<p>
+            A <b>10% discount</b> applies when you book a block of <b>10 or more tutoring lessons</b> and pay in advance.
+          </p>
+<ul>
+<li>Available for one-to-one and group lessons.</li>
+<li>Helps families plan ahead and reduce overall costs.</li>
+</ul>
+</div>
+<div class="discount-card">
+<h3>👨‍👩‍👧‍👦 2. Family Discounts</h3>
+<p>To support families with more than one child learning with us:</p>
+<ul>
+<li><b>Second child:</b> 10% discount</li>
+<li><b>Third child:</b> 20% discount</li>
+</ul>
+<div class="example-box">
+<strong>Example – 3 children</strong><br/><br/>
+            Child A: highest fee → no family discount<br/>
+            Child B: middle fee → 10% off<br/>
+            Child C: lowest fee → 20% off<br/><br/>
+            Max discount per child per period: <strong>20%</strong>.
+          </div>
+</div>
+<div class="discount-card">
+<h3>💬 3. Support for Families</h3>
+<p>
+            If your budget is limited, please contact us — we may be able to match students into small groups or suggest options.
+          </p>
+<ul>
+<li>Small groups can reduce cost while keeping quality high.</li>
+<li>We can recommend the most efficient plan for your goals.</li>
+</ul>
+</div>
+</div>
+<div class="discount-card-wide">
+<h3>🏅 4. Progress &amp; Achievement Rewards</h3>
+<p>Students may receive up to <b>10% discount</b> on the next billing period’s tuition fees.</p>
+<ul>
+<li><b>Maintaining high performance – 5%</b>: consistently strong results.</li>
+<li><b>Improving school grades – 5%</b>: visible improvement (e.g., C→B, B→A).</li>
+<li><b>Showing steady progress – 5%</b>: confidence, accuracy, reasoning, engagement.</li>
+</ul>
+<p class="util-m-0">If multiple criteria are met, the reward is capped at <b>10%</b>.</p>
+</div>
+<div class="discount-card-green">
+<h3>🔎 5. How Discounts Are Applied</h3>
+<ul>
+<li>Only one type of discount applies per child per billing period.</li>
+<li>If multiple discounts apply, the <b>highest</b> one is used.</li>
+<li>The maximum discount per child is <b>20%</b> per billing cycle.</li>
+</ul>
+</div>
+</section>
+<section class="section" id="policies-summary">
+<div class="card">
+<h2 class="section-title util-mt-0">Policies summary</h2>
+<ul class="policy-list">
+<li>Lessons are prepaid and scheduled in advance.</li>
+<li>Please provide at least <strong>24 hours’ notice</strong> for cancellations or changes.</li>
+<li>We maintain a respectful, supportive learning environment.</li>
+</ul>
+<p class="section-sub util-mt-12-reset">
+          For full details, please read our <a href="policies.html">Policies</a>.
+        </p>
+</div>
+</section>
+<section class="section" id="cta-bottom">
+<div class="card util-p-22">
+<h2 class="section-title util-mb-10">Not sure which option fits your child best?</h2>
+<p class="section-sub util-mb-14">
+          Tell us year level + goal (catch up / keep up / get ahead). We’ll recommend the best starting point.
+        </p>
+<div class="btn-row">
+<a class="btn btn-success" href="enquiry.html">Enquire</a>
+<a class="btn btn-amber" href="register.html">Register</a>
+<a class="btn btn-amber" href="programs.html">Back to Programs</a>
+</div>
+</div>
+</section>
+</main>

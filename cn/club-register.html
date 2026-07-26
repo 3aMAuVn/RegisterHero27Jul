@@ -1,0 +1,286 @@
+---
+layout: page
+title: 数学俱乐部报名
+description: 报名参加 魔法数学大师 数学俱乐部。
+lang: zh
+nav_key: main_cn
+body_class: page-club-register page-cn
+permalink: /cn/club-register.html
+hero_title: 数学俱乐部报名
+hero_subtitle: 报名参加数学俱乐部
+---
+<main>
+<div class="container">
+<!-- HERO uses style.css -->
+<section aria-label="数学俱乐部报名横幅" class="hero-card">
+<div class="hero-banner form-hero-banner" aria-hidden="true">
+  <img class="form-hero-banner__mark" src="{{ '/assets/brand-mark.svg' | relative_url }}" alt="" />
+  <div class="form-hero-banner__wordmark">Magic Math Master</div>
+  <div class="form-hero-banner__tagline">激发好奇心，启迪智慧思考。</div>
+</div>
+<div class="hero-copy">
+<h1 class="hero-title">报名参加数学俱乐部</h1>
+<p class="hero-desc">
+   请选择<strong>一个俱乐部分组</strong>，并可在同一次报名中为<strong>一位或多位学生</strong>完成报名。数学俱乐部为线上课程，学生可在任何地点参加。
+   </p>
+<div class="hero-pills">
+<span class="hero-pill">仅限俱乐部</span>
+<span class="hero-pill">可多名学生一起报名</span>
+<span class="hero-pill">灵活的线上参与方式</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-amber" href="#club-register">立即报名</a>
+<a class="btn btn-secondary" href="pricing.html#maths-club-fee">查看费用</a>
+<a class="btn btn-outline" href="mathclub.html">数学俱乐部详情</a>
+<a class="btn btn-success" href="enquiry.html">辅导咨询</a>
+</div>
+<p class="section-sub util-mt-14">
+   如果您在报名前有任何问题，可以通过
+   <a class="link-strong" href="https://wa.me/61433785162" rel="noopener" target="_blank">即时通讯</a>
+   或
+   <a class="link-strong" href="mailto:magicmathmasters@gmail.com?subject=Maths%20Club%20Registration%20Question">电子邮箱</a>
+   与我们联系，我们很乐意协助。
+   </p>
+</div>
+</section>
+<section class="anchor-target" id="club-register">
+<div class="club-shell">
+<div class="club-card">
+<h2 class="section-title">选择您的数学俱乐部分组</h2>
+<p class="section-sub">
+    请选择本次报名的 <b>一个</b> 数学俱乐部分组。若您选择 <b>小学数学俱乐部</b>，也请同时选择正确的子组别，以便我们准确安排学生。
+   </p>
+<div class="club-options" id="clubOptions">
+<label class="club-option" for="club-prep6">
+<span aria-hidden="true" class="club-badge">🌱</span>
+<h3>小学数学俱乐部</h3>
+<p>为低年级学习者建立扎实基础、数感、计算流畅度和自信的问题解决能力。</p>
+<input id="club-prep6" name="clubStream" required="" type="radio" value="小学数学俱乐部"/>
+</label>
+<label class="club-option" for="club-710">
+<span aria-hidden="true" class="club-badge">🧩</span>
+<h3>7–10年级 数学俱乐部</h3>
+<p>为中学低年级学生提供稳定的技能发展、推理训练和有结构的每周练习。</p>
+<input id="club-710" name="clubStream" required="" type="radio" value="Years 7-10 数学俱乐部"/>
+</label>
+<label class="club-option" for="club-1112">
+<span aria-hidden="true" class="club-badge">🎓</span>
+<h3>高年级数学俱乐部</h3>
+<p>为 11–12 年级学生提供更高层次的复习、有结构的巩固训练和考试风格练习。</p>
+<input id="club-1112" name="clubStream" required="" type="radio" value="Years 11-12 数学俱乐部"/>
+</label>
+</div>
+<div class="subgroup-wrap" id="prepSubgroupWrap">
+<p class="subgroup-title">小学子组别（仅小学数学俱乐部必填）</p>
+<div class="subgroup-grid">
+<label class="subgroup-item">
+<input name="prepSubgroup" type="radio" value="Prep-2"/>
+<span class="subgroup-copy">
+<b>学前班–二年级</b>
+     侧重低年级：数数、规律、基础运算和数感自信。
+     </span>
+</label>
+<label class="subgroup-item">
+<input name="prepSubgroup" type="radio" value="3-6"/>
+<span class="subgroup-copy">
+<b>三–六年级</b>
+     加强分数、小数、应用题和独立推理能力。
+     </span>
+</label>
+</div>
+</div>
+</div>
+<!-- Hidden iframe submit -->
+<iframe name="clubRegisterSubmitFrame" title="Club register submission" class="util-hidden"></iframe>
+<form action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec" id="mathsClubRegisterForm" method="post" novalidate="" target="clubSubmitFrame">
+<input name="formType" type="hidden" value="club-register"/>
+<input id="clubStreamField" name="clubStream" type="hidden"/>
+<input id="prepSubgroupField" name="prepSubgroup" type="hidden"/>
+<input id="studentsField" name="students" type="hidden"/>
+<div class="form-card">
+<h2 class="section-title">家庭与报名信息</h2>
+<p class="section-sub">
+    这些信息将帮助我们与您联系、安排报名并确认最适合的起点。
+    </p>
+<div class="two-col">
+<div class="field-group">
+<label for="parentName">家长 / 监护人姓名</label>
+<input id="parentName" name="parentName" required="" type="text"/>
+</div>
+<div class="field-group">
+<label for="parentEmail">家长 / 监护人电子邮箱</label>
+<input id="parentEmail" name="parentEmail" required="" type="email"/>
+</div>
+<div class="field-group">
+<label for="parentPhone">家长 / 监护人电话</label>
+<input id="parentPhone" name="parentPhone" required="" type="tel"/>
+</div>
+<div class="field-group">
+<label class="required" for="paymentPlan">偏好的付款方式</label>
+<select id="paymentPlan" name="paymentPlan" required="">
+<option value="">请选择</option>
+<option>每周</option>
+<option>每月</option>
+<option>每年</option>
+</select>
+</div>
+<div class="field-group">
+<label class="required" for="startDate">期望开始日期</label>
+<input id="startDate" name="startDate" required="" type="date"/>
+</div>
+<div class="field-group">
+<label for="competitionMode">竞赛偏好（如适用）</label>
+<select id="competitionMode" name="competitionMode">
+<option value="">请选择</option>
+<option>线上</option>
+<option>线下（如可安排）</option>
+<option>无特别偏好</option>
+<option>暂不参加竞赛</option>
+</select>
+</div>
+<div class="field-group util-hidden" id="competitionLocationGroup">
+<label for="competitionLocation">偏好的线下 / 附近上课地点</label>
+<input id="competitionLocation" name="competitionLocation" placeholder="请输入您所在的城区、区域或偏好的附近地点" type="text"/>
+</div>
+</div>
+</div>
+<div class="form-card">
+<h2 class="section-title">学生报名信息</h2>
+<p class="section-sub">
+    请添加参加本次报名的每位学生。如果是兄弟姐妹一起报名，请将每位孩子分开填写。
+    </p>
+<p class="section-sub util-mt-10">
+<b>为多个孩子报名吗？</b> 可能适用家庭折扣和兄弟姐妹奖励。
+    </p>
+<div class="hero-actions util-mt-10">
+<a class="btn btn-secondary" href="pricing.html#discounts-rewards">家庭折扣与奖励</a>
+</div>
+<div class="register-tools">
+<div class="tool-left">
+<button class="btn btn-outline" onclick="addRow()" type="button">+ 添加另一位学生</button>
+<button class="btn btn-outline" onclick="resetTable()" type="button">重置表格</button>
+</div>
+<div class="tool-right">
+<a class="btn btn-secondary" href="mathclub.html">查看数学俱乐部详情</a>
+</div>
+</div>
+<div class="table-wrap">
+<table aria-label="学生报名信息表格" id="studentTable">
+<thead>
+<tr>
+<th>#</th>
+<th>学生姓名</th>
+<th>常用名</th>
+<th>年级</th>
+<th>学校</th>
+<th>数学重点</th>
+<th>学习支持 / 备注</th>
+<th>删除</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="row-number">1</td>
+<td><input name="studentName[]" required="" type="text"/></td>
+<td><input name="preferredName[]" type="text"/></td>
+<td>
+<select name="grade[]" required="">
+<option value="">选择</option>
+<option>学前班</option>
+<option>一年级</option>
+<option>二年级</option>
+<option>三年级</option>
+<option>四年级</option>
+<option>五年级</option>
+<option>六年级</option>
+<option>七年级</option>
+<option>八年级</option>
+<option>九年级</option>
+<option>十年级</option>
+<option>十一年级</option>
+<option>十二年级</option>
+</select>
+</td>
+<td><input name="school[]" required="" type="text"/></td>
+<td>
+<select name="mathsFocus[]">
+<option value="">选择</option>
+<option>建立自信</option>
+<option>核心技能复习</option>
+<option>问题解决</option>
+<option>拓展 / 挑战</option>
+<option>考试准备</option>
+</select>
+</td>
+<td><input name="studentNotes[]" placeholder="可选" type="text"/></td>
+<td><button class="remove-btn" onclick="removeRow(this)" type="button">删除</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="form-card">
+<h2 class="section-title">最后备注与同意</h2>
+<p class="section-sub">
+    请填写任何时间偏好或补充信息，以帮助我们更好地为您的孩子安排合适的分组。
+    </p>
+<div class="field-group util-mt-14">
+<label for="familyNotes">普通数学备注</label>
+<textarea id="familyNotes" name="familyNotes" placeholder="可填写时间安排偏好、学习目标、兄弟姐妹分组、过敏情况或任何其他需要我们了解的信息"></textarea>
+</div>
+<div class="consent-box">
+<label class="check-line">
+<input id="consent" name="consent" required="" type="checkbox"/>
+<span>
+     我确认自己是这些学生的家长/监护人（或获授权的报名人），并确认所提供的信息准确无误。
+     </span>
+</label>
+<p class="small-note">
+     提交后，我们会审核您的报名，并与您联系说明付款安排和下一步。
+    </p>
+<div class="hero-actions">
+<button class="btn btn-success" type="submit">提交报名</button>
+<a class="btn btn-outline" href="pricing.html#maths-club-fee">查看费用</a>
+</div>
+</div>
+</div>
+</form>
+<div class="info-grid">
+<div class="info-card">
+<h3>本页面最适合</h3>
+<ul class="clean-list">
+<li>为多个孩子一起完成家庭报名</li>
+<li>兄弟姐妹参加同一个俱乐部分组</li>
+<li>在同一页面完成简洁报名</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>重要分组说明</h3>
+<p class="section-sub">
+    一次报名应只包含 <b>一个俱乐部分组</b>。 如果学生属于不同分组，请为每个分组分别提交一份报名表。
+    </p>
+</div>
+<div class="info-card">
+<h3>不确定适合哪个俱乐部？</h3>
+<p class="section-sub">
+    如果您想了解辅导课程（一对一、小组辅导、竞赛训练），请使用咨询页面。
+    </p>
+</div>
+</div>
+<div class="success-card" id="successMessage">
+<strong>谢谢您。您的报名已收到。</strong>
+   我们会尽快与您联系，说明加入数学俱乐部的付款安排和下一步。
+   </div>
+</div>
+</section>
+</div>
+</main>
+<div aria-label="感谢弹窗" aria-modal="true" id="clubThankYouModal" role="dialog">
+<div class="modal-card">
+<h3 class="modal-title">谢谢您！</h3>
+<p class="modal-text">
+  您的数学俱乐部报名已收到。我们会尽快与您联系，说明付款安排和下一步。
+  </p>
+<button class="btn btn-amber" id="clubThankYouOkBtn" type="button">确定</button>
+</div>
+</div>

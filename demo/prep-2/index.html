@@ -1,0 +1,869 @@
+---
+layout: page
+title: Prep–Year 2 Animal Maths | Free Demo
+description: Short animal-themed maths demo for Prep to Year 2.
+lang: en
+nav_key: main
+body_class: page-demo page-demo-prep-2
+permalink: /demo/prep-2/
+---
+<div class="card">
+
+  <div id="pill" class="pill">🌱 Prep – Year 2 • Animals</div>
+  <h1 id="titleH1">Animal Maths Practice (Free Demo)</h1>
+
+  <p class="intro">
+    Type your answer, press <b>Check</b>, then press <b>Next</b>.
+    <span class="note">
+      Keyboard: <b>Enter</b> = Check, then <b>Enter</b> again = Next • <b>Shift+Enter</b> = Previous • <b>Ctrl/Cmd+Enter</b> = Next (skip checking)
+    </span>
+  </p>
+
+  <!-- START -->
+  <div id="startMsg" class="q">Enter your details, choose Prep/Year 1/Year 2, then press <b>Start</b> 🐾</div>
+
+  <div id="profileBox">
+    <div class="row2">
+      <div class="field">
+        <label>Student name</label>
+        <input id="studentName" placeholder="e.g., Anna">
+      </div>
+
+      <div class="field">
+        <label>Year level</label>
+        <select id="studentGrade">
+          <option value="">Select…</option>
+          <option>Prep</option>
+          <option>Year 1</option>
+          <option>Year 2</option>
+        </select>
+        <div class="note util-mt-8" id="gradeHint">Please choose Prep, Year 1, or Year 2.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      This short demo helps us understand how your child thinks. No email or phone number is collected.
+    </div>
+  </div>
+
+  <div id="startButtons" class="btnrow">
+    <button id="startBtn" onclick="start()" disabled>Start</button>
+    <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="qa" class="hide">
+    <div id="qCounter" class="note util-note-strong"></div>
+    <div id="q" class="q"></div>
+
+    <input id="ans" inputmode="decimal" placeholder="Type a number">
+
+    <div id="precisionNote" class="note util-mt-8"></div>
+
+    <div class="note util-mt-10">
+      <b>Tips:</b> You can press <b>Next</b> to skip and come back with <b>Previous</b>.<br>
+      <b>Finish:</b> You can press <b>Finish</b> any time to see your results.
+    </div>
+
+    <div class="btnrow">
+      <button id="checkBtn" onclick="check()">Check</button>
+      <button id="prevBtn" class="secondary" onclick="prev()" disabled>Previous</button>
+      <button id="nextBtn" class="secondary" onclick="next()">Next</button>
+      <button id="finishBtn" class="secondary" onclick="finishEarly()">Finish</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+  </div>
+
+  <div id="fb"></div>
+  <div id="hint" class="hint"></div>
+
+  <!-- END / RESULTS -->
+  <div id="end" class="cta hide">
+    <div id="finalLine"></div>
+
+    <div class="resultBox">
+      <div class="resultTitle">Results overview</div>
+      <div id="pctText"></div>
+      <canvas id="chart" width="900" height="260"></canvas>
+      <div class="note">Blue = correct (✔) • Red = incorrect (✘) • Grey outline = unanswered (U)</div>
+    </div>
+
+    <div class="resultBox">
+      <div class="resultTitle">🧑‍🎓 Student Summary</div>
+
+      <p id="studentOverview" class="util-mb-10"></p>
+
+      <p class="util-m-0"><b>✅ What you did well:</b></p>
+      <ul id="studentWellList"></ul>
+
+      <p class="util-mt-10-reset"><b>🎯 What to practise next:</b></p>
+      <ul id="studentNextList"></ul>
+    </div>
+
+    <div class="resultBox">
+      <div class="resultTitle">👨‍👩‍👧 Parent Summary</div>
+
+      <p id="parentOverview"></p>
+      <p><b>Unanswered questions:</b> <span id="unansweredLine"></span></p>
+
+      <p><b>What your child did well:</b></p>
+      <ul id="strengthList"></ul>
+
+      <p><b>What to practise next:</b></p>
+      <ul id="nextList"></ul>
+
+      <p class="note">
+        This demo is <b>not a test</b>. It helps us plan calm, confidence-building lessons.
+      </p>
+    </div>
+
+    <div class="toggleRow">
+      <input id="includeReport" type="checkbox" checked>
+      <label for="includeReport">Include a printable report (PDF)</label>
+    </div>
+
+    <div class="btnrow">
+      <button onclick="printOrSkip()">🖨️ Print / Save PDF</button>
+      <button class="secondary" onclick="restart()">Try again</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+
+    <div id="saveStatus" class="note"></div>
+
+    <details class="note util-mt-10">
+      <summary class="util-summary-strong">
+        Privacy &amp; what we save (tap to read)
+      </summary>
+      <div class="util-copy-muted">
+        <p class="util-mb-8">
+          This demo can save results to <b>Magic Math Master’s internal records (Google Sheets)</b> so we can review progress.
+          <b>No email is sent</b> from this page.
+        </p>
+        <p class="util-mb-6"><b>We save:</b></p>
+        <ul class="util-list-offset">
+          <li>Student name (as typed here)</li>
+          <li>Year level selected</li>
+          <li>Total score and percentage</li>
+          <li>Per-question result (correct / incorrect / unanswered)</li>
+          <li>Which demo/page was used (page URL)</li>
+        </ul>
+        <p class="util-m-0">
+          <b>We do not collect</b> email address or phone number on this demo page.
+        </p>
+      </div>
+    </details>
+
+    <div class="note">
+      Interested in a personalised learning plan?
+      <a href="{{ '/contact.html' | relative_url }}" target="_blank" rel="noopener">Enquire or register →</a>
+    </div>
+  </div>
+
+  <!-- PRINT REPORT -->
+  <div id="printReport" class="printReport">
+    <h2>Maths Practice Report</h2>
+    <p class="small">
+      <b>Student:</b> <span id="rName"></span><br>
+      <b>Grade:</b> <span id="rGrade"></span><br>
+      <b>Date:</b> <span id="rDate"></span><br>
+      <b>Demo:</b> Prep–Year 2 Animals
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>Summary</h3>
+    <p id="rSummary"></p>
+    <p class="small"><b>Unanswered:</b> <span id="rUnanswered"></span></p>
+
+    <h3>What your child did well</h3>
+    <ul id="rStrengths"></ul>
+
+    <h3>What to practise next</h3>
+    <ul id="rNext"></ul>
+
+    <div class="divider"></div>
+
+    <p class="small">
+      This short demo is not a test. It helps us plan calm, confidence-building lessons.<br>
+      Magic Math Master • Australia • {{ site.url | default: site.github.url | default: "www.magicmathmaster.com.au" }}
+    </p>
+  </div>
+
+  <div class="footer">Magic Math Master • Free Demo</div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const ENDPOINT_URL =
+  "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
+
+/* ================= QUESTION BANKS (10 each) ================= */
+/*const qsPrep = [
+  { q:"🐶 Easy: There are 2 puppies at the park. 3 more puppies arrive. How many puppies altogether?", a:5,  skill:"Addition" },
+  { q:"🐰 Easy: There are 8 rabbits in a pen. 5 hop away. How many rabbits are left?", a:3,  skill:"Subtraction" },
+  { q:"🐤 Easy: There are 4 nests. Each nest has 2 eggs. How many eggs altogether?", a:8,  skill:"Multiplication (Groups)" },
+  { q:"🔢 Medium: Counting by 2: 2, 4, 6, __. What number comes next?", a:8,  skill:"Patterns" },
+  { q:"🔺 Medium: A triangle is a shape. How many sides does a triangle have?", a:3,  skill:"Shapes" },
+  { q:"📈 Medium: Which number is bigger: 17 or 14? (Type the bigger number)", a:17, skill:"Comparing Numbers" },
+  { q:"🐟 Medium: 10 fish are swimming. 3 swim away. How many fish are swimming now?", a:7,  skill:"Subtraction" },
+  { q:"🦆 Medium: 6 ducks are in the pond. 2 more ducks join. How many ducks now?", a:8,  skill:"Addition" },
+  { q:"🥕 Hard: 12 carrots are shared equally between 3 rabbits. How many carrots does each rabbit get?", a:4,  skill:"Division (Sharing)" },
+  { q:"🐾 Hard: 5 puppies are playing. 4 more come. Then 3 leave. How many puppies are there now?", a:6,  skill:"Two-Step Problems" }
+];*/
+const qsPrep = [
+  { q:"🐶 Easy: There are 2 puppies at the park. 3 more puppies arrive. How many puppies altogether?", a:5,  skill:"Addition" },
+  { q:"🐰 Easy: There are 8 rabbits in a pen. 5 hop away. How many rabbits are left?", a:3,  skill:"Subtraction" },
+  { q:"🍎 Easy: You have 6 apples. You get 2 more apples. How many apples altogether?", a:8,  skill:"Addition" },
+
+  { q:"🔟 Medium: What number comes after 8?", a:9,  skill:"Number Order" },
+  { q:"🔙 Medium: What number comes before 9?", a:8,  skill:"Number Order" },
+  { q:"📈 Medium: Which number is bigger: 7 or 4? (Type the bigger number)", a:7,  skill:"Comparing Numbers" },
+  { q:"🔢 Medium: Counting by 2: 2, 4, 6, __. What number comes next?", a:8,  skill:"Patterns" },
+
+  { q:"➕ Hard: Missing number: __ + 6 = 10. What is the missing number?", a:4,  skill:"Missing Number" },
+  { q:"🐾 Hard: One dog has 4 legs. Another dog has 4 legs. How many legs altogether?", a:8,  skill:"Addition (Counting Legs)" },
+  { q:"🐾 Hard: 5 puppies are playing. 4 more come. Then 3 leave. How many puppies are there now?", a:6,  skill:"Two-Step Problems" }
+];
+const qsY1 = [
+  { q:"🐶 Easy: An animal rescue has 14 dogs and 9 cats. How many animals altogether?", a:23, skill:"Addition" },
+  { q:"🦜 Easy: 25 birds are sitting on a fence. 8 birds fly away. How many birds are left?", a:17, skill:"Subtraction" },
+  { q:"🐤 Easy: There are 5 cages. Each cage has 3 birds. How many birds altogether?", a:15, skill:"Multiplication (Groups)" },
+  { q:"🔢 Medium: Counting by 5: 15, 20, 25, __. What comes next?", a:30, skill:"Patterns" },
+  { q:"➕ Medium: A child has some stickers. After getting 6 more, they have 20. How many did they have at first?", a:14, skill:"Missing Number" },
+  { q:"📉 Medium: Which number is smaller: 38 or 41? (Type the smaller number)", a:38, skill:"Comparing Numbers" },
+  { q:"🍪 Medium: 30 treats are shared equally between 5 dogs. How many treats does each dog get?", a:6,  skill:"Division (Sharing)" },
+  { q:"🥚 Medium: Half of 18 eggs is __. How many eggs is that?", a:9,  skill:"Fractions (Halves)" },
+  { q:"💰 Hard: A toy costs $7. You pay with $12. How much change do you get?", a:5,  skill:"Money" },
+  { q:"🐰 Hard: 16 rabbits are in a field. 5 more arrive. Then 9 hop away. How many rabbits are there now?", a:12, skill:"Two-Step Problems" }
+];
+
+const qsY2 = [
+  { q:"🦊 Easy: A wildlife shelter has 47 animals. Then 28 more animals arrive. How many animals are there altogether?", a:75, skill:"Addition" },
+  { q:"🦉 Easy: There are 63 fish in a pond. 27 swim away. How many fish are left?", a:36, skill:"Subtraction" },
+  { q:"🐾 Easy: There are 8 packs. Each pack has 7 stickers. How many stickers altogether?", a:56, skill:"Multiplication (Groups)" },
+  { q:"🎒 Medium: 84 soccer balls are shared equally into 6 bags. How many balls per bag?", a:14, skill:"Division (Sharing)" },
+  { q:"🍏 Medium: 3/4 of 28 apples were used. How many apples were used?", a:21, skill:"Fractions (Of a Number)" },
+  { q:"⏱️ Medium: Starts at 2:10 pm and lasts 35 minutes. Finish time? (Type HHMM, e.g., 2:45 pm = 245)", a:245, note:"Answer tip: type time as HHMM (e.g., 2:45 pm = 245).", skill:"Time" },
+  { q:"📏 Medium: A rectangle is 9 cm long and 5 cm wide. What is the perimeter (cm)?", a:28, skill:"Measurement (Perimeter)" },
+  { q:"🔟 Medium: Place value: What is the value of the digit 6 in 4,682?", a:600, skill:"Place Value" },
+  { q:"🚌 Hard: 3 buses bring 24 students each. 15 students leave early. How many students stay?", a:57, skill:"Two-Step Problems" },
+  { q:"🧮 Hard: You have 120 animal cards. Give away 35, get 18 more, then give away 22. How many cards now?", a:81, skill:"Two-Step Problems" }
+];
+/* ================= STATE ================= */
+let qs = [];
+let i = -1;
+let score = 0;
+let student = { name:"", grade:"" };
+let gotCorrect = [];
+let ansCache = [];
+let checkedThisView = false;
+
+const el = id => document.getElementById(id);
+
+/* ================= NAV ================= */
+function goToDemoHome(){
+  window.location.href = "{{ '/demo/' | relative_url }}";
+}
+
+/* ================= START READINESS ================= */
+function validateStart(){
+  const nameOk = el("studentName").value.trim().length > 0;
+  const gradeOk = !!el("studentGrade").value;
+
+  const btn = el("startBtn");
+  btn.disabled = !(nameOk && gradeOk);
+
+  el("gradeHint").textContent = gradeOk ? `Selected: ${el("studentGrade").value}` : "Please choose Prep, Year 1, or Year 2.";
+
+  // ✅ When ready, focus Start so Enter starts immediately
+  if(!btn.disabled){
+    setTimeout(()=>btn.focus(), 0);
+  }
+}
+
+/* ================= PARSERS ================= */
+function parseNumber(raw){
+  const s = (raw || "").trim().replace(/,/g,"").replace(/\s+/g,"");
+  if(!s) return NaN;
+  const v = Number(s);
+  return Number.isFinite(v) ? v : NaN;
+}
+function close(a,b,eps=1e-9){ return Math.abs(a-b) < eps; }
+
+/* ================= ANSWER CACHE ================= */
+function stashAnswer(){
+  if(i >= 0 && i < ansCache.length){
+    ansCache[i] = el("ans").value;
+  }
+}
+function isAnswered(idx){
+  return ((ansCache[idx] || "").trim() !== "");
+}
+function getUnanswered(){
+  const miss = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) miss.push(k+1);
+  }
+  return miss;
+}
+
+/* ================= GRADING ================= */
+function gradeOne(idx){
+  const qObj = qs[idx];
+  if(!qObj) return null;
+  if(!isAnswered(idx)) return null;
+
+  const user = parseNumber(ansCache[idx]);
+  if(!Number.isFinite(user)) return false;
+
+  return close(user, qObj.a);
+}
+function autoGradeAll(){
+  score = 0;
+  gotCorrect = new Array(qs.length).fill(false);
+  for(let k=0;k<qs.length;k++){
+    const r = gradeOne(k);
+    if(r === true){
+      gotCorrect[k] = true;
+      score++;
+    }
+  }
+}
+function autoGradeIndex(idx){
+  const r = gradeOne(idx);
+  if(r === null) return;
+
+  const newVal = (r === true);
+  if(newVal && !gotCorrect[idx]) score++;
+  if(!newVal && gotCorrect[idx]) score--;
+  gotCorrect[idx] = newVal;
+}
+
+/* ================= UI HELPERS ================= */
+function updatePrecisionNote(){
+  const noteEl = el("precisionNote");
+  const qObj = qs[i];
+  noteEl.textContent = (qObj && qObj.note) ? qObj.note : "";
+}
+function renderCurrentQuestion(){
+  checkedThisView = false;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+
+  el("qCounter").textContent = `Question ${i+1} of ${qs.length}`;
+  el("q").textContent = qs[i].q;
+
+  el("ans").value = ansCache[i] ?? "";
+  updatePrecisionNote();
+
+  el("prevBtn").disabled = (i <= 0);
+  el("ans").focus();
+}
+
+/* ================= FLOW ================= */
+function start(){
+  student.name = el("studentName").value.trim();
+  student.grade = el("studentGrade").value;
+
+  if(!student.name){ alert("Please enter the student name."); return; }
+  if(!student.grade){ alert("Please choose a year level."); return; }
+
+  if(student.grade === "Prep") qs = qsPrep;
+  else if(student.grade === "Year 1") qs = qsY1;
+  else qs = qsY2;
+
+  gotCorrect = new Array(qs.length).fill(false);
+  ansCache = new Array(qs.length).fill("");
+
+  i = -1;
+  score = 0;
+
+  el("pill").textContent = `🌱 ${student.grade} • Animals`;
+  el("titleH1").textContent = `Animal Maths Practice (Free Demo — ${student.grade})`;
+
+  el("profileBox").style.display = "none";
+  el("startButtons").style.display = "none";
+  el("startMsg").style.display = "none";
+
+  el("qa").style.display = "block";
+  el("qa").classList.remove("hide");
+  el("end").classList.add("hide");
+
+  next();
+}
+
+function next(){
+  stashAnswer();
+  if(i >= 0) autoGradeIndex(i);
+
+  if(i >= qs.length - 1){
+    finishEarly();
+    return;
+  }
+
+  i++;
+  renderCurrentQuestion();
+}
+
+function prev(){
+  if(i <= 0) return;
+  stashAnswer();
+  autoGradeIndex(i);
+  i--;
+  renderCurrentQuestion();
+}
+
+function check(){
+  if(i < 0) return;
+
+  stashAnswer();
+
+  const box = el("fb");
+  el("hint").textContent = "";
+
+  const user = parseNumber(ansCache[i]);
+
+  if(!Number.isFinite(user)){
+    box.className = "feedback bad";
+    box.textContent = "Please type a number.";
+    checkedThisView = true;
+    return;
+  }
+
+  const okNow = close(user, qs[i].a);
+
+  if(okNow){
+    box.className = "feedback ok";
+    box.textContent = "✅ Correct!";
+  }else{
+    box.className = "feedback bad";
+    box.textContent = "❌ Not quite.";
+    el("hint").textContent = "Tip: Try again step by step.";
+  }
+
+  if(okNow && !gotCorrect[i]) score++;
+  if(!okNow && gotCorrect[i]) score--;
+  gotCorrect[i] = okNow;
+
+  checkedThisView = true;
+}
+
+function finishEarly(){
+  stashAnswer();
+  autoGradeAll();
+
+  const miss = getUnanswered();
+  if(miss.length){
+    const preview = miss.slice(0,12).map(n=>`Q${n}`).join(", ");
+    const suffix = miss.length > 12 ? ` (+${miss.length-12} more)` : "";
+    const ok = confirm(`You still have unanswered questions: ${preview}${suffix}.\n\nFinish anyway?`);
+    if(!ok){
+      i = miss[0]-1;
+      renderCurrentQuestion();
+      return;
+    }
+  }
+  finish();
+}
+
+function finish(){
+  stashAnswer();
+  autoGradeAll();
+
+  el("qa").style.display = "none";
+  el("end").classList.remove("hide");
+  el("precisionNote").textContent = "";
+
+  const pct = Math.round(score / qs.length * 100);
+  const miss = getUnanswered();
+
+  el("finalLine").textContent = `Score: ${score}/${qs.length} (${pct}%) • Unanswered: ${miss.length}`;
+  el("pctText").textContent = `Percentage correct: ${pct}%`;
+
+  const states = qs.map((_,idx)=>{
+    if(gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+
+  drawChart(states);
+  buildStudentSummary();
+  buildParentSummary();
+  saveResult(pct);
+}
+
+/* ================= CHART ================= */
+function drawChart(states){
+  const c = el("chart"), ctx = c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+
+  const W=c.width, H=c.height;
+  const L=52, R=18, T=18, B=45;
+  const n=states.length;
+  const chartW=W-L-R, chartH=H-T-B;
+
+  ctx.strokeStyle="#111827";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(L,T);
+  ctx.lineTo(L,H-B);
+  ctx.lineTo(W-R,H-B);
+  ctx.stroke();
+
+  const gap=12;
+  const barW=Math.max(24, (chartW - gap*(n-1))/n);
+
+  const incorrectH  = 18;
+  const unansweredH = 18;
+
+  states.forEach((s,i)=>{
+    const x=L + i*(barW+gap);
+
+    if(s === 1){
+      const barH = chartH;
+      const y = (H-B) - barH;
+      ctx.fillStyle = "rgba(11,94,215,.85)";
+      ctx.fillRect(x,y,barW,barH);
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✔", x+barW/2-4, y-6);
+
+    }else if(s === 0){
+      const barH = incorrectH;
+      const y = (H-B) - barH;
+      ctx.fillStyle = "rgba(239,68,68,.75)";
+      ctx.fillRect(x,y,barW,barH);
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✘", x+barW/2-4, y-6);
+
+    }else{
+      const barH = unansweredH;
+      const y = (H-B) - barH;
+      ctx.strokeStyle = "rgba(148,163,184,.95)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x,y,barW,barH);
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("U", x+barW/2-4, y-6);
+    }
+
+    ctx.fillStyle="#111827";
+    ctx.font="12px system-ui";
+    ctx.fillText(`Q${i+1}`, x+6, H-B+18);
+  });
+}
+
+/* ================= STUDENT SUMMARY ================= */
+function buildStudentSummary(){
+  const pct = Math.round(score / qs.length * 100);
+  const unanswered = getUnanswered();
+
+  let msg = "";
+  if(pct >= 85) msg = "🌟 Awesome work! You got lots of questions right.";
+  else if(pct >= 60) msg = "👍 Good effort! Keep practising and you’ll improve quickly.";
+  else msg = "🌱 Nice try! A little practice each day makes a big difference.";
+
+  if(unanswered.length) msg += ` You left ${unanswered.length} unanswered — try those next time.`;
+
+  el("studentOverview").textContent = msg;
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,2);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,2);
+
+  el("studentWellList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}</b> — great job!</li>`).join("")
+    : "<li>Trying your best — that’s a great learning skill.</li>";
+
+  el("studentNextList").innerHTML = nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}</b> — practise a few more examples.</li>`).join("")
+    : "<li>Keep practising to build confidence.</li>";
+}
+
+/* ================= PARENT SUMMARY ================= */
+function buildParentSummary(){
+  // Unanswered list (by question number)
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("unansweredLine").textContent = unanswered.length
+    ? unanswered.map(n=>`Q${n}`).join(", ")
+    : "None ✅";
+
+  // Build skill stats
+  const skillStats = {}; // { skill: { total, correct } }
+  qs.forEach((item, idx)=>{
+    const sk = item.skill || "Other";
+    if(!skillStats[sk]) skillStats[sk] = { total:0, correct:0 };
+    skillStats[sk].total++;
+    if(gotCorrect[idx]) skillStats[sk].correct++;
+  });
+
+  // Overall overview text
+  const pct = Math.round(score / qs.length * 100);
+  let overview = "";
+  if(pct >= 85) overview = "🌟 Strong work! Your child showed confident understanding across many skills today.";
+  else if(pct >= 60) overview = "👍 Good progress. Your child is developing confidence, with a few skills to strengthen next.";
+  else overview = "🌱 Still building confidence — very normal. With steady practice, accuracy improves quickly.";
+  el("parentOverview").textContent = overview;
+
+  // Sort skills by accuracy
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({
+      skill,
+      correct: s.correct,
+      total: s.total,
+      rate: s.total ? (s.correct / s.total) : 0
+    }))
+    .sort((a,b)=>{
+      if(b.rate !== a.rate) return b.rate - a.rate;
+      return b.total - a.total;
+    });
+
+  // Choose strengths + focus areas
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,3);
+  const focus     = skillsSorted.filter(x=>x.rate < 0.75).slice(0,3);
+
+  // Render strengths
+  el("strengthList").innerHTML = strengths.length
+    ? strengths.map(x=>{
+        const pctSkill = Math.round(x.rate * 100);
+        return `<li><b>${x.skill}</b> — ${x.correct}/${x.total} correct (${pctSkill}%)</li>`;
+      }).join("")
+    : "<li>Great effort and persistence — an important learning skill.</li>";
+
+  // Render next steps (include unanswered reminder first)
+  const unansweredItem = unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>`
+    : "";
+
+  const focusItems = focus.length
+    ? focus.map(x=>{
+        const pctSkill = Math.round(x.rate * 100);
+        return `<li><b>${x.skill}</b> — ${x.correct}/${x.total} correct (${pctSkill}%). Practise a few more examples.</li>`;
+      }).join("")
+    : "<li>Keep practising to build speed and confidence.</li>";
+
+  el("nextList").innerHTML = unansweredItem + focusItems;
+}
+/* ================= PRINT REPORT ================= */
+function printOrSkip(){
+  const include = el("includeReport").checked;
+  if(!include){
+    alert("Report is turned off. Tick 'Include a printable report' if you want to print/save a PDF.");
+    return;
+  }
+  buildPrintReport();
+  window.print();
+}
+
+function buildPrintReport(){
+  const pct = Math.round(score / qs.length * 100);
+  const unanswered = getUnanswered();
+  const results01 = gotCorrect.map(v=>v?1:0);
+
+  // Header
+  el("rName").textContent = student.name;
+  el("rGrade").textContent = student.grade || "—";
+  el("rDate").textContent = new Date().toLocaleDateString();
+
+  // Summary line
+  el("rSummary").textContent =
+    `Score: ${score}/${qs.length} (${pct}%). ` +
+    (pct>=85 ? "Strong understanding across many skills."
+      : pct>=60 ? "Developing understanding with some areas to strengthen."
+      : "Still building confidence — very normal at this stage.");
+
+  // Unanswered
+  el("rUnanswered").textContent = unanswered.length
+    ? unanswered.map(n=>`Q${n}`).join(", ")
+    : "None";
+
+  // Skill stats (same logic as Parent Summary)
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    const sk = item.skill || "Other";
+    if(!skillStats[sk]) skillStats[sk] = { total:0, correct:0 };
+    skillStats[sk].total++;
+    if(gotCorrect[idx]) skillStats[sk].correct++;
+  });
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({
+      skill,
+      correct: s.correct,
+      total: s.total,
+      rate: s.total ? (s.correct / s.total) : 0
+    }))
+    .sort((a,b)=>{
+      if(b.rate !== a.rate) return b.rate - a.rate;
+      return b.total - a.total;
+    });
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,3);
+  const focus     = skillsSorted.filter(x=>x.rate < 0.75).slice(0,3);
+
+  // Strengths list (skills)
+  el("rStrengths").innerHTML = strengths.length
+    ? strengths.map(x=>{
+        const pctSkill = Math.round(x.rate * 100);
+        return `<li><b>${x.skill}</b> — ${x.correct}/${x.total} correct (${pctSkill}%)</li>`;
+      }).join("")
+    : "<li>Great effort and persistence.</li>";
+
+  // Next steps list (unanswered + focus skills)
+  const unansweredItem = unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>`
+    : "";
+
+  const focusItems = focus.length
+    ? focus.map(x=>{
+        const pctSkill = Math.round(x.rate * 100);
+        return `<li><b>${x.skill}</b> — ${x.correct}/${x.total} correct (${pctSkill}%). Practise a few more examples.</li>`;
+      }).join("")
+    : "<li>Keep practising to build confidence.</li>";
+
+  el("rNext").innerHTML = unansweredItem + focusItems;
+}
+
+/* ================= SAVE TO SHEET ================= */
+async function saveResult(pct){
+  el("saveStatus").textContent = "Saving your result to Magic Math Master records…";
+
+  const answers = qs.map((_, idx) => {
+    if (gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+
+  try{
+    await fetch(ENDPOINT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body:JSON.stringify({
+        group:"Prep–2",
+        level: student.grade,
+        theme:"Animals",
+        name: student.name,
+        grade: student.grade,
+        score: score,
+        total: qs.length,
+        percent: pct,
+
+        answers: answers,
+        unansweredQs: getUnanswered(),
+
+        perQuestion01: gotCorrect.map(v=>v?1:0),
+
+        pageUrl: location.href,
+        userAgent: navigator.userAgent
+      })
+    });
+
+    el("saveStatus").textContent = "✅ Saved to Magic Math Master records (no email sent).";
+  }catch(e){
+    el("saveStatus").textContent = "⚠️ Could not save right now (no email sent).";
+  }
+}
+
+/* ================= CHANGE GRADE ================= */
+function backToGrade(){
+  qs = [];
+  gotCorrect = [];
+  ansCache = [];
+  i = -1;
+  score = 0;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+  el("ans").value = "";
+  el("precisionNote").textContent = "";
+
+  el("qa").classList.add("hide");
+  el("qa").style.display = "none";
+  el("end").classList.add("hide");
+
+  el("profileBox").style.display = "block";
+  el("startButtons").style.display = "flex";
+  el("startMsg").style.display = "block";
+
+  el("studentGrade").value = "";
+  el("pill").textContent = "🌱 Prep – Year 2 • Animals";
+  el("titleH1").textContent = "Animal Maths Practice (Free Demo)";
+
+  validateStart();
+  el("studentName").focus();
+}
+
+/* ================= RESET ================= */
+function restart(){ location.reload(); }
+
+/* ================= LISTENERS ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  validateStart();
+  el("studentName").addEventListener("input", validateStart);
+  el("studentGrade").addEventListener("change", validateStart);
+
+  el("ans").addEventListener("input", () => {
+    if(i >= 0 && i < ansCache.length){
+      ansCache[i] = el("ans").value;
+    }
+    checkedThisView = false;
+  });
+});
+
+/* ================= KEYBOARD =================
+   Start screen: Enter = Start (when ready)
+   Quiz:
+     Enter = Check, then Enter again = Next
+     Shift+Enter = Previous
+     Ctrl/Cmd+Enter = Next (skip checking)
+*/
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+
+  const quizVisible =
+    !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
+
+  const startVisible =
+    el("profileBox").style.display !== "none" &&
+    el("startButtons").style.display !== "none";
+
+  // ✅ Start screen Enter -> Start
+  if(!quizVisible && startVisible){
+    const btn = el("startBtn");
+    if(btn && !btn.disabled){
+      e.preventDefault();
+      start();
+    }
+    return;
+  }
+
+  // ✅ Quiz keys
+  if(!quizVisible) return;
+
+  e.preventDefault();
+
+  if (e.shiftKey) { prev(); return; }
+  if (e.ctrlKey || e.metaKey) { next(); return; }
+
+  if (checkedThisView) next();
+  else check();
+});
+</script>

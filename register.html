@@ -1,0 +1,203 @@
+---
+layout: page
+title: Magic Math Master – Register Form
+description: Register for Magic Math Master tutoring programs. Complete the registration
+  form for one-to-one lessons, group lessons, Maths Club, or maths competition training.
+lang: en
+nav_key: main
+body_class: page-register
+permalink: /register.html
+---
+<main>
+<div class="page-register">
+<div class="container">
+<section aria-label="Magic Math Master banner hero" class="hero-card">
+<div class="hero-banner form-hero-banner" aria-hidden="true">
+  <img class="form-hero-banner__mark" src="{{ '/assets/brand-mark.svg' | relative_url }}" alt="" />
+  <div class="form-hero-banner__wordmark">Magic Math Master</div>
+  <div class="form-hero-banner__tagline">Inspire Curiosity. Think Smarter.</div>
+</div>
+<div class="hero-copy">
+<h1 class="hero-title">Register for Tutoring at Magic Math Master</h1>
+<p class="hero-desc">
+          Please complete this registration form and we will contact you shortly to confirm the best next step for your child.
+        </p>
+<div class="hero-pills">
+<span class="hero-pill">Prep to Year 12</span>
+<span class="hero-pill">Online &amp; in-person</span>
+<span class="hero-pill">Confidence-first teaching</span>
+</div>
+</div>
+</section>
+<section class="page-card register-intro">
+<h2 class="page-title"><span class="emoji">🧮</span> Register for Tutoring at Magic Math Master</h2>
+<p class="lead"><strong>Official registration form for Magic Math Master (Dr Tuyet Vu).</strong></p>
+<p class="lead">We collect the information in this form only to contact you about tutoring, enrolment, and appropriate class placement.</p>
+<p class="lead">Questions?</p>
+<div class="contact-list">
+<a href="tel:+61433785162">📞 0433 785 162</a>
+<a href="https://wa.me/61433785162" rel="noopener" target="_blank">🟢 WhatsApp</a>
+<a href="mailto:info@magicmathmaster.com.au?subject=Magic%20Math%20Master%20Registration">✉️ info@magicmathmaster.com.au</a>
+</div>
+<p class="lead">
+        Please complete this form if you would like to register for Magic Math Master programs.
+        We will contact you shortly to confirm the best next step for your child.
+      </p>
+</section>
+<iframe name="registerSubmitFrame" title="Register submission" class="util-hidden"></iframe>
+<form action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec" id="registerForm" method="post" novalidate="" target="registerSubmitFrame">
+<input name="language" type="hidden" value="English"/>
+<section class="form-card">
+<h3 class="section-title">Parent / contact details</h3>
+<div class="field-block">
+<label class="required" for="register_email">Email</label>
+<input autocomplete="email" id="register_email" name="email" placeholder="Valid email address" required="" type="email"/>
+<p class="helper register-note">We will only use your email address to respond to this registration.</p>
+</div>
+<div class="field-block">
+<label class="required" for="parentName">🧑‍🤝‍🧑 Parent/Guardian Full Name</label>
+<input id="parentName" name="parent_name" placeholder="Short-answer text" required="" type="text"/>
+</div>
+<div class="field-block">
+<label class="required" for="mobileNumber">📱 Mobile Number</label>
+<input autocomplete="tel" id="mobileNumber" name="mobile_number" placeholder="Short-answer text" required="" type="tel"/>
+</div>
+</section>
+<section class="form-card">
+<h3 class="section-title">Contact preference</h3>
+<div class="field-block">
+<label class="required" for="contactMethod">☎️ Preferred Contact Method</label>
+<select data-other-value="Other" data-target="contactOther" id="contactMethod" name="contact_method" required="">
+<option disabled="" selected="" value="">Select one option</option>
+<option value="Email">Email</option>
+<option value="Phone">Phone</option>
+<option value="Text">Text</option>
+<option value="WhatsApp (if used)">WhatsApp (if used)</option>
+<option value="Other">Other</option>
+</select>
+<div class="inline-other" id="contactOther">
+<input name="contact_method_other" placeholder="Please specify" type="text"/>
+</div>
+</div>
+<div class="field-block">
+<label for="studentName">🧒🧒 Student Full Name</label>
+<input id="studentName" name="student_name" placeholder="Short-answer text" type="text"/>
+</div>
+</section>
+<section class="form-card">
+<h3 class="section-title">Student information</h3>
+<div class="field-block">
+<label class="required" for="yearLevel">🎓 Year level (current)</label>
+<select data-other-value="Other" data-target="yearOther" id="yearLevel" name="year_level" required="">
+<option disabled="" selected="" value="">Select current year level</option>
+<option value="Prep or Foundation">Prep or Foundation</option>
+<option value="Grade 1">Grade 1</option>
+<option value="Grade 2">Grade 2</option>
+<option value="Grade 3">Grade 3</option>
+<option value="Grade 4">Grade 4</option>
+<option value="Grade 5">Grade 5</option>
+<option value="Grade 6">Grade 6</option>
+<option value="Grade 7">Grade 7</option>
+<option value="Grade 8">Grade 8</option>
+<option value="Grade 9">Grade 9</option>
+<option value="Grade 10">Grade 10</option>
+<option value="Grade 11">Grade 11</option>
+<option value="Grade 12">Grade 12</option>
+<option value="Other">Other (please specify)</option>
+</select>
+<div class="inline-other" id="yearOther">
+<input name="year_level_other" placeholder="Please specify current year level" type="text"/>
+</div>
+</div>
+</section>
+<section class="form-card">
+<h3 class="section-title">Program selection</h3>
+<fieldset class="field-block">
+<legend class="required">📘 What would you like to register for?</legend>
+<div class="option-list">
+<label class="option">
+<input name="register_for" type="checkbox" value="One-to-one"/>
+              One-to-one
+            </label>
+<label class="option">
+<input name="register_for" type="checkbox" value="Group lessons"/>
+              Group lessons
+            </label>
+<label class="option">
+<input name="register_for" type="checkbox" value="Maths competition training"/>
+              Maths competition training
+            </label>
+</div>
+<p class="error" id="registerError">Please select at least one program.</p>
+</fieldset>
+<div class="field-block">
+<label class="required" for="lessonType">🏫 Lesson type</label>
+<select data-other-value="Other" data-target="lessonOther" id="lessonType" name="lesson_type" required="">
+<option disabled="" selected="" value="">Select lesson type</option>
+<option value="Online one-to-one">Online one-to-one</option>
+<option value="Face-to-face one-to-one (Coburg/ nearby)">Face-to-face one-to-one (Coburg/ nearby)</option>
+<option value="Face-to-face group (Coburg area/nearby)">Face-to-face group (Coburg area/nearby)</option>
+<option value="Group (online)">Group (online)</option>
+<option value="School group program (at student’s school)">School group program (at student’s school)</option>
+<option value="Either is fine">Either is fine</option>
+<option value="Not sure yet">Not sure yet</option>
+<option value="Other">Other</option>
+</select>
+<div class="inline-other" id="lessonOther">
+<input name="lesson_type_other" placeholder="Please specify" type="text"/>
+</div>
+</div>
+</section>
+<section class="form-card">
+<h3 class="section-title">Learning goals</h3>
+<div class="field-block">
+<label class="required" for="helpAreas">✏️ What areas does your child need help with?</label>
+<p class="helper"><strong>Example:</strong> Fractions, word problems, building confidence, exam preparation, problem solving.</p>
+<textarea id="helpAreas" name="help_areas" placeholder="Long-answer text" required=""></textarea>
+</div>
+<div class="field-block">
+<label for="questions">❓ Do you have any questions for Magic Math Master?</label>
+<p class="helper"><strong>Example:</strong> Fees, schedule, class size, teaching approach, or learning level.</p>
+<textarea id="questions" name="questions" placeholder="Long-answer text"></textarea>
+</div>
+</section>
+<section class="form-card privacy">
+<h3 class="section-title">Privacy &amp; consent</h3>
+<div class="field-block">
+<label class="required" for="consent">🔒 Privacy &amp; Consent</label>
+<p class="lead">We will only use your information to respond to this registration.</p>
+<label class="option">
+<input id="consent" name="consent" required="" type="checkbox" value="Yes"/>
+            I consent to Magic Math Master contacting me about my registration and using my information for this purpose.
+          </label>
+<div class="field-block util-mt-16">
+<label for="promoConsent">📣🖼️🎥 Optional – Media Consent</label>
+<p class="helper">
+              Magic Math Master may occasionally share examples of student work or achievement
+              for educational or promotional purposes. Students may be identified by first name
+              and initial only, and no sensitive personal information will be shared.
+            </p>
+<input name="promo_consent" type="hidden" value="No"/>
+<label class="option">
+<input id="promoConsent" name="promo_consent" type="checkbox" value="Yes"/>
+              Yes, I consent to Magic Math Master sharing de-identified examples of my child’s work/achievement as described above.
+            </label>
+</div>
+</div>
+<div class="submit-row">
+<button class="btn btn-amber" type="submit">Submit registration</button>
+<span class="small">🌸 When you’re ready, please click Submit to complete the registration.</span>
+</div>
+</section>
+</form>
+</div>
+</div>
+<div aria-labelledby="registerThankYouTitle" aria-modal="true" id="registerThankYouModal" role="dialog">
+<div class="modal-card">
+<h3 id="registerThankYouTitle">Thank you!</h3>
+<p>Your registration has been received. We will contact you shortly.</p>
+<button class="btn btn-amber" id="registerThankYouOkBtn" type="button">OK</button>
+</div>
+</div>
+
+</main>

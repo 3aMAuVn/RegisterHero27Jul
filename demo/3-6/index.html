@@ -1,0 +1,991 @@
+---
+layout: page
+title: Year 3–6 Soccer Maths | Free Demo
+description: Short soccer-themed maths demo for Years 3 to 6.
+lang: en
+nav_key: main
+body_class: page-demo page-demo-3-6
+permalink: /demo/3-6/
+---
+<div class="card">
+
+  <div id="pill" class="pill">⚽ Year 3 – Year 6 • Soccer</div>
+  <h1 id="titleH1">Soccer Maths Practice (Free Demo)</h1>
+
+  <p class="intro">
+    Type your answer, press <b>Check</b>, then press <b>Next</b>.
+    <span class="note">Some questions will show a fraction box (numerator / denominator).</span>
+  </p>
+
+  <!-- START -->
+  <div id="startMsg" class="q">Enter your details, choose Year 3–6, then press <b>Start</b> ⚽</div>
+
+  <div id="profileBox">
+    <div class="row2">
+      <div class="field">
+        <label>Student name</label>
+        <input id="studentName" placeholder="e.g., Ben">
+      </div>
+
+      <div class="field">
+        <label>Year level</label>
+        <select id="studentGrade">
+          <option value="">Select…</option>
+          <option>Year 3</option>
+          <option>Year 4</option>
+          <option>Year 5</option>
+          <option>Year 6</option>
+        </select>
+        <div class="note util-mt-8" id="gradeHint">Please choose Year 3, 4, 5, or 6.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      This short demo helps us understand how your child thinks. No email or phone number is collected.
+    </div>
+  </div>
+
+  <div id="startButtons" class="btnrow">
+    <button id="startBtn" onclick="start()" disabled>Start</button>
+    <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="qa" class="hide">
+    <div id="qCounter" class="note util-note-strong"></div>
+    <div id="q" class="q"></div>
+
+    <!-- Input A: number/decimal -->
+    <div id="numBox">
+      <input id="ans" inputmode="decimal" placeholder="Type a number">
+    </div>
+
+    <!-- Input B: fraction -->
+    <div id="fracBox" class="hide">
+      <div class="fracRow">
+        <input id="fracNum" inputmode="numeric" pattern="[0-9]*" placeholder="Numerator">
+        <span class="fracSlash">/</span>
+        <input id="fracDen" inputmode="numeric" pattern="[0-9]*" placeholder="Denominator">
+      </div>
+      <div class="fracHint">Tip: equivalent fractions count (e.g., 2/6 is the same as 1/3).</div>
+    </div>
+
+    <div id="precisionNote" class="note util-mt-8"></div>
+
+    <div class="note util-mt-10">
+      <b>Tips:</b> You can press <b>Next</b> to skip and come back with <b>Previous</b>.<br>
+      <b>Finish:</b> You can press <b>Finish</b> any time to see your results.<br>
+      <b>Keyboard:</b> <b>Enter</b> = Check, then <b>Enter</b> again = Next • <b>Shift+Enter</b> = Previous • <b>Ctrl/Cmd+Enter</b> = Next (skip checking)
+    </div>
+
+    <div class="btnrow">
+      <button id="checkBtn" onclick="check()">Check</button>
+      <button id="prevBtn" class="secondary" onclick="prev()" disabled>Previous</button>
+      <button id="nextBtn" class="secondary" onclick="next()">Next</button>
+      <button id="finishBtn" class="secondary" onclick="finishEarly()">Finish</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+  </div>
+
+  <div id="fb"></div>
+  <div id="hint" class="hint"></div>
+
+  <!-- END / RESULTS -->
+  <div id="end" class="cta hide">
+    <div id="finalLine"></div>
+
+    <div class="resultBox">
+      <div class="resultTitle">Results overview</div>
+      <div id="pctText"></div>
+      <canvas id="chart" width="900" height="260"></canvas>
+      <div class="note">Blue = correct (✔) • Red = incorrect (✘) • Grey outline = unanswered (U)</div>
+    </div>
+
+    <!-- Student Summary -->
+    <div class="resultBox">
+      <div class="resultTitle">🧑‍🎓 Student Summary</div>
+
+      <p id="studentOverview" class="util-mb-10"></p>
+
+      <p class="util-m-0"><b>✅ What you did well:</b></p>
+      <ul id="studentWellList"></ul>
+
+      <p class="util-mt-10-reset"><b>🎯 What to practise next:</b></p>
+      <ul id="studentNextList"></ul>
+
+      <p class="note util-mt-10">
+        Tip: Try to finish any unanswered questions, then press <b>Finish</b>.
+      </p>
+    </div>
+
+    <!-- Parent summary -->
+    <div class="resultBox">
+      <div class="resultTitle">👨‍👩‍👧 Parent Summary</div>
+
+      <p id="parentOverview"></p>
+      <p><b>Unanswered questions:</b> <span id="unansweredLine"></span></p>
+
+      <p><b>What your child did well:</b></p>
+      <ul id="strengthList"></ul>
+
+      <p><b>What to practise next:</b></p>
+      <ul id="nextList"></ul>
+
+      <p class="note">
+        This demo is <b>not a test</b>. It helps us plan calm, confidence-building lessons.
+      </p>
+    </div>
+
+    <div class="toggleRow">
+      <input id="includeReport" type="checkbox" checked>
+      <label for="includeReport">Include a printable report (PDF)</label>
+    </div>
+
+    <div class="btnrow">
+      <button onclick="printOrSkip()">🖨️ Print / Save PDF</button>
+      <button class="secondary" onclick="restart()">Try again</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+
+    <div id="saveStatus" class="note"></div>
+
+    <details class="note util-mt-10">
+      <summary class="util-summary-strong">
+        Privacy &amp; what we save (tap to read)
+      </summary>
+      <div class="util-copy-muted">
+        <p class="util-mb-8">
+          This demo can save results to <b>Magic Math Master’s internal records (Google Sheets)</b> so we can review progress.
+          <b>No email is sent</b> from this page.
+        </p>
+        <p class="util-mb-6"><b>We save:</b></p>
+        <ul class="util-list-offset">
+          <li>Student name (as typed here)</li>
+          <li>Year level selected</li>
+          <li>Total score and percentage</li>
+          <li>Per-question result (correct / incorrect / unanswered)</li>
+          <li>Which demo/page was used (page URL)</li>
+        </ul>
+        <p class="util-m-0">
+          <b>We do not collect</b> email address or phone number on this demo page.
+        </p>
+      </div>
+    </details>
+
+    <div class="note">
+      Interested in more practice and support?
+      <a href="{{ '/contact.html' | relative_url }}" target="_blank" rel="noopener">Enquire / Register →</a>
+    </div>
+  </div>
+
+  <!-- PRINT REPORT -->
+  <div id="printReport" class="printReport">
+    <h2>Maths Practice Report</h2>
+    <p class="small">
+      <b>Student:</b> <span id="rName"></span><br>
+      <b>Grade:</b> <span id="rGrade"></span><br>
+      <b>Date:</b> <span id="rDate"></span><br>
+      <b>Demo:</b> <span id="rDemo"></span>
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>Summary</h3>
+    <p id="rSummary"></p>
+    <p class="small"><b>Unanswered:</b> <span id="rUnanswered"></span></p>
+
+    <h3>What your child did well</h3>
+    <ul id="rStrengths"></ul>
+
+    <h3>What to practise next</h3>
+    <ul id="rNext"></ul>
+
+    <div class="divider"></div>
+
+    <p class="small">
+      This short demo is not a test. It helps us plan calm, confidence-building lessons.<br>
+      Magic Math Master • Australia • {{ site.url | default: site.github.url | default: "www.magicmathmaster.com.au" }}
+    </p>
+  </div>
+
+  <div class="footer">Magic Math Master • Free Demo</div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const ENDPOINT_URL =
+  "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
+
+/* ================= QUESTION BANKS (10 each, easy/medium/hard mix) =================
+   type:
+    - "number"   => uses #ans (number/decimal)
+    - "fraction" => uses #fracNum + #fracDen (equivalent fractions accepted)
+*/
+const qs3 = [
+  // Easy
+  { q:"⚽ Goals: The team scored 24 goals, then scored 15 more. How many goals altogether?", type:"number", a:39, skill:"Addition" },
+  { q:"🥅 Balls: 30 soccer balls are shared into 5 equal bags. How many balls per bag?", type:"number", a:6, skill:"Division" },
+  { q:"👟 Boots: 7 players each need 2 boots. How many boots?", type:"number", a:14, skill:"Multiplication" },
+  // Medium
+  { q:"🏟️ Fans: There are 235 fans on one side and 178 fans on the other. How many fans altogether?", type:"number", a:413, skill:"Addition" },
+  { q:"📏 Perimeter: A training rectangle is 40 m long and 25 m wide. What is the perimeter (m)?", type:"number", a:130, skill:"Perimeter" },
+  { q:"⏱️ Time: Practice starts at 3:15 pm and lasts 45 minutes. What time does it finish? (Type as HHMM, e.g., 4:00 pm = 400)", type:"number", a:400, skill:"Time"},
+  // Fraction (easy)
+  { q:"🎯 Shots: A player scored 3 goals from 12 shots. What fraction of shots were goals? (simplify)", type:"fraction", aN:1, aD:4, skill:"Fractions" },
+  // Medium
+  { q:"📦 Packs: There are 9 packets with 8 cards each. How many cards altogether?", type:"number", a:72, skill:"Multiplication" },
+  // Hard (multi-step)
+  { q:"🏆 Points: Win = 3 points, Draw = 1 point. The team had 4 wins and 2 draws. Total points?", type:"number", a:14, skill:"Word Problems" },
+  { q:"🧮 Two-step: The team scored 58 goals, then scored 17 more, then had 12 taken away (penalties). Final goals?", type:"number", a:63, skill:"Two-step +/−" }
+];
+
+const qs4 = [
+  // Easy
+  { q:"⚽ Goals: The team scored 68 goals, then 29 more. Total goals?", type:"number", a:97, skill:"Addition" },
+  { q:"🥅 Seats: There are 8 rows with 30 seats in each row. How many seats?", type:"number", a:240, skill:"Multiplication" },
+  { q:"🎒 Sharing: 96 cones are shared equally into 8 bags. How many cones per bag?", type:"number", a:12, skill:"Division" },
+  // Medium
+  { q:"📏 Perimeter: A field is 60 m long and 40 m wide. What is the perimeter (m)?", type:"number", a:200, skill:"Perimeter" },
+  { q:"🧠 Place value: What is the value of the digit 7 in 3,726?", type:"number", a:700, skill:"Place Value" },
+  { q:"⏱️ Time: A game starts at 1:35 pm and lasts 55 minutes. What minute after 1pm does it finish? (e.g., 2:10 = 70)", type:"number", a:90, skill:"Time" },
+  // Fraction (medium)
+  { q:"🥤 Water: You drank 2/5 of a bottle. What fraction is left? (simplify)", type:"fraction", aN:3, aD:5, skill:"Fractions" },
+  { q:"🎯 Fraction of shots: 5 goals from 20 shots. What fraction were goals? (simplify)", type:"fraction", aN:1, aD:4, skill:"Fractions" },
+  // Hard
+  { q:"🏆 Points: Win=3, Draw=1. A team has 6 wins and 3 draws. Total points?", type:"number", a:21, skill:"Word Problems" },
+  { q:"🧮 Two-step: There are 450 tickets. 275 were sold on Friday and 98 on Saturday. How many tickets are left?", type:"number", a:77, skill:"Two-step +/−" }
+];
+
+const qs5 = [
+  // Easy
+  { q:"⚽ Goals: The team scored 125 goals, then 86 more. Total goals?", type:"number", a:211, skill:"Addition" },
+  { q:"🥅 Multiplication: 14 teams each have 11 players. How many players altogether?", type:"number", a:154, skill:"Multiplication" },
+  { q:"🎒 Division: 144 bibs are shared equally into 12 bags. How many bibs per bag?", type:"number", a:12, skill:"Division" },
+  // Medium
+  { q:"📏 Area: A small training zone is 18 m by 7 m. What is the area (m²)?", type:"number", a:126, skill:"Area" },
+  { q:"💧 Decimals: A player ran 2.5 km in the first half and 3.2 km in the second. Total distance (km)?", type:"number", a:5.7, skill:"Decimals" },
+  { q:"🧮 Fractions of a number: 3/4 of 28 water bottles were used. How many bottles were used?", type:"number", a:21, skill:"Fractions of a number" },
+  // Fraction input
+  { q:"🎯 Fraction: 9 goals from 36 shots. What fraction were goals? (simplify)", type:"fraction", aN:1, aD:4, skill:"Fractions" },
+  // Medium/Hard
+  { q:"📊 Average: Goals per match were 3, 2, 1, 4, 0. What is the mean (average)?", type:"number", a:2, skill:"Averages" },
+  { q:"💯 Percentage: 25 out of 100 shots were on target. What percentage is that?", type:"number", a:25, skill:"Percentages" },
+  { q:"🧮 Two-step: 3 buses bring 48 students each. If 29 students leave early, how many students stay?", type:"number", a:115, skill:"Two-step" }
+];
+
+const qs6 = [
+  // Easy/Medium
+  { q:"⚽ Goals: The team scored 340 goals, then 175 more. Total goals?", type:"number", a:515, skill:"Addition" },
+  { q:"🥅 Multi-step: A team played 18 games. They won 11, drew 4. How many did they lose?", type:"number", a:3, skill:"Word Problems" },
+  { q:"📏 Area: A rectangle is 25 m by 12 m. What is the area (m²)?", type:"number", a:300, skill:"Area" },
+  { q:"💧 Decimals: A player runs 4.75 km and then 3.6 km. Total distance (km)?", type:"number", a:8.35, skill:"Decimals" },
+  // Fractions
+  { q:"🎯 Fraction: 8 goals from 32 shots. What fraction were goals? (simplify)", type:"fraction", aN:1, aD:4, skill:"Fractions" },
+  { q:"🍊 Fraction of a number: 2/5 of 45 oranges were used. How many oranges were used?", type:"number", a:18, skill:"Fractions of a number" },
+  // Percent
+  { q:"💯 Percentage: Attendance went from 200 to 250. What is the increase?", type:"number", a:50, skill:"Change" },
+  { q:"💯 Percentage: 18 out of 60 passes were incomplete. What percentage were incomplete?", type:"number", a:30, skill:"Percentages" },
+  // Harder reasoning
+  { q:"📊 Average: Shots per match were 12, 9, 15, 10. What is the mean (average)?", type:"number", a:11.5, skill:"Averages" },
+  { q:"🧮 Two-step (money): Jerseys cost $18 each. You buy 7 jerseys and pay with $150. How much change?", type:"number", a:24, skill:"Money" }
+];
+
+/* ================= STATE ================= */
+let qs = [];
+let i = -1;
+let score = 0;
+let student = { name:"", grade:"" };
+let gotCorrect = [];
+
+let numCache = [];
+let fracNumCache = [];
+let fracDenCache = [];
+
+let checkedThisView = false;
+
+const el = id => document.getElementById(id);
+
+/* ================= NAV ================= */
+function goToDemoHome(){
+  window.location.href = "{{ '/demo/' | relative_url }}";
+}
+
+/* ================= START READINESS ================= */
+function validateStart(){
+  const nameOk = el("studentName").value.trim().length > 0;
+  const gradeOk = !!el("studentGrade").value;
+  el("startBtn").disabled = !(nameOk && gradeOk);
+  el("gradeHint").textContent = gradeOk ? `Selected: ${el("studentGrade").value}` : "Please choose Year 3, 4, 5, or 6.";
+}
+
+/* ================= PARSERS ================= */
+function parseNumber(raw){
+  const s = (raw || "").trim().replace(/,/g,"").replace(/\s+/g,"");
+  if(!s) return NaN;
+
+  // allow "3/4" typed in number box too
+  if(s.includes("/")){
+    const parts = s.split("/");
+    if(parts.length !== 2) return NaN;
+    const n = Number(parts[0]);
+    const d = Number(parts[1]);
+    if(!Number.isFinite(n) || !Number.isFinite(d) || d === 0) return NaN;
+    return n/d;
+  }
+
+  const v = Number(s);
+  return Number.isFinite(v) ? v : NaN;
+}
+function close(a,b,eps){ return Math.abs(a-b) < eps; }
+
+function gcd(a,b){
+  a = Math.abs(a); b = Math.abs(b);
+  while(b){ const t = a % b; a = b; b = t; }
+  return a || 1;
+}
+function fracValueEquals(n1,d1,n2,d2){
+  return (n1*d2) === (n2*d1);
+}
+
+/* ================= UI HELPERS ================= */
+function updatePrecisionNote(qObj){
+  const noteEl = el("precisionNote");
+  if(!noteEl) return;
+
+  if(qObj && qObj.note){
+    noteEl.textContent = qObj.note;
+    return;
+  }
+  if(qObj && qObj.type === "fraction"){
+    noteEl.textContent = "Answer tip: enter a simplified fraction if you can.";
+    return;
+  }
+  if(qObj && typeof qObj.tol === "number"){
+    noteEl.textContent = "Answer tip: round to 2 decimal places.";
+    return;
+  }
+  noteEl.textContent = "";
+}
+
+function stashAnswer(){
+  const qObj = qs[i];
+  if(!qObj) return;
+
+  if(qObj.type === "fraction"){
+    fracNumCache[i] = el("fracNum").value;
+    fracDenCache[i] = el("fracDen").value;
+  }else{
+    numCache[i] = el("ans").value;
+  }
+}
+
+function showInputForQuestion(qObj){
+  const isFrac = qObj.type === "fraction";
+  el("numBox").style.display = isFrac ? "none" : "block";
+  el("fracBox").classList.toggle("hide", !isFrac);
+
+  if(isFrac){
+    el("fracNum").value = fracNumCache[i] ?? "";
+    el("fracDen").value = fracDenCache[i] ?? "";
+  }else{
+    el("ans").value = numCache[i] ?? "";
+  }
+
+  updatePrecisionNote(qObj);
+
+  setTimeout(()=>{
+    if(isFrac) el("fracNum").focus();
+    else el("ans").focus();
+  }, 0);
+}
+
+function renderCurrentQuestion(){
+  checkedThisView = false;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+
+  const qObj = qs[i];
+
+  el("qCounter").textContent = `Question ${i+1} of ${qs.length}`;
+  el("q").textContent = qObj.q;
+
+  showInputForQuestion(qObj);
+
+  el("prevBtn").disabled = (i <= 0);
+  el("nextBtn").disabled = false;
+}
+
+/* ================= ANSWERED CHECK (typed = answered) ================= */
+function isAnswered(idx){
+  const qObj = qs[idx];
+  if(!qObj) return false;
+
+  if(qObj.type === "fraction"){
+    const n = (fracNumCache[idx] || "").trim();
+    const d = (fracDenCache[idx] || "").trim();
+    return (n !== "" && d !== "");
+  }
+  return ((numCache[idx] || "").trim() !== "");
+}
+
+function getUnanswered(){
+  const miss = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) miss.push(k+1);
+  }
+  return miss;
+}
+
+/* ================= AUTO-GRADING ================= */
+function gradeOne(idx){
+  const qObj = qs[idx];
+  if(!qObj) return null;
+
+  if(!isAnswered(idx)) return null;
+
+  if(qObj.type === "fraction"){
+    const nRaw = (fracNumCache[idx] || "").trim();
+    const dRaw = (fracDenCache[idx] || "").trim();
+    const n = Number(nRaw), d = Number(dRaw);
+    if(!Number.isInteger(n) || !Number.isInteger(d) || d === 0) return false;
+
+    // compare value (accept equivalent fractions)
+    return fracValueEquals(n, d, qObj.aN, qObj.aD);
+  }
+
+  const raw = (numCache[idx] || "").trim();
+  const user = parseNumber(raw);
+  if(!Number.isFinite(user)) return false;
+
+  const tol = (typeof qObj.tol === "number") ? qObj.tol : 1e-6;
+  return close(user, qObj.a, tol);
+}
+
+function autoGradeAll(){
+  score = 0;
+  gotCorrect = new Array(qs.length).fill(false);
+
+  for(let k=0;k<qs.length;k++){
+    const r = gradeOne(k);
+    if(r === true){
+      gotCorrect[k] = true;
+      score++;
+    }
+  }
+}
+
+function autoGradeIndex(idx){
+  if(idx < 0 || idx >= qs.length) return;
+  const r = gradeOne(idx);
+  if(r === null) return;
+
+  const newVal = (r === true);
+  if(newVal && !gotCorrect[idx]) score++;
+  if(!newVal && gotCorrect[idx]) score--;
+  gotCorrect[idx] = newVal;
+}
+
+/* ================= FINISH EARLY (button or last Next) ================= */
+function finishEarly(){
+  stashAnswer();
+  autoGradeAll();
+
+  const miss = getUnanswered();
+  if(miss.length){
+    const preview = miss.slice(0,12).map(n=>`Q${n}`).join(", ");
+    const suffix = miss.length > 12 ? ` (+${miss.length-12} more)` : "";
+    const ok = confirm(
+      `You still have unanswered questions: ${preview}${suffix}.\n\nFinish anyway?`
+    );
+    if(!ok){
+      i = miss[0]-1;
+      renderCurrentQuestion();
+      return;
+    }
+  }
+  finish();
+}
+
+/* ================= FLOW ================= */
+function start(){
+  student.name = el("studentName").value.trim();
+  student.grade = el("studentGrade").value;
+
+  if(!student.name){ alert("Please enter the student name."); return; }
+  if(!student.grade){ alert("Please choose a year level."); return; }
+
+  if(student.grade === "Year 3") qs = qs3;
+  else if(student.grade === "Year 4") qs = qs4;
+  else if(student.grade === "Year 5") qs = qs5;
+  else qs = qs6;
+
+  gotCorrect = new Array(qs.length).fill(false);
+  numCache     = new Array(qs.length).fill("");
+  fracNumCache = new Array(qs.length).fill("");
+  fracDenCache = new Array(qs.length).fill("");
+
+  i = -1;
+  score = 0;
+
+  el("pill").textContent = `⚽ ${student.grade} • Soccer`;
+  el("titleH1").textContent = `Soccer Maths Practice (Free Demo — ${student.grade})`;
+
+  el("profileBox").style.display = "none";
+  el("startButtons").style.display = "none";
+  el("startMsg").style.display = "none";
+
+  el("qa").style.display = "block";
+  el("qa").classList.remove("hide");
+  el("end").classList.add("hide");
+
+  next();
+}
+
+function next(){
+  stashAnswer();
+  if(i >= 0) autoGradeIndex(i);
+
+  if(i >= qs.length - 1){
+    finishEarly();
+    return;
+  }
+
+  i++;
+  renderCurrentQuestion();
+}
+
+function prev(){
+  if(i <= 0) return;
+  stashAnswer();
+  autoGradeIndex(i);
+  i--;
+  renderCurrentQuestion();
+}
+
+/* Manual check still works + updates score live */
+function check(){
+  if(i < 0) return;
+
+  stashAnswer();
+
+  const qObj = qs[i];
+  const box = el("fb");
+  el("hint").textContent = "";
+
+  let okNow = false;
+
+  if(qObj.type === "fraction"){
+    const nRaw = (fracNumCache[i] || "").trim();
+    const dRaw = (fracDenCache[i] || "").trim();
+    const n = Number(nRaw), d = Number(dRaw);
+
+    if(!Number.isInteger(n) || !Number.isInteger(d) || d === 0){
+      box.className = "feedback bad";
+      box.textContent = "Please type a numerator and denominator (whole numbers).";
+      checkedThisView = true;
+      return;
+    }
+
+    okNow = fracValueEquals(n, d, qObj.aN, qObj.aD);
+
+    if(okNow){
+      box.className = "feedback ok";
+      const g = gcd(n,d);
+      box.textContent = (g !== 1)
+        ? `✅ Correct! (Try simplifying next time: ${n/g}/${d/g})`
+        : "✅ Correct!";
+    }else{
+      box.className = "feedback bad";
+      box.textContent = "❌ Not quite.";
+      el("hint").textContent = "Hint: " + (qObj.hint || "Try simplifying and checking your fraction.");
+    }
+
+  }else{
+    const user = parseNumber((numCache[i] || "").trim());
+    if(!Number.isFinite(user)){
+      box.className = "feedback bad";
+      box.textContent = "Please enter a number.";
+      checkedThisView = true;
+      return;
+    }
+
+    const tol = (typeof qObj.tol === "number") ? qObj.tol : 1e-6;
+    okNow = close(user, qObj.a, tol);
+
+    if(okNow){
+      box.className = "feedback ok";
+      box.textContent = "✅ Correct!";
+    }else{
+      box.className = "feedback bad";
+      box.textContent = "❌ Not quite.";
+      el("hint").textContent = "Hint: " + (qObj.hint || "Try again step by step.");
+    }
+  }
+
+  if(okNow && !gotCorrect[i]) score++;
+  if(!okNow && gotCorrect[i]) score--;
+  gotCorrect[i] = okNow;
+
+  checkedThisView = true;
+}
+
+/* ================= RESULTS ================= */
+function finish(){
+  stashAnswer();
+  autoGradeAll();
+
+  el("qa").style.display = "none";
+  el("end").classList.remove("hide");
+  el("precisionNote").textContent = "";
+
+  const pct = Math.round(score / qs.length * 100);
+  const miss = getUnanswered();
+
+  el("finalLine").textContent =
+    `Score: ${score}/${qs.length} (${pct}%) • Unanswered: ${miss.length}`;
+  el("pctText").textContent = `Percentage correct: ${pct}%`;
+
+  const states = qs.map((_,idx)=>{
+    if(gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+  drawChart(states);
+
+  buildStudentSummary();
+  buildParentSummary();
+  saveResult(pct);
+}
+
+/* ================= STUDENT SUMMARY ================= */
+function buildStudentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let msg = "";
+  if(pct >= 85) msg = "🌟 Awesome work! You’re getting lots of questions right.";
+  else if(pct >= 60) msg = "👍 Good effort! You’re improving — keep going.";
+  else msg = "🌱 Nice try! The more you practise, the easier it will feel.";
+
+  if(unanswered.length){
+    msg += ` You left ${unanswered.length} unanswered — try them next time.`;
+  }
+  el("studentOverview").textContent = msg;
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,2);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,2);
+
+  el("studentWellList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}</b> — great job!</li>`).join("")
+    : "<li>Sticking with the questions — that’s a strong learning skill.</li>";
+
+  el("studentNextList").innerHTML = nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}</b> — practise 2–3 more similar examples.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>";
+}
+
+/* ================= CHART ================= */
+function drawChart(states){
+  const c = el("chart"), ctx = c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+
+  const W=c.width, H=c.height;
+  const L=52, R=18, T=18, B=45;
+  const n=states.length;
+  const chartW=W-L-R, chartH=H-T-B;
+
+  ctx.strokeStyle="#111827";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(L,T);
+  ctx.lineTo(L,H-B);
+  ctx.lineTo(W-R,H-B);
+  ctx.stroke();
+
+  const gap=12;
+  const barW=Math.max(24, (chartW - gap*(n-1))/n);
+
+  const incorrectH  = 18;
+  const unansweredH = 18;
+
+  states.forEach((s,i)=>{
+    const x=L + i*(barW+gap);
+
+    if(s === 1){
+      const barH = chartH;
+      const y = (H-B) - barH;
+
+      ctx.fillStyle = "rgba(11,94,215,.85)";
+      ctx.fillRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✔", x+barW/2-4, y-6);
+
+    }else if(s === 0){
+      const barH = incorrectH;
+      const y = (H-B) - barH;
+
+      ctx.fillStyle = "rgba(239,68,68,.75)";
+      ctx.fillRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✘", x+barW/2-4, y-6);
+
+    }else{
+      const barH = unansweredH;
+      const y = (H-B) - barH;
+
+      ctx.strokeStyle = "rgba(148,163,184,.95)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("U", x+barW/2-4, y-6);
+    }
+
+    ctx.fillStyle="#111827";
+    ctx.font="12px system-ui";
+    ctx.fillText(`Q${i+1}`, x+6, H-B+18);
+  });
+}
+
+/* ================= CHANGE GRADE ================= */
+function backToGrade(){
+  qs = [];
+  gotCorrect = [];
+  numCache = [];
+  fracNumCache = [];
+  fracDenCache = [];
+  i = -1;
+  score = 0;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+  el("ans").value = "";
+  el("fracNum").value = "";
+  el("fracDen").value = "";
+  el("precisionNote").textContent = "";
+
+  el("qa").classList.add("hide");
+  el("qa").style.display = "none";
+  el("end").classList.add("hide");
+
+  el("profileBox").style.display = "block";
+  el("startButtons").style.display = "flex";
+  el("startMsg").style.display = "block";
+
+  el("studentGrade").value = "";
+  el("pill").textContent = "⚽ Year 3 – Year 6 • Soccer";
+  el("titleH1").textContent = "Soccer Maths Practice (Free Demo)";
+
+  validateStart();
+  el("studentName").focus();
+}
+
+/* ================= PARENT SUMMARY ================= */
+function buildParentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("unansweredLine").textContent = unanswered.length
+    ? unanswered.map(n=>`Q${n}`).join(", ")
+    : "None ✅";
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let overview = "";
+  if(pct >= 85) overview = "🌟 Strong work! Your child showed confident understanding across many Year 3–6 skills today.";
+  else if(pct >= 60) overview = "👍 Good progress. Your child is developing confidence, with a few skills to strengthen next.";
+  else overview = "🌱 Still building confidence — very normal. With steady practice, accuracy improves quickly.";
+
+  el("parentOverview").textContent = overview;
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,3);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,3);
+
+  el("strengthList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}:</b> showing confidence.</li>`).join("")
+    : "<li>Great effort and persistence — an important learning skill.</li>";
+
+  el("nextList").innerHTML = (unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>`
+    : ""
+  ) + (nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}:</b> practise a few more examples to build accuracy.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>"
+  );
+}
+
+/* ================= PRINT REPORT ================= */
+function printOrSkip(){
+  const include = el("includeReport").checked;
+  if(!include){
+    alert("Report is turned off. Tick 'Include a printable report' if you want to print/save a PDF.");
+    return;
+  }
+  buildPrintReport();
+  window.print();
+}
+
+function buildPrintReport(){
+  const pct = Math.round(score / qs.length * 100);
+  const results01 = gotCorrect.map(v=>v?1:0);
+
+  el("rName").textContent = student.name;
+  el("rGrade").textContent = student.grade || "—";
+  el("rDate").textContent = new Date().toLocaleDateString();
+  el("rDemo").textContent = `${student.grade} Soccer Maths (Free Demo)`;
+
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("rUnanswered").textContent = unanswered.length ? unanswered.map(n=>`Q${n}`).join(", ") : "None";
+
+  el("rSummary").textContent =
+    `Score: ${score}/${qs.length} (${pct}%). ` +
+    (pct>=85 ? "Strong understanding across many skills."
+      : pct>=60 ? "Developing understanding with some areas to strengthen."
+      : "Still building confidence — very normal at this stage.");
+
+  const strengths = qs.filter((_,i)=>results01[i]===1).map(q=>q.q.replace(/^[^ ]+ /,""));
+  const nextSteps  = qs.filter((_,i)=>results01[i]===0).map(q=>q.q.replace(/^[^ ]+ /,""));
+
+  el("rStrengths").innerHTML = strengths.length
+    ? strengths.map(s=>`<li>${s}</li>`).join("")
+    : "<li>Showing effort and persistence.</li>";
+
+  el("rNext").innerHTML = unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>` +
+      (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "")
+    : (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "<li>Continue practising to build accuracy and confidence.</li>");
+}
+
+/* ================= SAVE TO SHEET ================= */
+async function saveResult(pct){
+  el("saveStatus").textContent = "Sending your result to Magic Math Master records…";
+
+  // 1 = correct, 0 = incorrect, -1 = unanswered
+  const answers = qs.map((_, idx) => {
+    if (gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+
+  const unansweredQs = getUnanswered();
+
+  try{
+    await fetch(ENDPOINT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body:JSON.stringify({
+        group:"Year 3–6",
+        level:student.grade,
+        theme:"Soccer",
+        name:student.name,
+        grade:student.grade,
+        score:score,
+        total:qs.length,
+        percent:pct,
+
+        answers: answers,
+        unansweredQs: unansweredQs,
+
+        // backward-compatible
+        perQuestion01: gotCorrect.map(v=>v?1:0),
+
+        pageUrl: location.href,
+        userAgent: navigator.userAgent
+      })
+    });
+
+    el("saveStatus").textContent = "✅ Result sent to Magic Math Master records (no email sent).";
+  }catch(e){
+    el("saveStatus").textContent = "⚠️ Could not send right now (no email sent).";
+  }
+}
+
+/* ================= RESET ================= */
+function restart(){ location.reload(); }
+
+/* ================= LISTENERS ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  validateStart();
+  el("studentName").addEventListener("input", validateStart);
+  el("studentGrade").addEventListener("change", validateStart);
+
+  el("ans").addEventListener("input", () => {
+    if(i >= 0 && i < numCache.length && qs[i] && qs[i].type !== "fraction"){
+      numCache[i] = el("ans").value;
+    }
+    checkedThisView = false;
+  });
+  el("fracNum").addEventListener("input", () => {
+    if(i >= 0 && i < fracNumCache.length && qs[i] && qs[i].type === "fraction"){
+      fracNumCache[i] = el("fracNum").value;
+    }
+    checkedThisView = false;
+  });
+  el("fracDen").addEventListener("input", () => {
+    if(i >= 0 && i < fracDenCache.length && qs[i] && qs[i].type === "fraction"){
+      fracDenCache[i] = el("fracDen").value;
+    }
+    checkedThisView = false;
+  });
+});
+
+/* Keyboard:
+   Enter = Check, then Enter again = Next
+   Shift+Enter = Previous
+   Ctrl/Cmd+Enter = Next (skip checking)
+*/
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+
+  const quizVisible =
+    !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
+  if (!quizVisible) return;
+
+  e.preventDefault();
+
+  if (e.shiftKey) { prev(); return; }
+  if (e.ctrlKey || e.metaKey) { next(); return; }
+
+  if (checkedThisView) next();
+  else check();
+});
+</script>

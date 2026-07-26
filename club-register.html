@@ -1,0 +1,287 @@
+---
+layout: page
+title: Maths Club Register | Magic Math Master
+description: Register for Magic Math Master Maths Club. Choose one club stream and
+  enrol one or more students in one booking.
+lang: en
+nav_key: main
+body_class: page-club-register
+permalink: /club-register.html
+---
+<main>
+<div class="container">
+<!-- HERO uses style.css -->
+<section aria-label="Maths Club register hero" class="hero-card">
+<div class="hero-banner form-hero-banner" aria-hidden="true">
+  <img class="form-hero-banner__mark" src="{{ '/assets/brand-mark.svg' | relative_url }}" alt="" />
+  <div class="form-hero-banner__wordmark">Magic Math Master</div>
+  <div class="form-hero-banner__tagline">Inspire Curiosity. Think Smarter.</div>
+</div>
+<div class="hero-copy">
+<h1 class="hero-title">Register for Maths Club</h1>
+<p class="hero-desc">
+            Choose <strong>one club stream</strong> and enrol <strong>one or more students</strong> in one booking.
+            Maths Club is online and students can join from anywhere.
+          </p>
+<div class="hero-pills">
+<span class="hero-pill">Club only</span>
+<span class="hero-pill">Multi-student booking</span>
+<span class="hero-pill">Flexible online participation</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-amber" href="#club-register">Register now</a>
+<a class="btn btn-secondary" href="pricing.html#maths-club-fee">View fees</a>
+<a class="btn btn-outline" href="mathclub.html">Maths Club info</a>
+<a class="btn btn-success" href="enquiry.html">Tutoring enquiry</a>
+</div>
+<p class="section-sub util-mt-14">
+            Questions before registering? Contact us via
+            <a class="link-strong" href="https://wa.me/61433785162" rel="noopener" target="_blank">WhatsApp</a>
+            or
+            <a class="link-strong" href="mailto:magicmathmasters@gmail.com?subject=Maths%20Club%20Registration%20Question">email</a>
+            — we’re happy to help.
+          </p>
+</div>
+</section>
+<section class="anchor-target" id="club-register">
+<div class="club-shell">
+<div class="club-card">
+<h2 class="section-title">Choose your Maths Club stream</h2>
+<p class="section-sub">
+              Select <b>one</b> club stream for this booking.
+              If you choose <b>Primary Maths Club</b>, please also choose the correct sub-group so we can place students accurately.
+            </p>
+<div class="club-options" id="clubOptions">
+<label class="club-option" for="club-prep6">
+<span aria-hidden="true" class="club-badge">🌱</span>
+<h3>Primary Maths Club</h3>
+<p>Strong foundations, number sense, fluency, and confidence-building problem solving for younger learners.</p>
+<input id="club-prep6" name="clubStream" required="" type="radio" value="Primary Maths Club"/>
+</label>
+<label class="club-option" for="club-710">
+<span aria-hidden="true" class="club-badge">🧩</span>
+<h3>Years 7–10 Maths Club</h3>
+<p>Steady skill building, reasoning, and structured weekly practice for middle and lower secondary students.</p>
+<input id="club-710" name="clubStream" required="" type="radio" value="Years 7-10 Maths Club"/>
+</label>
+<label class="club-option" for="club-1112">
+<span aria-hidden="true" class="club-badge">🎓</span>
+<h3>Senior Maths Club</h3>
+<p>Higher-level review, structured revision, and exam-style practice for Years 11–12 students.</p>
+<input id="club-1112" name="clubStream" required="" type="radio" value="Years 11-12 Maths Club"/>
+</label>
+</div>
+<div class="subgroup-wrap" id="prepSubgroupWrap">
+<p class="subgroup-title">Primary sub-group (required for Primary Maths Club only)</p>
+<div class="subgroup-grid">
+<label class="subgroup-item">
+<input name="prepSubgroup" type="radio" value="Prep-2"/>
+<span class="subgroup-copy">
+<b>Prep–2</b>
+                    Early years focus: counting, patterns, basic operations, and confidence with number.
+                  </span>
+</label>
+<label class="subgroup-item">
+<input name="prepSubgroup" type="radio" value="3-6"/>
+<span class="subgroup-copy">
+<b>Years 3–6</b>
+                    Stronger fluency with fractions, decimals, word problems, and independent reasoning.
+                  </span>
+</label>
+</div>
+</div>
+</div>
+<!-- Hidden iframe submit -->
+<iframe name="clubRegisterSubmitFrame" title="Club register submission" class="util-hidden"></iframe>
+<form action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec" id="mathsClubRegisterForm" method="post" novalidate="" target="clubRegisterSubmitFrame">
+<input name="formType" type="hidden" value="club-register"/>
+<input id="clubStreamField" name="clubStream" type="hidden"/>
+<input id="prepSubgroupField" name="prepSubgroup" type="hidden"/>
+<input id="studentsField" name="students" type="hidden"/>
+<div class="form-card">
+<h2 class="section-title">Family and booking details</h2>
+<p class="section-sub">
+                These details help us contact you, organise the booking, and confirm the best starting point.
+              </p>
+<div class="two-col">
+<div class="field-group">
+<label for="parentName">Parent / Guardian Name</label>
+<input id="parentName" name="parentName" required="" type="text"/>
+</div>
+<div class="field-group">
+<label for="parentEmail">Parent / Guardian Email</label>
+<input id="parentEmail" name="parentEmail" required="" type="email"/>
+</div>
+<div class="field-group">
+<label for="parentPhone">Parent / Guardian Phone</label>
+<input id="parentPhone" name="parentPhone" required="" type="tel"/>
+</div>
+<div class="field-group">
+<label class="required" for="paymentPlan">Preferred Payment Plan</label>
+<select id="paymentPlan" name="paymentPlan" required="">
+<option value="">Select option</option>
+<option>Weekly</option>
+<option>Monthly</option>
+<option>Yearly</option>
+</select>
+</div>
+<div class="field-group">
+<label class="required" for="startDate">Preferred Start Date</label>
+<input id="startDate" name="startDate" required="" type="date"/>
+</div>
+<div class="field-group">
+<label for="competitionMode">Competition Preference (if applicable)</label>
+<select id="competitionMode" name="competitionMode">
+<option value="">Select option</option>
+<option>Online</option>
+<option>In-person (if available)</option>
+<option>No preference</option>
+<option>Not joining competitions yet</option>
+</select>
+</div>
+<div class="field-group util-hidden" id="competitionLocationGroup">
+<label for="competitionLocation">Preferred In-Person / Nearby Location</label>
+<input id="competitionLocation" name="competitionLocation" placeholder="Enter your suburb, area, or preferred nearby location" type="text"/>
+</div>
+</div>
+</div>
+<div class="form-card">
+<h2 class="section-title">Student register</h2>
+<p class="section-sub">
+                Add every student joining this booking. If you are registering siblings, list each child on a separate row.
+              </p>
+<p class="section-sub util-mt-10">
+<b>Registering more than one child?</b> Family discounts and sibling rewards may apply.
+              </p>
+<div class="hero-actions util-mt-10">
+<a class="btn btn-secondary" href="pricing.html#discounts-rewards">Family discounts &amp; rewards</a>
+</div>
+<div class="register-tools">
+<div class="tool-left">
+<button class="btn btn-outline" onclick="addRow()" type="button">+ Add another student</button>
+<button class="btn btn-outline" onclick="resetTable()" type="button">Reset table</button>
+</div>
+<div class="tool-right">
+<a class="btn btn-secondary" href="mathclub.html">View Maths Club info</a>
+</div>
+</div>
+<div class="table-wrap">
+<table aria-label="Student register table" id="studentTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Student Name</th>
+<th>Preferred Name</th>
+<th>Grade</th>
+<th>School</th>
+<th>Maths Focus</th>
+<th>Learning Support / Notes</th>
+<th>Remove</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="row-number">1</td>
+<td><input name="studentName[]" required="" type="text"/></td>
+<td><input name="preferredName[]" type="text"/></td>
+<td>
+<select name="grade[]" required="">
+<option value="">Select</option>
+<option>Prep</option>
+<option>Grade 1</option>
+<option>Grade 2</option>
+<option>Grade 3</option>
+<option>Grade 4</option>
+<option>Grade 5</option>
+<option>Grade 6</option>
+<option>Grade 7</option>
+<option>Grade 8</option>
+<option>Grade 9</option>
+<option>Grade 10</option>
+<option>Grade 11</option>
+<option>Grade 12</option>
+</select>
+</td>
+<td><input name="school[]" required="" type="text"/></td>
+<td>
+<select name="mathsFocus[]">
+<option value="">Select</option>
+<option>Confidence building</option>
+<option>Core skills revision</option>
+<option>Problem solving</option>
+<option>Extension / challenge</option>
+<option>Exam preparation</option>
+</select>
+</td>
+<td><input name="studentNotes[]" placeholder="Optional" type="text"/></td>
+<td><button class="remove-btn" onclick="removeRow(this)" type="button">Remove</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="form-card">
+<h2 class="section-title">Final notes and consent</h2>
+<p class="section-sub">
+                Share any timing preferences or extra details that would help us place your child well.
+              </p>
+<div class="field-group util-mt-14">
+<label for="familyNotes">General Notes</label>
+<textarea id="familyNotes" name="familyNotes" placeholder="Optional notes about timetable preferences, goals, sibling grouping, allergies, or anything else we should know"></textarea>
+</div>
+<div class="consent-box">
+<label class="check-line">
+<input id="consent" name="consent" required="" type="checkbox"/>
+<span>
+                    I confirm I am the parent/guardian (or authorised person) enrolling these student(s) and the information provided is correct.
+                  </span>
+</label>
+<p class="small-note">
+                  After you submit, we will review your registration and contact you with payment arrangements and next steps.
+                </p>
+<div class="hero-actions">
+<button class="btn btn-success" type="submit">Submit registration</button>
+<a class="btn btn-outline" href="pricing.html#maths-club-fee">View fees</a>
+</div>
+</div>
+</div>
+</form>
+<div class="info-grid">
+<div class="info-card">
+<h3>What this page is best for</h3>
+<ul class="clean-list">
+<li>Family bookings with more than one child</li>
+<li>Siblings joining the same club stream</li>
+<li>Simple admin entry in one place</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>Important placement note</h3>
+<p class="section-sub">
+                One booking should include <b>one club stream</b>. If students belong in different streams, submit a separate form for each stream.
+              </p>
+</div>
+<div class="info-card">
+<h3>Not sure which club fits?</h3>
+<p class="section-sub">
+                Use the enquiry page if you want help with tutoring (one-to-one, group tutoring, competitions).
+              </p>
+</div>
+</div>
+<div class="success-card" id="successMessage">
+<strong>Thank you. Your registration has been received.</strong>
+            We will contact you soon with payment arrangements and next steps for joining Maths Club.
+          </div>
+</div>
+</section>
+</div>
+</main>
+<div aria-label="Thank you" aria-modal="true" id="clubThankYouModal" role="dialog">
+<div class="modal-card">
+<h3 class="modal-title">Thank you!</h3>
+<p class="modal-text">
+        Your Maths Club registration has been received. We will contact you soon with payment arrangements and next steps.
+      </p>
+<button class="btn btn-amber" id="clubThankYouOkBtn" type="button">OK</button>
+</div>
+</div>

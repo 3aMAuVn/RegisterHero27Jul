@@ -1,0 +1,815 @@
+---
+layout: page
+title: Year 11–12 Maths | Free Demo
+description: Short maths demo for Years 11 to 12.
+lang: en
+nav_key: main
+body_class: page-demo page-demo-11-12
+permalink: /demo/11-12/
+---
+<div class="card">
+
+  <div id="pill" class="pill">🏆 Year 11 – Year 12 • Nursing Modelling</div>
+  <h1 id="titleH1">Nursing Modelling (Maths) — Free Demo</h1>
+
+  <p class="intro">
+    This demo uses nursing-inspired scenarios to practise maths modelling (rates, linear/exponential models, and simple queue thinking).
+  </p>
+
+  <div class="disclaimer">
+    <b>Note:</b> These are <b>educational maths problems</b> and are <b>not clinical or medication advice</b>.
+  </div>
+
+  <!-- START -->
+  <div id="startMsg" class="q">Enter your details, choose Year 11 or 12, then press <b>Start</b></div>
+
+  <div id="profileBox">
+    <div class="row2">
+      <div class="field">
+        <label>Student name</label>
+        <input id="studentName" placeholder="e.g., Mia">
+      </div>
+
+      <div class="field">
+        <label>Year level</label>
+        <!-- ✅ Dropdown (same style as Year 7–10) -->
+        <select id="studentGrade">
+          <option value="">Select…</option>
+          <option>Year 11</option>
+          <option>Year 12</option>
+        </select>
+        <div class="note util-mt-8" id="gradeHint">Please choose Year 11 or Year 12.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      This short demo helps us understand how your child thinks. No email or phone number is collected.
+    </div>
+  </div>
+
+  <div id="startButtons" class="btnrow">
+    <button id="startBtn" onclick="start()" disabled>Start</button>
+    <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="qa" class="hide">
+    <div id="qCounter" class="note util-note-strong"></div>
+    <div id="q" class="q"></div>
+
+    <div id="numBox">
+      <input id="ans" inputmode="decimal" placeholder="Type a number (decimals OK)">
+    </div>
+
+    <div id="precisionNote" class="note util-mt-8"></div>
+
+    <div class="note util-mt-10">
+      <b>Tips:</b> You can press <b>Next</b> to skip and come back with <b>Previous</b>.<br>
+      <b>Finish:</b> You can press <b>Finish</b> any time to see your results.<br>
+      <b>Keyboard:</b> <b>Enter</b> = Check, then <b>Enter</b> again = Next • <b>Shift+Enter</b> = Previous • <b>Ctrl/Cmd+Enter</b> = Next (skip checking)
+    </div>
+
+    <div class="btnrow">
+      <button id="checkBtn" onclick="check()">Check</button>
+      <button id="prevBtn" class="secondary" onclick="prev()" disabled>Previous</button>
+      <button id="nextBtn" class="secondary" onclick="next()">Next</button>
+      <button id="finishBtn" class="secondary" onclick="finishEarly()">Finish</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+  </div>
+
+  <div id="fb"></div>
+  <div id="hint" class="hint"></div>
+
+  <!-- END / RESULTS -->
+  <div id="end" class="cta hide">
+    <div id="finalLine"></div>
+
+    <div class="resultBox">
+      <div class="resultTitle">Results overview</div>
+      <div id="pctText"></div>
+      <canvas id="chart" width="900" height="260"></canvas>
+      <div class="note">Blue = correct (✔) • Red = incorrect (✘) • Grey outline = unanswered (U)</div>
+    </div>
+
+    <!-- ✅ Student Summary -->
+    <div class="resultBox">
+      <div class="resultTitle">🧑‍🎓 Student Summary</div>
+
+      <p id="studentOverview" class="util-mb-10"></p>
+
+      <p class="util-m-0"><b>✅ What you did well:</b></p>
+      <ul id="studentWellList"></ul>
+
+      <p class="util-mt-10-reset"><b>🎯 What to practise next:</b></p>
+      <ul id="studentNextList"></ul>
+
+      <p class="note util-mt-10">
+        Tip: Try to finish any unanswered questions, then press <b>Finish</b>.
+      </p>
+    </div>
+
+    <div class="resultBox">
+      <div class="resultTitle">👨‍👩‍👧 Parent Summary</div>
+
+      <p id="parentOverview"></p>
+      <p><b>Unanswered questions:</b> <span id="unansweredLine"></span></p>
+
+      <p><b>What your child did well:</b></p>
+      <ul id="strengthList"></ul>
+
+      <p><b>What to practise next:</b></p>
+      <ul id="nextList"></ul>
+
+      <p class="note">
+        This demo is <b>not a test</b>. It helps us plan calm, confidence-building lessons.
+      </p>
+    </div>
+
+    <div class="toggleRow">
+      <input id="includeReport" type="checkbox" checked>
+      <label for="includeReport">Include a printable report (PDF)</label>
+    </div>
+
+    <div class="btnrow">
+      <button onclick="printOrSkip()">🖨️ Print / Save PDF</button>
+      <button class="secondary" onclick="restart()">Try again</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
+    </div>
+
+    <div id="saveStatus" class="note"></div>
+
+    <!-- Privacy -->
+    <details class="note util-mt-10">
+      <summary class="util-summary-strong">
+        Privacy &amp; what we save (tap to read)
+      </summary>
+      <div class="util-copy-muted">
+        <p class="util-mb-8">
+          This demo can save results to <b>Magic Math Master’s internal records (Google Sheets)</b> so we can review progress.
+          <b>No email is sent</b> from this page.
+        </p>
+        <p class="util-mb-6"><b>We save:</b></p>
+        <ul class="util-list-offset">
+          <li>Student name (as typed here)</li>
+          <li>Year level selected</li>
+          <li>Total score and percentage</li>
+          <li>Per-question result (correct / incorrect / unanswered)</li>
+          <li>Which demo/page was used (page URL)</li>
+        </ul>
+        <p class="util-m-0">
+          <b>We do not collect</b> email address or phone number on this demo page.
+        </p>
+      </div>
+    </details>
+
+    <div class="note">
+      Want more modelling practice and exam-style questions?
+      <a href="{{ '/contact.html' | relative_url }}" target="_blank" rel="noopener">Enquire / Register →</a>
+    </div>
+  </div>
+
+  <!-- PRINT REPORT -->
+  <div id="printReport" class="printReport">
+    <h2>Maths Practice Report</h2>
+    <p class="small">
+      <b>Student:</b> <span id="rName"></span><br>
+      <b>Grade:</b> <span id="rGrade"></span><br>
+      <b>Date:</b> <span id="rDate"></span><br>
+      <b>Demo:</b> <span id="rDemo"></span>
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="small">
+      <b>Disclaimer:</b> This is educational maths only and is not clinical or medication advice.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>Summary</h3>
+    <p id="rSummary"></p>
+    <p class="small"><b>Unanswered:</b> <span id="rUnanswered"></span></p>
+
+    <h3>What your child did well</h3>
+    <ul id="rStrengths"></ul>
+
+    <h3>What to practise next</h3>
+    <ul id="rNext"></ul>
+
+    <div class="divider"></div>
+
+    <p class="small">
+      This short demo is not a test. It helps us plan calm, confidence-building lessons.<br>
+      Magic Math Master • Australia • {{ site.url | default: site.github.url | default: "www.magicmathmaster.com.au" }}
+    </p>
+  </div>
+
+  <div class="footer">Magic Math Master • Free Demo</div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const ENDPOINT_URL =
+  "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
+
+/* ================= QUESTIONS ================= */
+/* Year 11 question bank (10) */
+const qs11 = [
+  { q:"👩‍⚕️ Staffing ratio: A ward aims for 1 nurse per 5 patients. If there are 27 patients, how many nurses are needed (round up)?", a:6, skill:"Ratios & Rounding", hint:"27/5 = 5.4 → round up to 6." },
+  { q:"⏱️ Patient flow: Patients arrive at 6 per hour. The team can discharge 5 per hour. If this continues for 4 hours, how many more patients are waiting (net change)?", a:4, skill:"Rates", hint:"Net +1 per hour → 4 hours → +4." },
+  { q:"🧤 Inventory (linear): A unit uses 18 gloves per hour. Starting stock is 500 gloves. After 10 hours, how many remain?", a:320, skill:"Linear Models", hint:"Used = 18×10 = 180. 500−180 = 320." },
+  { q:"📉 Infection control (exponential): A contamination level decreases by 20% each hour. Start = 100 units. After 2 hours, what is the level?", a:64, skill:"Exponential Models", hint:"100×0.8² = 64." },
+  { q:"📈 Model: Waiting time W (minutes) is W = 8 + 3n, where n is patients ahead (in the queue). If n=6, what is W?", a:26, skill:"Algebraic Models", hint:"8 + 3×6 = 26." },
+  { q:"🗓️ Shift planning: A nurse works 3 shifts of 7.5 hours each in a week. Total hours?", a:22.5, skill:"Decimals", hint:"3×7.5 = 22.5." },
+  { q:"📊 Data check: Four triage times (minutes): 12, 18, 15, 25. What is the mean time?", a:17.5, skill:"Statistics (Mean)", hint:"Sum=70. 70/4=17.5." },
+  { q:"📦 Restocking: A supply order arrives every 5 days. Over 30 days, how many deliveries arrive? (day 5,10,...,30)", a:6, skill:"Counting", hint:"30/5 = 6 deliveries." },
+  { q:"🧴 Supplies: A unit uses 2.4 L of sanitizer per day. Starting stock is 20 L. After 7 days, how many litres remain?", a:3.2, skill:"Rates & Units", hint:"Used = 2.4×7 = 16.8. Remaining = 20−16.8 = 3.2." },
+  { q:"✅ Model check: A model predicted 28 minutes wait, but actual wait was 24 minutes. What is the percentage error? (round to 2 decimals)", a:16.67, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Percent Error", hint:"|28−24|/24 ×100 ≈ 16.67%." }
+];
+
+/* Year 12 question bank (10) */
+const qs12 = [
+  { q:"👩‍⚕️ Staffing ratio: A ward aims for 1 nurse per 4 patients. If there are 37 patients, how many nurses are needed (round up)?", a:10, skill:"Ratios & Rounding", hint:"37/4 = 9.25 → round up to 10." },
+  { q:"⏱️ Patient flow: Arrivals are 7.5 per hour and discharges are 6 per hour. Over 6 hours, what is the net increase in patients waiting?", a:9, skill:"Rates", hint:"Net = 1.5/hr. 1.5×6 = 9." },
+  { q:"🧤 Inventory (linear): A unit uses 22 gloves per hour. Starting stock is 650 gloves. After 12 hours, how many remain?", a:386, skill:"Linear Models", hint:"Used = 22×12 = 264. 650−264 = 386." },
+  { q:"📉 Exponential decay: A level decreases by 15% each hour. Start = 200 units. After 3 hours, what is the level? (round to 2 decimals)", a:122.83, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Exponential Models", hint:"200×0.85³ ≈ 122.83." },
+  { q:"📈 Exponential model: Waiting time W = 5×1.08ⁿ (minutes). If n=10, what is W? (round to 2 decimals)", a:10.79, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Exponential Models", hint:"5×1.08¹⁰ ≈ 10.79." },
+  { q:"🧠 Rearranging: W = 8 + 3n. If W = 47 minutes, what is n?", a:13, skill:"Rearranging Formulas", hint:"47−8=39. 39/3=13." },
+  { q:"🧮 Solve for time: Stock starts at 500 gloves and decreases by 18 gloves per hour. When stock reaches 230 gloves, how many hours have passed?", a:15, skill:"Linear Equations", hint:"500−18t=230 → t=15." },
+  { q:"📊 Weighted mean: 10 patients had mean triage time 14 min, and 6 patients had mean triage time 22 min. What is the overall mean?", a:17, skill:"Statistics (Weighted Mean)", hint:"(10×14 + 6×22)/16 = 17." },
+  { q:"🚶 Queue change: Arrivals are 9/hr and discharges are 10.5/hr. Over 8 hours, how many fewer patients are waiting?", a:12, skill:"Rates (Net Change)", hint:"Net = −1.5/hr. −1.5×8 = −12 → 12 fewer." },
+  { q:"🧼 Half-life model: A level halves every 3 hours. Start = 160 units. After 9 hours, what is the level?", a:20, skill:"Exponential (Half-life)", hint:"9 hours = 3 half-lives: 160×½³ = 20." }
+];
+
+/* ================= STATE ================= */
+let qs = [];
+let i = -1;
+let score = 0;
+let student = { name:"", grade:"" };
+let gotCorrect = [];
+let ansCache = [];
+let checkedThisView = false;
+
+const el = id => document.getElementById(id);
+
+/* ================= NAV ================= */
+function goToDemoHome(){
+  window.location.href = "{{ '/demo/' | relative_url }}";
+}
+
+/* ================= START READINESS ================= */
+function validateStart(){
+  const nameOk = el("studentName").value.trim().length > 0;
+  const gradeOk = !!el("studentGrade").value;
+  el("startBtn").disabled = !(nameOk && gradeOk);
+  el("gradeHint").textContent = gradeOk ? `Selected: ${el("studentGrade").value}` : "Please choose Year 11 or Year 12.";
+}
+
+/* ================= PARSERS ================= */
+function parseNumber(raw){
+  const s = (raw || "").trim().replace(/,/g,"").replace(/\s+/g,"");
+  if(!s) return NaN;
+  const v = Number(s);
+  return Number.isFinite(v) ? v : NaN;
+}
+function close(a,b,eps){ return Math.abs(a-b) < eps; }
+
+/* ================= HELPERS ================= */
+function updatePrecisionNote(qObj){
+  const noteEl = el("precisionNote");
+  if(!noteEl) return;
+
+  if(qObj && qObj.note){
+    noteEl.textContent = qObj.note;
+    return;
+  }
+  if(qObj && typeof qObj.tol === "number"){
+    noteEl.textContent = "Answer tip: round to 2 decimal places.";
+    return;
+  }
+  noteEl.textContent = "";
+}
+
+function stashAnswer(){
+  if(i >= 0 && i < ansCache.length){
+    ansCache[i] = el("ans").value;
+  }
+}
+
+function renderCurrentQuestion(){
+  checkedThisView = false;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+
+  const qObj = qs[i];
+  el("qCounter").textContent = `Question ${i+1} of ${qs.length}`;
+  el("q").textContent = qObj.q;
+
+  el("ans").value = ansCache[i] ?? "";
+  updatePrecisionNote(qObj);
+
+  el("prevBtn").disabled = (i <= 0);
+  el("nextBtn").disabled = false;
+
+  setTimeout(()=> el("ans").focus(), 0);
+}
+
+/* typed = answered */
+function isAnswered(idx){
+  return ((ansCache[idx] || "").trim() !== "");
+}
+function getUnanswered(){
+  const miss = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) miss.push(k+1);
+  }
+  return miss;
+}
+
+/* ================= AUTO-GRADING ================= */
+function gradeOne(idx){
+  const qObj = qs[idx];
+  if(!qObj) return null;
+  if(!isAnswered(idx)) return null;
+
+  const user = parseNumber((ansCache[idx] || "").trim());
+  if(!Number.isFinite(user)) return false;
+
+  const tol = (typeof qObj.tol === "number") ? qObj.tol : 1e-6;
+  return close(user, qObj.a, tol);
+}
+
+function autoGradeAll(){
+  score = 0;
+  gotCorrect = new Array(qs.length).fill(false);
+
+  for(let k=0;k<qs.length;k++){
+    const r = gradeOne(k);
+    if(r === true){
+      gotCorrect[k] = true;
+      score++;
+    }
+  }
+}
+
+function autoGradeIndex(idx){
+  if(idx < 0 || idx >= qs.length) return;
+  const r = gradeOne(idx);
+  if(r === null) return;
+
+  const newVal = (r === true);
+  if(newVal && !gotCorrect[idx]) score++;
+  if(!newVal && gotCorrect[idx]) score--;
+  gotCorrect[idx] = newVal;
+}
+
+/* ================= FLOW ================= */
+function start(){
+  student.name = el("studentName").value.trim();
+  student.grade = el("studentGrade").value;
+
+  if(!student.name){ alert("Please enter the student name."); return; }
+  if(!student.grade){ alert("Please choose Year 11 or Year 12."); return; }
+
+  qs = (student.grade === "Year 11") ? qs11 : qs12;
+  gotCorrect = new Array(qs.length).fill(false);
+  ansCache = new Array(qs.length).fill("");
+  i = -1;
+  score = 0;
+
+  el("pill").textContent = `🏆 ${student.grade} • Nursing Modelling`;
+  el("titleH1").textContent = `Nursing Modelling (Maths) — Free Demo (${student.grade})`;
+
+  el("profileBox").style.display = "none";
+  el("startButtons").style.display = "none";
+  el("startMsg").style.display = "none";
+
+  el("qa").style.display = "block";
+  el("qa").classList.remove("hide");
+  el("end").classList.add("hide");
+
+  next();
+}
+
+function next(){
+  stashAnswer();
+  if(i >= 0) autoGradeIndex(i);
+
+  if(i >= qs.length - 1){
+    finishEarly();
+    return;
+  }
+
+  i++;
+  renderCurrentQuestion();
+}
+
+function prev(){
+  if(i <= 0) return;
+  stashAnswer();
+  autoGradeIndex(i);
+  i--;
+  renderCurrentQuestion();
+}
+
+/* Manual check */
+function check(){
+  if(i < 0) return;
+
+  stashAnswer();
+
+  const qObj = qs[i];
+  const box = el("fb");
+  el("hint").textContent = "";
+
+  const user = parseNumber((ansCache[i] || "").trim());
+  if(!Number.isFinite(user)){
+    box.className = "feedback bad";
+    box.textContent = "Please enter a number (decimals are OK).";
+    checkedThisView = true;
+    return;
+  }
+
+  const tol = (typeof qObj.tol === "number") ? qObj.tol : 1e-6;
+  const okNow = close(user, qObj.a, tol);
+
+  if(okNow){
+    if(!gotCorrect[i]) score++;
+    gotCorrect[i] = true;
+    box.className = "feedback ok";
+    box.textContent = "✅ Correct!";
+  }else{
+    if(gotCorrect[i]) score--;
+    gotCorrect[i] = false;
+    box.className = "feedback bad";
+    box.textContent = "❌ Not quite.";
+    el("hint").textContent = "Hint: " + (qObj.hint || "Try again step by step.");
+  }
+
+  checkedThisView = true;
+}
+
+/* Finish early (with warning) */
+function finishEarly(){
+  stashAnswer();
+  autoGradeAll();
+
+  const miss = getUnanswered();
+  if(miss.length){
+    const preview = miss.slice(0,12).map(n=>`Q${n}`).join(", ");
+    const suffix = miss.length > 12 ? ` (+${miss.length-12} more)` : "";
+    const ok = confirm(
+      `You still have unanswered questions: ${preview}${suffix}.\n\nFinish anyway?`
+    );
+    if(!ok){
+      i = miss[0]-1;
+      renderCurrentQuestion();
+      return;
+    }
+  }
+  finish();
+}
+
+function finish(){
+  stashAnswer();
+  autoGradeAll();
+
+  el("qa").style.display = "none";
+  el("end").classList.remove("hide");
+  el("precisionNote").textContent = "";
+
+  const pct = Math.round(score / qs.length * 100);
+  const miss = getUnanswered();
+
+  el("finalLine").textContent = `Score: ${score}/${qs.length} (${pct}%) • Unanswered: ${miss.length}`;
+  el("pctText").textContent = `Percentage correct: ${pct}%`;
+
+  const states = qs.map((_,idx)=>{
+    if(gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+  drawChart(states);
+
+  buildStudentSummary();
+  buildParentSummary();
+  saveResult(pct);
+}
+
+/* ================= CHART ================= */
+function drawChart(states){
+  const c = el("chart"), ctx = c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+
+  const W=c.width, H=c.height;
+  const L=52, R=18, T=18, B=45;
+  const n=states.length;
+  const chartW=W-L-R, chartH=H-T-B;
+
+  ctx.strokeStyle="#111827";
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(L,T);
+  ctx.lineTo(L,H-B);
+  ctx.lineTo(W-R,H-B);
+  ctx.stroke();
+
+  const gap=12;
+  const barW=Math.max(24, (chartW - gap*(n-1))/n);
+
+  const incorrectH  = 18;
+  const unansweredH = 18;
+
+  states.forEach((s,i)=>{
+    const x=L + i*(barW+gap);
+
+    if(s === 1){
+      const barH = chartH;
+      const y = (H-B) - barH;
+
+      ctx.fillStyle = "rgba(11,94,215,.85)";
+      ctx.fillRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✔", x+barW/2-4, y-6);
+
+    }else if(s === 0){
+      const barH = incorrectH;
+      const y = (H-B) - barH;
+
+      ctx.fillStyle = "rgba(239,68,68,.75)";
+      ctx.fillRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("✘", x+barW/2-4, y-6);
+
+    }else{
+      const barH = unansweredH;
+      const y = (H-B) - barH;
+
+      ctx.strokeStyle = "rgba(148,163,184,.95)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x,y,barW,barH);
+
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("U", x+barW/2-4, y-6);
+    }
+
+    ctx.fillStyle="#111827";
+    ctx.font="12px system-ui";
+    ctx.fillText(`Q${i+1}`, x+6, H-B+18);
+  });
+}
+
+/* ================= STUDENT SUMMARY ================= */
+function buildStudentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let msg = "";
+  if(pct >= 85) msg = "🌟 Awesome work! You’re answering most questions correctly.";
+  else if(pct >= 60) msg = "👍 Good effort! You’re improving — keep going.";
+  else msg = "🌱 Nice try! Keep practising — modelling gets easier with repetition.";
+
+  if(unanswered.length){
+    msg += ` You left ${unanswered.length} unanswered — try them next time.`;
+  }
+  el("studentOverview").textContent = msg;
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,2);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,2);
+
+  el("studentWellList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}</b> — great job!</li>`).join("")
+    : "<li>Sticking with the questions — that’s a strong learning skill.</li>";
+
+  el("studentNextList").innerHTML = nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}</b> — practise 2–3 more similar examples.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>";
+}
+
+/* ================= PARENT SUMMARY ================= */
+function buildParentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("unansweredLine").textContent = unanswered.length
+    ? unanswered.map(n=>`Q${n}`).join(", ")
+    : "None ✅";
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let overview="";
+  if(pct >= 85) overview="🌟 Strong work! Your child showed confident understanding across most modelling skills today.";
+  else if(pct >= 60) overview="👍 Good progress. Your child is developing confidence, with a few skills to strengthen next.";
+  else overview="🌱 Still building confidence — very normal. With steady practice, accuracy improves quickly.";
+
+  el("parentOverview").textContent = overview;
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,3);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,3);
+
+  el("strengthList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}:</b> showing confidence.</li>`).join("")
+    : "<li>Great effort and persistence — an important learning skill.</li>";
+
+  el("nextList").innerHTML = (unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>`
+    : ""
+  ) + (nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}:</b> practise a few more examples to build accuracy.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>"
+  );
+}
+
+/* ================= PRINT REPORT ================= */
+function printOrSkip(){
+  const include = el("includeReport").checked;
+  if(!include){
+    alert("Report is turned off. Tick 'Include a printable report' if you want to print/save a PDF.");
+    return;
+  }
+  buildPrintReport();
+  window.print();
+}
+
+function buildPrintReport(){
+  const pct = Math.round(score / qs.length * 100);
+  const results01 = gotCorrect.map(v=>v?1:0);
+
+  el("rName").textContent = student.name;
+  el("rGrade").textContent = student.grade || "—";
+  el("rDate").textContent = new Date().toLocaleDateString();
+  el("rDemo").textContent = `${student.grade} Nursing Modelling (Maths)`;
+
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+  el("rUnanswered").textContent = unanswered.length ? unanswered.map(n=>`Q${n}`).join(", ") : "None";
+
+  el("rSummary").textContent =
+    `Score: ${score}/${qs.length} (${pct}%). ` +
+    (pct>=85 ? "Strong understanding across most modelling skills."
+      : pct>=60 ? "Developing understanding with some areas to strengthen."
+      : "Still building confidence — very normal at this stage.");
+
+  const strengths = qs.filter((_,i)=>results01[i]===1).map(q=>q.q.replace(/^[^ ]+ /,""));
+  const nextSteps  = qs.filter((_,i)=>results01[i]===0).map(q=>q.q.replace(/^[^ ]+ /,""));
+
+  el("rStrengths").innerHTML = strengths.length
+    ? strengths.map(s=>`<li>${s}</li>`).join("")
+    : "<li>Showing effort and persistence.</li>";
+
+  el("rNext").innerHTML = unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>` +
+      (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "")
+    : (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "<li>Continue practising to build accuracy and modelling confidence.</li>");
+}
+
+/* ================= SAVE TO SHEET ================= */
+async function saveResult(pct){
+  el("saveStatus").textContent = "Sending your result to Magic Math Master records…";
+
+  // 1 = correct, 0 = incorrect (answered but wrong), -1 = unanswered (blank)
+  const answers = qs.map((_, idx) => {
+    if (gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+
+  const unansweredQs = getUnanswered();
+
+  try{
+    await fetch(ENDPOINT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body:JSON.stringify({
+        group:"Year 11–12",
+        level:student.grade,
+        theme:"Nursing Modelling",
+        name:student.name,
+        grade:student.grade,
+        score:score,
+        total:qs.length,
+        percent:pct,
+
+        answers: answers,
+        unansweredQs: unansweredQs,
+
+        // backward compatibility
+        perQuestion01: gotCorrect.map(v=>v?1:0),
+
+        pageUrl: location.href,
+        userAgent: navigator.userAgent
+      })
+    });
+
+    el("saveStatus").textContent = "✅ Result sent to Magic Math Master records (no email sent).";
+  }catch(e){
+    el("saveStatus").textContent = "⚠️ Could not send right now (no email sent).";
+  }
+}
+
+/* ================= CHANGE GRADE ================= */
+function backToGrade(){
+  qs = [];
+  gotCorrect = [];
+  ansCache = [];
+  i = -1;
+  score = 0;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+  el("ans").value = "";
+  el("precisionNote").textContent = "";
+
+  el("qa").classList.add("hide");
+  el("qa").style.display = "none";
+  el("end").classList.add("hide");
+
+  el("profileBox").style.display = "block";
+  el("startButtons").style.display = "flex";
+  el("startMsg").style.display = "block";
+
+  el("studentGrade").value = "";
+  el("pill").textContent = "🏆 Year 11 – Year 12 • Nursing Modelling";
+  el("titleH1").textContent = "Nursing Modelling (Maths) — Free Demo";
+
+  validateStart();
+  el("studentName").focus();
+}
+
+/* ================= RESET ================= */
+function restart(){ location.reload(); }
+
+/* ================= LISTENERS ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  validateStart();
+  el("studentName").addEventListener("input", validateStart);
+  el("studentGrade").addEventListener("change", validateStart);
+
+  el("ans").addEventListener("input", () => {
+    if(i >= 0 && i < ansCache.length){
+      ansCache[i] = el("ans").value;
+    }
+    checkedThisView = false;
+  });
+});
+
+/* Keyboard:
+   Enter = Check, then Enter again = Next
+   Shift+Enter = Previous
+   Ctrl/Cmd+Enter = Next (skip checking)
+*/
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+
+  const quizVisible =
+    !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
+  if (!quizVisible) return;
+
+  e.preventDefault();
+
+  if (e.shiftKey) { prev(); return; }
+  if (e.ctrlKey || e.metaKey) { next(); return; }
+
+  if (checkedThisView) next();
+  else check();
+});
+</script>

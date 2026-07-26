@@ -1,0 +1,13 @@
+title: Magic Math Master
+description: Premium maths tutoring for Prep to Year 12 in Australia.
+url: "https://www.magicmathmaster.com.au"
+sass:
+  sass_dir: _sass
+  style: compressed
+markdown: kramdown
+collections:
+  demos:
+    output: true
+    permalink: /demo/:path/
+
+baseurl: ""

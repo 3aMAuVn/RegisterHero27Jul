@@ -1,0 +1,91 @@
+---
+layout: page
+title: Tư vấn | Magic Math Master
+description: Gửi câu hỏi cho Magic Math Master. Chúng tôi sẽ phản hồi sớm nhất và gợi ý bước tiếp theo phù hợp cho con bạn.
+lang: vi
+nav_key: main_vi
+body_class: page-enquiry page-vi
+permalink: /vi/enquiry.html
+---
+<main>
+<div class="container">
+<section aria-label="Phần giới thiệu tư vấn" class="hero-card">
+<div class="hero-banner form-hero-banner" aria-hidden="true">
+  <img class="form-hero-banner__mark" src="{{ '/assets/brand-mark.svg' | relative_url }}" alt="" />
+  <div class="form-hero-banner__wordmark">Magic Math Master</div>
+  <div class="form-hero-banner__tagline">Khơi nguồn tò mò. Tư duy thông minh hơn.</div>
+</div>
+<div class="hero-copy">
+<h1 class="hero-title">Tư vấn</h1>
+<p class="hero-desc">
+          Gửi câu hỏi cho chúng tôi — chúng tôi sẽ phản hồi sớm nhất có thể.<br/>
+          Hãy cho biết <strong>khối lớp</strong> của con bạn, mục tiêu
+          (<strong>bắt kịp / theo kịp / vượt lên</strong>), và các nội dung bạn muốn được hỗ trợ.
+        </p>
+<div class="hero-pills">
+<span class="hero-pill">Bước tiếp theo rõ ràng</span>
+<span class="hero-pill">Trao đổi thân thiện</span>
+<span class="hero-pill">Dạy học ưu tiên sự tự tin</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-amber" href="register.html">Đăng ký học kèm</a>
+<a class="btn btn-secondary" href="club-register.html">
+            Đăng ký Maths Club
+            <span class="badge">Chỉ dành cho Club</span>
+</a>
+</div>
+</div>
+</section>
+<section class="wrap" id="enquiry-form">
+<div class="form-card">
+<div class="form-card-head">
+<h2 class="form-card-title">Biểu mẫu tư vấn học tập</h2>
+</div>
+<div class="form-card-body">
+<p class="note">
+            Biểu mẫu này dành cho <strong>học kèm</strong> (1 kèm 1, nhóm nhỏ, luyện thi, bồi dưỡng).
+            Maths Club có biểu mẫu đăng ký riêng.
+          </p>
+<iframe name="enquirySubmitFrame" class="util-hidden"></iframe>
+<form action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec" id="enquiryForm" method="post" novalidate="" target="enquirySubmitFrame">
+<input name="formType" type="hidden" value="tutoring-enquiry"/>
+<div class="grid-2">
+<div>
+<label class="required">Họ tên phụ huynh / người giám hộ</label>
+<input name="parent_name" required="" type="text"/>
+</div>
+<div>
+<label>Tên học sinh (không bắt buộc)</label>
+<input name="student_name" type="text"/>
+</div>
+</div>
+<div class="grid-2">
+<div>
+<label class="required">Email</label>
+<input name="email" required="" type="email"/>
+</div>
+<div>
+<label>Số điện thoại (không bắt buộc)</label>
+<input name="mobile" type="tel"/>
+</div>
+</div>
+<label class="required">Nội dung cần tư vấn</label>
+<textarea name="message" placeholder="Hãy cho chúng tôi biết bạn đang cần hỗ trợ gì, hình thức học mong muốn, và các nội dung cụ thể cần giúp đỡ..." required=""></textarea>
+<label class="option">
+<input name="consent" required="" type="checkbox" value="Yes"/>
+              Tôi đồng ý để Magic Math Master liên hệ với tôi về yêu cầu tư vấn này.
+            </label>
+<button class="btn btn-amber" type="submit">Gửi yêu cầu tư vấn</button>
+</form>
+</div>
+</div>
+</section>
+</div>
+</main>
+<div id="thankYouModal">
+<div class="modal-card">
+<h3>Cảm ơn bạn!</h3>
+<p>Chúng tôi đã nhận được yêu cầu tư vấn của bạn và sẽ liên hệ lại sớm.</p>
+<button class="btn btn-amber" onclick="document.getElementById('thankYouModal').style.display='none'">OK</button>
+</div>
+</div>

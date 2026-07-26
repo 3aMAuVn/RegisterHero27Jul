@@ -1,0 +1,349 @@
+---
+layout: page
+title: 费用
+description: 查看 魔法数学大师的课程费用。
+lang: zh
+pricing_lang: zh
+nav_key: main_cn
+body_class: page-pricing page-cn
+show_page_hero: true
+hero_title: 费用
+hero_subtitle: 透明清晰的课程收费
+show_pricing_grid: true
+permalink: /cn/pricing.html
+---
+<main class="container">
+<section class="section" id="jump-links">
+<div class="card util-p-16">
+<div aria-label="快速跳转链接" class="chip-links" role="navigation">
+<a class="chip-link" href="#detailed-fees">💲 详细费用</a>
+<a class="chip-link" href="#maths-club-fee">🌈 数学俱乐部费用</a>
+<a class="chip-link" href="#discounts-rewards">🎁 优惠与奖励</a>
+</div>
+</div>
+</section>
+<section class="section price-tool" id="detailed-fees">
+<h2 class="section-title">互动费用</h2>
+<p class="section-sub">
+  请选择年级、高中毕业考试科目（如适用）和课程类型。所有价格均按每位学生计算。
+  </p>
+<div class="wrap">
+<div class="bar">
+<div aria-label="年级选择" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-level="primary" role="tab">小学（学前班–6年级）</button>
+<button aria-selected="false" data-level="mid" role="tab">7–10年级</button>
+<button aria-selected="false" data-level="vce" role="tab">11–12年级（高中毕业考试）</button>
+</div>
+<div aria-label="高中毕业考试科目选择" class="vceBox" id="vceBox">
+<div class="title">高中毕业考试科目</div>
+<div aria-label="高中毕业考试科目" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-vce="general" role="tab">普通数学</button>
+<button aria-selected="false" data-vce="methods" role="tab">数学方法</button>
+<button aria-selected="false" data-vce="specialist" role="tab">专业数学</button>
+</div>
+<div class="hint">高中毕业考试科目会在基础收费基础上作相应调整。</div>
+</div>
+<div aria-label="课程类型选择" class="vceBox util-block" id="trackBox">
+<div class="title">课程类型</div>
+<div aria-label="课程类型" class="seg" role="tablist">
+<button aria-selected="true" class="active" data-track="standard" role="tab">标准课程</button>
+<button aria-selected="false" data-track="extension" role="tab">拓展课程</button>
+<button aria-selected="false" data-track="selective" role="tab">选拔考试</button>
+<button aria-selected="false" data-track="amc" role="tab">数学竞赛</button>
+<button aria-selected="false" data-track="amointensive" role="tab">竞赛强化</button>
+</div>
+<div class="hint">课程附加项将在基础收费和年级调整的基础上计算。</div>
+</div>
+<div class="note" id="ruleNote">
+<div class="badge-row">
+<span class="badge" id="badgeYear">小学阶段调整</span>
+<span class="badge" id="badgeTrack">标准课程</span>
+<span class="badge warn" id="minBadge">5 人以上至少 60 分钟</span>
+</div>
+<div>
+<strong id="ruleLine">
+    小学数学：每位学生 30 分钟减 $5，60 分钟减 $10。<br/>标准课程辅导：+$0。
+    </strong>
+<div class="sub" id="extraLine">提示：60 分钟课程通常能提供更多练习与反馈。</div>
+</div>
+</div>
+</div>
+</div>
+<section class="section" id="fees-glance">
+<h2 class="section-title">费用概览</h2>
+<p class="section-sub">
+   这些卡片会根据您的选择自动更新，因此会始终与下方收费表保持一致。
+  </p>
+<div class="price-grid">
+<div class="price-card" id="glance-online">
+<div class="price-top">
+<h3>线上</h3>
+<span class="kicker" id="glance-badge-online">一对一 • 60 分钟</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">结构清晰</span>
+<span class="fee-chip">灵活安排</span>
+<span class="fee-chip">充分反馈</span>
+</div>
+<div class="price" id="glance-price-online">$—</div>
+<div class="per" id="glance-per-online">每 60 分钟（每位学生）</div>
+<div class="parents-get">👨‍👩‍👧‍👦 <strong>家长将获得：</strong> 清晰的学习计划、进度反馈和下一步建议。</div>
+</div>
+<div class="price-card featured" id="glance-inperson">
+<div class="price-top">
+<h3>线下</h3>
+<span class="kicker" id="glance-badge-inperson">一对一 • 60 分钟</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">面对面支持</span>
+<span class="fee-chip">引导练习</span>
+<span class="fee-chip">建立信心</span>
+</div>
+<div class="price" id="glance-price-inperson">$—</div>
+<div class="per" id="glance-per-inperson">每 60 分钟（每位学生）</div>
+<div class="parents-get">📍 <strong>线下课程包含：</strong> 路程与准备时间（视安排情况而定）。</div>
+</div>
+<div class="price-card" id="glance-30">
+<div class="price-top">
+<h3>短课时</h3>
+<span class="kicker" id="glance-badge-30">一对一 • 30 分钟</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip" id="glance-30-note">仅在可选 30 分钟课程时显示</span>
+</div>
+<div class="price util-fs-34" id="glance-price-30">$—</div>
+<div class="per" id="glance-per-30">每 30 分钟（线上 / 线下课程）</div>
+<div class="parents-get" id="glance-30-helper">
+    提示：60 分钟课程通常能带来更好的进步（有更多时间进行练习与反馈）。
+   </div>
+</div>
+<div class="price-card" id="glance-5plus">
+<div class="price-top">
+<h3>5 人以上</h3>
+<span class="kicker" id="glance-badge-5plus">5 人以上 • 至少 60 分钟</span>
+</div>
+<div class="fee-chips">
+<span class="fee-chip">更高性价比</span>
+<span class="fee-chip">水平相近</span>
+<span class="fee-chip">每周固定节奏</span>
+</div>
+<div class="price util-fs-34" id="glance-price-5plus">$—</div>
+<div class="per" id="glance-per-5plus">每 60 分钟（每位学生）</div>
+<div class="parents-get" id="glance-5plus-helper">
+<strong>提示：</strong> 为保证课程质量，5 人以上小组课程至少安排 60 分钟。
+   </div>
+</div>
+</div>
+</section>
+<div class="wrap">
+<div class="table-wrap fees-table-wrap">
+<table aria-label="辅导收费表" class="fees-table">
+<colgroup>
+<col class="util-w-90" />
+<col class="util-w-240" />
+<col/>
+<col/>
+</colgroup>
+<thead>
+<tr>
+<th>图标</th>
+<th>课程</th>
+<th>30 分钟 / 每位学生</th>
+<th>60 分钟 / 每位学生</th>
+</tr>
+</thead>
+<tbody id="priceBody"></tbody>
+</table>
+</div>
+<div class="tool-footer">
+<strong>说明：</strong>
+   线下课程收费包含路程与准备时间。小组课程建议学生水平相近。
+   <strong>5 人以上：</strong>为保证课程质量，至少安排 60 分钟。
+  </div>
+<div class="triple-grid">
+<div class="info-card">
+<h3>📘 课程包含</h3>
+<ul class="util-list-relaxed">
+<li>个性化学习计划和明确目标</li>
+<li>针对性反馈和清晰的下一步建议</li>
+<li>课程内容与孩子的需求及时间安排相匹配</li>
+</ul>
+<div class="parents-get util-mt-12">
+<strong>适合：</strong>希望课程有结构且进步清晰可见的家庭。
+   </div>
+</div>
+<div class="info-card">
+<h3>🌈 建立信心与稳定进步</h3>
+<div class="quote-box">
+    进步来自于 <b>清晰的教学 + 持续的练习</b>，而不是压力。
+    我们让课程保持平和、有结构并富有支持性。
+   </div>
+<div class="parents-get">
+<strong>结果：</strong>学生每周都能更理解、更会练习，也更有自信。
+   </div>
+</div>
+<div class="info-card">
+<h3>✅ 温馨提示</h3>
+<div class="notes-box">
+<ul>
+<li>可选择线上或线下课程（视安排情况而定）。</li>
+<li>小组课程通常是建立稳定每周学习节奏的高性价比选择。</li>
+<li>欢迎联系我们，帮您判断最适合的路径（补基础 / 跟上进度 / 提前拓展）。</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section aria-label="重要信息" class="imp-box">
+<div class="imp-head">
+<div class="imp-pin">📌</div>
+<h2 class="imp-title">重要信息（简要概览）</h2>
+</div>
+<ul class="imp-list">
+<li><b>付款：</b> 课程费用需在上课前支付。</li>
+<li><b>取消课程：</b> 如需取消或变更课程，请至少提前 <b>24 小时通知</b>。临时取消仍可能被收费。</li>
+<li><b>退款：</b> 如提前 <b>24 小时以上</b>取消课程，或提供有效医疗证明，可能可以退款。</li>
+<li><b>课堂行为：</b>学生需要保持友善、尊重和积极的态度，以便每个人都能在舒适环境中学习。</li>
+<li><b>沟通：</b>我们会持续向家庭更新学习进展，家长也欢迎随时联系 <b>武雪博士</b> 提出问题。</li>
+</ul>
+<p class="imp-footer">
+  完整详情请阅读我们的
+  <a class="imp-link" href="policies.html">政策</a>。
+  </p>
+</section>
+<section class="club-section section" id="maths-club-fee">
+<h2 class="section-title util-center-mt-0">🌈 数学俱乐部费用</h2>
+<p class="club-sub">
+  适合当前 <b>未参加辅导课程</b>、但希望获得每周拓展练习、有结构训练和持续数学支持的学生。<br/>
+<em>高年级数学俱乐部包含更高层次的复习与练习，覆盖至 12 年级。</em>
+</p>
+<div class="club-grid">
+<div class="club-card">
+<h3>✨ 小学学生</h3>
+<p class="price-lines">
+   $7 / 每周<br/>
+   $28 / 每月<br/>
+<span>$250 / 每年</span> <span class="best-value">更高性价比</span>
+</p>
+<p class="util-copy-small">
+   适合正在建立自信、计算流畅度和扎实基础的学生。
+   </p>
+</div>
+<div class="club-card">
+<h3>✨ 7–10年级学生</h3>
+<p class="price-lines">
+   $10 / 每周<br/>
+   $40 / 每月<br/>
+<span>$350 / 每年</span> <span class="best-value">更高性价比</span>
+</p>
+<p class="util-copy-small">
+   适合稳定发展技能、提升问题解决能力并保持每周规律练习的学生。
+   </p>
+</div>
+<div class="club-card">
+<h3>🎓 高年级数学俱乐部（11–12年级）</h3>
+<p class="price-lines">
+   $13 / 每周<br/>
+   $50 / 每月<br/>
+<span>$450 / 每年</span> <span class="best-value">更高性价比</span>
+</p>
+<p class="util-copy-small">
+   适合进行有结构的复习、考试风格练习，以及学习至 12 年级水平的复习材料。
+   </p>
+</div>
+</div>
+<div class="btn-row util-mt-16">
+<a class="btn btn-outline" href="mathclub.html">了解更多</a>
+<a class="btn btn-amber" href="club-register.html">报名参加数学俱乐部</a>
+<a class="btn btn-amber" href="mathclub.html">数学俱乐部详情</a>
+</div>
+</section>
+<section class="discounts-section section" id="discounts-rewards">
+<h2 class="section-title util-center-mt-0">🎁 优惠与奖励</h2>
+<p class="discounts-subtitle">
+  我们希望支持家庭，同时肯定学生的努力、进步与成长。
+  </p>
+<div class="discounts-row">
+<div class="discount-card">
+<h3>💛 1. 课时包优惠（辅导课程）</h3>
+<p>
+   当您一次预订 <b>10 节或以上辅导课</b>并提前付款时，可享受 <b>9 折优惠</b>。
+   </p>
+<ul>
+<li>适用于一对一和小组课程。</li>
+<li>帮助家庭更好规划，同时降低整体学习成本。</li>
+</ul>
+</div>
+<div class="discount-card">
+<h3>👨‍👩‍👧‍👦 2. 家庭折扣</h3>
+<p>为了支持有多个孩子一起学习的家庭：</p>
+<ul>
+<li><b>第二个孩子：</b>9 折</li>
+<li><b>第三个孩子：</b>8 折</li>
+</ul>
+<div class="example-box">
+<strong>示例：3 个孩子一起报名</strong><br/><br/>
+   孩子 A：费用最高 → 不享受家庭折扣<br/>
+   孩子 B：中间费用 → 9 折<br/>
+   孩子 C：最低费用 → 8 折<br/><br/>
+   每位学生每个计费周期的最高折扣为 <strong>20%</strong>。
+   </div>
+</div>
+<div class="discount-card">
+<h3>💬 3. 家庭支持</h3>
+<p>
+   如果您的预算有限，请联系我们——我们可能可以帮助安排进入小组课程，或提供更合适的建议。
+   </p>
+<ul>
+<li>小组课程可以在保持质量的同时降低费用。</li>
+<li>我们可以根据您的目标推荐最合适、最高效的学习方案。</li>
+</ul>
+</div>
+</div>
+<div class="discount-card-wide">
+<h3>🏅 4. 进步与成就奖励</h3>
+<p>学生在下一个计费周期中，最多可获得 <b>10% 折扣</b>奖励。</p>
+<ul>
+<li><b>持续保持高水平 – 5%</b>：学习表现持续优秀。</li>
+<li><b>学校成绩提升 – 5%</b>：有明显进步（例如 C→B，B→A）。</li>
+<li><b>持续稳定进步 – 5%</b>：体现在自信、准确率、推理能力和课堂投入度上。</li>
+</ul>
+<p class="util-m-0">若同时满足多项标准，奖励折扣上限为 <b>10%</b>。</p>
+</div>
+<div class="discount-card-green">
+<h3>🔎 5. 折扣如何应用</h3>
+<ul>
+<li>每位学生每个计费周期只适用一种折扣。</li>
+<li>如有多种折扣同时适用，将采用其中 <b>最高</b> 的一种。</li>
+<li>每位学生每个计费周期的最高折扣为 <b>20%</b>。</li>
+</ul>
+</div>
+</section>
+<section class="section" id="policies-概览">
+<div class="card">
+<h2 class="section-title util-mt-0">政策概览</h2>
+<ul class="policy-list">
+<li>课程费用需预付，并提前安排好时间。</li>
+<li>如需取消或改期，请至少提前 <strong>24 小时通知</strong>。</li>
+<li>我们会维持尊重、支持性的学习环境。</li>
+</ul>
+<p class="section-sub util-mt-12-reset">
+   完整详情请阅读我们的 <a href="policies.html">政策</a>。
+  </p>
+</div>
+</section>
+<section class="section" id="cta-bottom">
+<div class="card util-p-22">
+<h2 class="section-title util-mb-10">不确定哪种方案最适合您的孩子？</h2>
+<p class="section-sub util-mb-14">
+   告诉我们孩子的年级和目标（补基础 / 跟上进度 / 提前拓展），我们会推荐最合适的起点。
+  </p>
+<div class="btn-row">
+<a class="btn btn-success" href="enquiry.html">咨询</a>
+<a class="btn btn-amber" href="register.html">报名</a>
+<a class="btn btn-amber" href="programs.html">返回课程项目</a>
+</div>
+</div>
+</section>
+</main>
