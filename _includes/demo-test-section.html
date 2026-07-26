@@ -1,0 +1,35 @@
+<section class="demo-test section">
+  <div class="container">
+    <div class="demo-test__hero">
+      <h2>{{ site.data.demo.title }}</h2>
+      <p>{{ site.data.demo.intro }}</p>
+    </div>
+
+    <div class="demo-test__highlights">
+      {% for item in site.data.demo.highlights %}
+      <article class="demo-test__card demo-test__card--{{ item.modifier }}">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="demo-test__levels">
+      <h3>{{ site.data.demo.levels_title }}</h3>
+      <div class="demo-test__chips">
+        {% for level in site.data.demo.levels %}
+        <a class="demo-test__chip" href="{{ level.url | relative_url }}">{{ level.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="demo-test__included">
+      <h3>{{ site.data.demo.included_title }}</h3>
+      <ul>
+        {% for item in site.data.demo.included %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

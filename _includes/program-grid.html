@@ -1,0 +1,18 @@
+<section class="section data-grid-section">
+  <div class="container">
+    <div class="section-head premium-section-head">
+      <h2>Choose the right learning path</h2>
+      <p>A cleaner, data-driven overview that is easy to update as the business grows.</p>
+    </div>
+    <div class="premium-card-grid">
+      {% for item in site.data.programs.items %}
+        <article class="premium-card premium-card--{{ item.theme }}">
+          <div class="premium-card__icon">{{ item.icon }}</div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.summary }}</p>
+          <a class="link-strong" href="{{ item.url | relative_url }}">Learn more</a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,469 @@
+
+    /* ===== Smooth jump ===== */
+    html { scroll-behavior: smooth; }
+
+    /* ===== Offset anchors so sticky topbar won't cover headings ===== */
+    #detailed-fees, #maths-club-fee, #discounts-rewards { scroll-margin-top: 110px; }
+
+    /* ==========================================================
+       SECTION TITLES (match programs.html vibe)
+       - bigger than body
+       - coloured
+       - consistent h3 sizing
+       ========================================================== */
+    .section-title{
+      font-size: clamp(26px, 2.2vw, 34px);
+      font-weight: 1000;
+      letter-spacing: .2px;
+      margin: 0 0 8px;
+      color: #2563eb; /* default blue */
+    }
+    .section-sub{
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: .9;
+      margin: 0 0 14px;
+    }
+
+    /* Card titles */
+    .card h3, .qr-title, .club-card h3, .discount-card h3,
+    .discount-card-wide h3, .discount-card-green h3, .info-card h3{
+      font-size: clamp(18px, 1.4vw, 22px);
+      font-weight: 1000;
+      margin: 0 0 10px;
+      color: #0b1a2b;
+    }
+
+    /* Section-specific accent colours */
+    #detailed-fees .section-title{ color:#2563eb; } /* blue */
+    #fees-glance .section-title{ color:#7c3aed; } /* purple */
+    #maths-club-fee .section-title{ color:#16a34a; } /* green */
+    #discounts-rewards .section-title{ color:#f59e0b; } /* amber */
+    #policies-summary .section-title{ color:#0ea5e9; } /* sky */
+    #cta-bottom .section-title{ color:#2563eb; } /* blue */
+
+    /* ===== Chip-style LINKS (clickable only) ===== */
+    .chip-links{ display:flex; flex-wrap:wrap; gap:10px; }
+    .chip-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 1000;
+      font-size: 14px;
+      line-height: 1;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+      color: inherit;
+      text-decoration: none;
+      transition: background-color .14s ease, color .14s ease, transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+    }
+    .chip-link:hover{
+      background: var(--brand);
+      color: #fff;
+      border-color: rgba(0,0,0,.10);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
+    }
+    .chip-link:focus-visible{
+      outline: 3px solid rgba(11, 94, 215, .45);
+      outline-offset: 3px;
+    }
+
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{ background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
+    .hero-snap-logoBox img{ padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; border-radius: 0 !important; }
+    .hero { padding: 22px 0 18px; }
+
+    /* ===== Button hover ===== */
+    .btn{ transition: transform .12s ease, filter .12s ease, box-shadow .12s ease; will-change: transform, filter; }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(0.96); box-shadow: 0 10px 22px rgba(2, 6, 23, .12); }
+
+    /* ===== Fees-at-a-glance cards ===== */
+    .price-grid{ display:grid; gap:18px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1100px){ .price-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 700px){ .price-grid{ grid-template-columns: 1fr; } }
+
+    .price-card{
+      border-radius: 18px;
+      padding: 18px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+      min-width: 0;
+    }
+    .price-card.featured{ border-width: 3px; box-shadow: 0 10px 22px rgba(0,0,0,.08); }
+    .price-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom: 6px; min-width:0; }
+    .price-top h3{ margin:0; font-size: 22px; }
+    .kicker{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.65);
+      font-weight: 1000;
+      font-size: 13px;
+      line-height: 1.2;
+      white-space: normal;
+      text-align: center;
+      max-width: 100%;
+    }
+    .price{
+      font-size: 44px;
+      font-weight: 1000;
+      line-height: 1;
+      margin: 10px 0 4px;
+      overflow-wrap:anywhere;
+    }
+    .per{ opacity: .85; font-weight: 800; margin-bottom: 10px; line-height: 1.35; }
+    .fee-chips{ display:flex; flex-wrap:wrap; gap:8px; margin: 8px 0 10px; }
+    .fee-chip{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius:999px;
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 1;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.65);
+      overflow-wrap:anywhere;
+    }
+    .parents-get{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1.5;
+      overflow-wrap:anywhere;
+    }
+
+    /* ===== Important info box ===== */
+    .imp-box{
+      margin-top: 14px;
+      background: #eaf4ff;
+      border: 3px solid #9ec9ff;
+      border-radius: 26px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    }
+    .imp-head{ display:flex; align-items:center; gap: 12px; margin: 0 0 10px; }
+    .imp-pin{ font-size: 30px; line-height: 1; }
+    .imp-title{
+      margin: 0;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      color:#1e40af;
+    }
+    .imp-list{
+      margin: 0 0 12px;
+      padding-left: 22px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #222;
+    }
+    .imp-list li{ margin: 10px 0; }
+    .imp-list b{ font-weight: 900; }
+    .imp-footer{ margin: 0; font-size: 16px; line-height: 1.6; color: #222; }
+    .imp-link{ font-weight: 900; text-decoration: none; border-bottom: 1px solid rgba(30,136,229,0.35); }
+
+    /* ===== Pricing tool styles (SCOPED) ===== */
+    .price-tool{
+      --line: rgba(15, 23, 42, .10);
+      --text: #0b1a2b;
+      --muted: #4b6078;
+      --accent: #2563eb;
+      --accent2:#7c3aed;
+      --online:#0ea5e9;
+      --inperson:#f97316;
+      --shadow: 0 10px 28px rgba(2, 8, 23, .10);
+      --yellow:#FFE66D;
+      --yellow2:#FFD54D;
+    }
+    .price-tool .wrap{ width: 100%; max-width: none; margin: 0; padding: 0; }
+    .price-tool p{ margin: 0 0 14px; color: var(--muted); line-height: 1.45; }
+    .price-tool .bar{ display:flex; gap:12px; flex-wrap:wrap; align-items:stretch; margin:14px 0 18px; }
+    .price-tool .seg{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      background:rgba(255,255,255,.7);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:6px;
+      box-shadow: 0 6px 16px rgba(2,8,23,.06);
+      backdrop-filter: blur(8px);
+    }
+    .price-tool .seg button{
+      border:0;
+      background:transparent;
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      color:var(--muted);
+      font-weight:900;
+      font-size:16px;
+      transition: transform .12s ease, background .12s ease, color .12s ease, outline .12s ease;
+      white-space: nowrap;
+    }
+    .price-tool .seg button:hover{ transform: translateY(-1px); }
+    .price-tool .seg button.active{
+      color:#0b1a2b;
+      background: linear-gradient(135deg, rgba(37,99,235,.16), rgba(124,58,237,.12));
+      outline:2px solid rgba(37,99,235,.22);
+    }
+    .price-tool .note{
+      flex:1;
+      min-width:300px;
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      box-shadow: 0 6px 16px rgba(2,8,23,.06);
+      backdrop-filter: blur(8px);
+    }
+    .price-tool .badge-row{ display:flex; align-items:center; gap: 10px; flex-wrap:wrap; margin-bottom: 8px; }
+    .price-tool .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:950;
+      color:#0b1a2b;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(2,8,23,.10);
+      background: linear-gradient(135deg, rgba(37,99,235,.14), rgba(14,165,233,.10));
+      white-space: nowrap;
+    }
+    .price-tool .badge.warn{ background: linear-gradient(135deg, rgba(249,115,22,.18), rgba(245,158,11,.12)); }
+    .price-tool .note strong{ color:#0b7a2a; }
+    .price-tool .sub{ font-size:14px; color:var(--muted); margin-top:8px; line-height:1.35; }
+    .price-tool .vceBox{
+      min-width:280px;
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      box-shadow: 0 6px 16px rgba(2,8,23,.06);
+      backdrop-filter: blur(8px);
+      display:none;
+    }
+    .price-tool .vceBox .title{
+      font-weight:1000;
+      margin-bottom:8px;
+      font-size:16px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip:text;
+      color:transparent;
+    }
+    .price-tool .vceBox .hint{ font-size:14px; color:var(--muted); margin-top:8px; line-height:1.35; }
+
+    /* TABLE */
+    .price-tool .fees-table-wrap{
+      width:100%;
+      max-width:100%;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:4px;
+      border:none;
+      background:transparent;
+      box-shadow:none;
+    }
+    .price-tool table.fees-table{
+      width:max(760px, 100%);
+      min-width:760px;
+      border-collapse:separate;
+      border-spacing:0;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #fff;
+      table-layout: fixed;
+    }
+    .price-tool table.fees-table thead th{
+      padding:16px 12px;
+      font-size:18px;
+      font-weight:1000;
+      text-align:left;
+      color:#1f2937;
+      border-bottom:1px solid rgba(2,8,23,.10);
+      background: linear-gradient(180deg, var(--yellow), var(--yellow2));
+    }
+    .price-tool table.fees-table tbody td{
+      padding:14px 12px;
+      border-bottom:1px solid rgba(2,8,23,.08);
+      vertical-align:top;
+      font-size:16px;
+      min-width:0;
+      overflow-wrap:anywhere;
+      word-break: break-word;
+    }
+    .price-tool table.fees-table tbody tr:last-child td{ border-bottom:0; }
+    .price-tool tbody tr{ transition: transform .12s ease; }
+    .price-tool tbody tr:hover{ transform: translateY(-1px); }
+    .price-tool .program{ font-weight:1000; font-size:18px; }
+    .price-tool .icon{ font-size:22px; }
+    .price-tool .cells{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+    .price-tool .pricebox{
+      border:1px solid rgba(2,8,23,.10);
+      border-radius:16px;
+      padding:10px 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+      box-shadow: 0 8px 18px rgba(2,8,23,.08);
+      transition: transform .12s ease, box-shadow .12s ease;
+      height: 100%;
+      min-width: 0;
+    }
+    .price-tool .pricebox:hover{ transform: translateY(-2px); box-shadow: 0 14px 26px rgba(2,8,23,.12); }
+    .price-tool .price{ font-size:20px; font-weight:1000; }
+    .price-tool .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin-top:8px;
+      font-weight:1000;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(2,8,23,.10);
+      width:fit-content;
+      max-width: 100%;
+      white-space: normal;
+      line-height: 1.15;
+      text-align:center;
+    }
+    .price-tool .tag.online{ color:#044b61; background: linear-gradient(135deg, rgba(14,165,233,.22), rgba(34,211,238,.14)); }
+    .price-tool .tag.inperson{ color:#5a2608; background: linear-gradient(135deg, rgba(249,115,22,.24), rgba(245,158,11,.14)); }
+    .price-tool .locked{
+      border:1px dashed rgba(2,8,23,.25);
+      border-radius:16px;
+      padding:12px;
+      background: linear-gradient(135deg, rgba(249,115,22,.10), rgba(245,158,11,.06));
+      color:var(--muted);
+      min-width:0;
+    }
+    .price-tool .locked .label{ font-weight:1000; color:#1f2937; font-size:16px; }
+    .price-tool .locked .small{ font-size:14px; margin-top:6px; line-height:1.35; }
+    .price-tool .tool-footer{
+      margin-top:14px;
+      padding:14px;
+      border:1px dashed rgba(37,99,235,.35);
+      border-radius:16px;
+      background: rgba(255,255,255,.72);
+      color:var(--muted);
+      line-height:1.5;
+      box-shadow: 0 6px 16px rgba(2,8,23,.06);
+      backdrop-filter: blur(8px);
+      font-size:16px;
+    }
+    @media (max-width: 900px){ .price-tool .cells{ grid-template-columns: 1fr; } }
+    @media (max-width: 880px){
+      .price-tool table.fees-table thead th:nth-child(1){ display:none; }
+      .price-tool table.fees-table tbody td:nth-child(1){ display:none; }
+    }
+    @media (max-width: 700px){
+      .price-tool .seg button{ font-size: 14px; }
+      .price-tool table.fees-table thead th{ font-size: 16px; }
+    }
+
+    /* ===== Value cards under table ===== */
+    .triple-grid{
+      margin-top: 14px;
+      display:grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (max-width: 950px){ .triple-grid{ grid-template-columns: 1fr; } }
+    .info-card{
+      background: rgba(255,255,255,.75);
+      border: 2px solid rgba(0,0,0,.10);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      min-width:0;
+    }
+    .quote-box{
+      margin: 10px 0 12px;
+      background: rgba(255,255,255,0.65);
+      border-radius: 16px;
+      padding: 14px 14px;
+      border-left: 6px solid rgba(37,99,235,.75);
+      font-size: 16px;
+      line-height: 1.45;
+      color: #333;
+    }
+    .notes-box{
+      background: rgba(255,255,255,0.65);
+      border-radius: 16px;
+      padding: 14px 14px;
+      border-left: 6px solid rgba(37,99,235,.75);
+    }
+    .notes-box ul{ margin:0; padding-left: 20px; line-height: 1.7; }
+
+    /* Maths Club + Discounts sections */
+    .club-section, .discounts-section{
+      margin-top: 16px;
+      background: rgba(255,255,255,.75);
+      border: 2px solid rgba(0,0,0,.10);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    }
+    .club-sub, .discounts-subtitle{
+      text-align:center;
+      margin: 0 0 14px;
+      opacity: .9;
+      line-height: 1.6;
+    }
+    .club-grid{ display:grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 850px){ .club-grid{ grid-template-columns: 1fr; } }
+    .club-card{ background: rgba(255,255,255,.65); border: 2px solid rgba(0,0,0,.08); border-radius: 18px; padding: 16px 18px; }
+    .price-lines{ margin: 0; line-height: 1.8; font-size: 16px; font-weight: 800; }
+    .best-value{
+      display:inline-block;
+      margin-left: 8px;
+      background: rgba(229,57,53,.95);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 1000;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+
+    .discounts-row{ display:flex; flex-wrap:wrap; gap: 14px; margin-bottom: 14px; }
+    .discount-card{ flex: 1 1 290px; background: rgba(255,255,255,.65); border: 2px solid rgba(0,0,0,.08); border-radius: 14px; padding: 16px 18px; }
+    .discount-card p, .discount-card ul{ font-size: 15px; margin: 0 0 8px 0; line-height: 1.55; }
+    .discount-card ul{ padding-left: 20px; margin-top: 6px; }
+    .example-box{
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: rgba(234,244,255,.85);
+      border: 1px solid rgba(37,99,235,.25);
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .discount-card-wide{ background: rgba(255,255,255,.65); border:2px solid rgba(0,0,0,.08); border-radius:14px; padding: 16px 18px; margin-bottom: 14px; }
+    .discount-card-wide ul{ padding-left: 20px; margin: 8px 0 10px; line-height: 1.55; font-size: 15px; }
+    .discount-card-green{ background: rgba(232,245,233,.85); border:2px solid rgba(46,125,50,.20); border-radius: 14px; padding: 16px 18px; }
+    .discount-card-green ul{ padding-left: 20px; margin: 0; line-height: 1.55; font-size: 15px; }
+
+    /* Bottom CTA row */
+    .btn-row{ display:flex; justify-content:center; gap: 12px; flex-wrap:wrap; margin: 18px 0 6px; }
+
+    /* Small policy list clean spacing */
+    .policy-list{ margin:0; padding-left:18px; font-weight:650; line-height:1.7; opacity: .92; }
+  

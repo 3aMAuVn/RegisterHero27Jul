@@ -1,0 +1,3 @@
+{% assign asset_prefix = '.' %}
+{% if page.url contains '/demo/' %}{% assign asset_prefix = '../..' %}{% elsif page.url contains '/vi/' or page.url contains '/cn/' %}{% assign asset_prefix = '..' %}{% endif %}
+<script src="{{ asset_prefix }}/assets/js/site.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>

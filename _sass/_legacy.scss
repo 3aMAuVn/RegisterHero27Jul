@@ -1,0 +1,1915 @@
+/* style.css */
+/* =========================
+   Magic Math Master - Clean style.css
+   (Pill topbar + Screenshot hero)
+   ========================= */
+
+/* ============ TOKENS ============ */
+:root{
+  --bg: #f7f9fc;
+  --paper: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: rgba(15, 23, 42, .10);
+
+  --brand: #0b5ed7;
+  --brand2:#0a3d91;
+  --accent:#f59e0b;
+  --success:#16a34a;
+  --red:#ba0921;
+  --turquoise:#05464d;
+
+  --success-hover: #15803d;
+  --accent-hover:  #d97706;
+  --brand-hover:   #0a4fb8;
+
+  --radius: 16px;
+  --shadow: 0 18px 40px rgba(2, 6, 23, .10);
+  --shadow2: 0 10px 24px rgba(2, 6, 23, .08);
+
+  --max: 1120px;
+
+  /* ===== NAV sizing (tight) ===== */
+  --nav-font: 16px;
+  --nav-py: 6px;
+  --nav-px: 12px;
+  --nav-lh: 1;
+
+  /* =========================
+     Global responsive hero title sizing
+     Applies to all pages that use .hero-snap-title
+     ========================= */
+  --hero-title-min: 30px;
+  --hero-title-fluid: 3.2vw;
+  --hero-title-max: 56px;
+  --hero-title-line: 1.08;
+}
+
+/* ============ BASE ============ */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; overflow-x:hidden; }
+img{ max-width:100%; height:auto; display:block; }
+
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:
+    radial-gradient(1200px 700px at 15% 0%, rgba(11,94,215,.12), transparent 55%),
+    radial-gradient(1000px 700px at 85% 10%, rgba(245,158,11,.10), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  line-height:1.6;
+}
+
+a{ color:inherit; }
+.container{ max-width: var(--max); margin: 0 auto; padding: 0 18px; }
+
+/* ============ LANGUAGE LINKS ============ */
+.lang-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+}
+
+.lang-link:hover{
+  text-decoration:underline;
+}
+
+/* Small badge for page-content language links (emoji version) */
+.lang-flag-badge{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 16px;
+  background:#fff;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08);
+  font-size:10px;
+  line-height:1;
+  overflow:hidden;
+  transform: translateY(1px);
+}
+
+/* Optional: if you use inline SVG flags */
+.lang-flag-svg{
+  width:16px;
+  height:16px;
+  display:block;
+  flex:0 0 16px;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08);
+}
+
+/* Optional: if you ever use image-based flags */
+.lang-flag-icon{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  object-fit:cover;
+  display:inline-block;
+  flex:0 0 16px;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08);
+}
+
+/* ============ TOP BAR (pill nav) ============ */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(247,249,252,.78);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  text-decoration:none;
+}
+
+/* top-left logo */
+.brand-logo{
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 999px;
+}
+
+.brand-title{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+.brand-title b{
+  font-size: 22px;
+  font-weight: 1000;
+  color: var(--brand2);
+}
+.brand-title span{
+  font-size: 14px;
+  font-weight: 800;
+  color: rgba(15,23,42,.70);
+}
+
+/* =========================
+   NAV pills (UPDATED)
+   Desktop: 1 row
+   iPad/Mobile: wrap to 2–3 lines (no hidden buttons)
+   ========================= */
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  justify-content:flex-end;
+  flex-wrap: nowrap;
+}
+
+.nav a{
+  text-decoration:none;
+  font-weight: 1000;
+  font-size: var(--nav-font);
+  line-height: var(--nav-lh);
+  color:#0f172a;
+
+  padding: var(--nav-py) var(--nav-px);
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.92);
+  border: 2px solid rgba(15,23,42,.14);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.nav a:hover{
+  background: rgba(11,94,215,.08);
+  border-color: rgba(11,94,215,.18);
+  transform: translateY(-1px);
+}
+.nav a.active,
+.nav a[aria-current="page"]{
+  background: rgba(11,94,215,.18);
+  border-color: rgba(11,94,215,.35);
+  box-shadow: 0 10px 18px rgba(11,94,215,.12);
+}
+
+/* old language pill link style (kept if used elsewhere) */
+.nav a.nav-lang{
+  border-color: rgba(11,94,215,.22);
+  gap: 7px;
+  padding-left: 12px;
+  padding-right: 14px;
+}
+
+.nav-lang-badge{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 16px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.10);
+  font-size: 10px;
+  line-height: 1;
+  overflow: hidden;
+  transform: translateY(1px);
+}
+
+.nav-lang-flag{
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex: 0 0 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.10);
+}
+
+/* ===== KEY FIX: iPad + mobile wrap (show ALL buttons) ===== */
+@media (max-width: 1024px){
+  .topbar-inner{
+    flex-direction: column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    width: 100%;
+    justify-content:flex-start;
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+  }
+
+  .nav a{
+    font-size: 15px;
+    padding: 7px 12px;
+  }
+}
+
+/* smaller phones: even tighter to reduce lines */
+@media (max-width: 520px){
+  .nav{ gap: 6px; }
+  .nav a{
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  text-decoration:none;
+  font-weight: 900;
+  border-radius: 999px;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  cursor:pointer;
+  white-space: nowrap;
+  line-height: 1;
+  transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease, color .14s ease;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(2, 6, 23, .14);
+}
+.btn:active{ transform: translateY(0); }
+.btn:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .45);
+  outline-offset: 3px;
+}
+
+.btn-primary{
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color:#fff;
+  box-shadow: 0 14px 28px rgba(11,94,215,.18);
+}
+.btn-primary:hover{ filter: brightness(1.03); }
+
+.btn-outline{
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(11,94,215,.28);
+  color: var(--brand2);
+}
+.btn-outline:hover{ background: rgba(11,94,215,.06); }
+
+.btn-success{ background: var(--success); color:#fff; }
+.btn-amber{ background: var(--accent); color:#111827; }
+.btn-red{ background: var(--red); color:#fff; }
+.btn-cyan{ background: var(--turquoise); color:#fff; }
+
+.btn-success:hover{ background: var(--success-hover); }
+.btn-amber:hover{ background: var(--accent-hover); }
+
+/* Force purple button (Email app) */
+.policy-email-cta .btn-purple{
+  background: #7c3aed !important;
+  color: #fff !important;
+  border: 2px solid rgba(0,0,0,.10) !important;
+}
+.policy-email-cta .btn-purple:hover{
+  filter: brightness(.96);
+}
+.btn-purple:hover{
+  filter: brightness(.96);
+}
+
+/* =========================
+   Register-style HERO (banner card)
+   Used by: register.html, enquiry.html, club-register.html
+   ========================= */
+.hero-card{
+  overflow:hidden;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.10);
+  margin: 16px 0;
+}
+
+.hero-banner{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.hero-copy{
+  background: rgba(255,255,255,.95);
+  border-top: 1px solid var(--line);
+  padding: 18px;
+}
+
+.hero-title{
+  margin: 0 0 8px;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.12;
+  color: var(--brand2);
+  font-weight: 1000;
+  letter-spacing: -0.2px;
+}
+
+.hero-desc{
+  margin: 0;
+  color: rgba(15,23,42,.72);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.hero-pills{
+  margin-top: 14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.hero-pill{
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(11,94,215,.08);
+  color: var(--brand2);
+  font-weight: 900;
+  border: 1px solid rgba(11,94,215,.18);
+  font-size: .95rem;
+}
+
+/* =========================
+   Shared CTA styles (SITE-WIDE)
+   ========================= */
+.hero-actions{
+  margin-top: 14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+/* Secondary button (blue-tinted) */
+.btn-secondary{
+  background: rgba(11,94,215,.08);
+  color: var(--brand2);
+  border: 1px solid rgba(11,94,215,.25);
+  box-shadow: none;
+}
+.btn-secondary:hover{
+  background: rgba(11,94,215,.14);
+}
+
+/* Badge styled to match “pills” */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-left: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 900;
+  background: rgba(11,94,215,.10);
+  color: var(--brand2);
+  border: 1px solid rgba(11,94,215,.22);
+  line-height: 1.1;
+}
+
+/* Optional: strong link */
+.link-strong{
+  color: var(--brand);
+  font-weight: 900;
+  text-decoration: underline;
+}
+.link-strong:hover{
+  text-decoration-thickness: 2px;
+}
+
+/* ============ HERO (screenshot style) ============ */
+.hero{ padding: 18px 0 24px; }
+
+.hero-snap{
+  background: #fff;
+  border: 2px solid rgba(11,94,215,.18);
+  border-radius: 34px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.10);
+  padding: 34px 30px;
+}
+
+.hero-snap-grid{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap: 22px;
+  align-items: start;
+}
+@media (max-width: 980px){
+  .hero-snap-grid{ grid-template-columns: 1fr; }
+}
+
+/* ===== Hero title/tagline (single source of truth) ===== */
+.hero-snap-title{
+  margin: 0 0 10px;
+  text-align:center;
+  font-weight: 1000;
+  color: var(--brand2);
+  font-size: clamp(var(--hero-title-min), var(--hero-title-fluid), var(--hero-title-max));
+  line-height: var(--hero-title-line);
+  letter-spacing: -0.01em;
+}
+
+.hero-snap-tagline{
+  margin: 10px 0 0;
+  text-align:center;
+  font-weight: 900;
+  color: rgba(15,23,42,.72);
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.45;
+}
+
+.hero-snap-desc{
+  margin: 24px auto 0;
+  max-width: 1200px;
+  text-align:center;
+  color: rgba(15,23,42,.72);
+  font-weight: 650;
+  font-size: clamp(16px, 1.35vw, 24px);
+  line-height: 1.65;
+}
+.hero-snap-desc b{ color: rgba(15,23,42,.92); font-weight: 900; }
+
+.hero-snap-checks{
+  margin: 22px 0 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+  color: var(--brand);
+  font-weight: 1000;
+  font-size: clamp(14px, 1.2vw, 24px);
+}
+
+.hero-snap-pills{
+  margin: 18px 0 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-snap-pill{
+  background: rgba(245,158,11,.10);
+  border: 4px solid rgba(245,158,11,.45);
+  border-radius: 999px;
+  padding: 16px 26px;
+  font-weight: 1000;
+  color: rgba(122,74,0,.95);
+  font-size: clamp(14px, 1.15vw, 22px);
+}
+
+.hero-snap-cta{
+  margin: 20px 0 0;
+  display:flex;
+  justify-content:center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* HERO logo box (single source of truth) */
+.hero-snap-logoBox{
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-start;
+
+  width: max-content;
+  justify-self: end;
+  margin-left: auto;
+}
+
+.hero-snap-logoBox img{
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  display:block;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+}
+
+@media (max-width: 980px){
+  .hero-snap-logoBox{
+    justify-self: end;
+    margin-left: auto;
+  }
+}
+
+/* =========================================
+   OPTIONAL SPLIT HERO LAYOUT
+   For pages like mathclub.html:
+   - title + tagline + description on left of logo
+   - text stays centered inside left column
+   - checks + pills + buttons stay full width below
+   ========================================= */
+.hero-snap-grid-split{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 22px;
+  align-items: start;
+}
+
+.hero-snap-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.hero-snap-grid-split .hero-snap-title,
+.hero-snap-grid-split .hero-snap-tagline,
+.hero-snap-grid-split .hero-snap-desc-left{
+  text-align:center;
+}
+
+.hero-snap-grid-split .hero-snap-desc-left{
+  margin: 18px 0 0;
+  max-width: 720px;
+}
+
+.hero-snap-full{
+  margin-top: 20px;
+}
+
+.hero-snap-full .hero-snap-checks,
+.hero-snap-full .hero-snap-pills,
+.hero-snap-full .hero-snap-cta{
+  justify-content:center;
+}
+
+@media (max-width: 980px){
+  .hero-snap-grid-split{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-snap-copy{
+    align-items:center;
+  }
+
+  .hero-snap-grid-split .hero-snap-title,
+  .hero-snap-grid-split .hero-snap-tagline,
+  .hero-snap-grid-split .hero-snap-desc-left{
+    text-align:center;
+  }
+
+  .hero-snap-logoBox{
+    justify-self:center;
+    margin: 0 auto;
+  }
+}
+
+/* ============ SECTIONS / CARDS ============ */
+.section{ padding: 26px 0; }
+
+.section-title{
+  margin: 0 0 12px;
+  font-size: 26px;
+  letter-spacing: -0.4px;
+}
+.section-sub{
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 650;
+  max-width: none !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 980px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background: rgba(255,255,255,.80);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow2);
+}
+.card h3{
+  margin: 0 0 8px;
+  font-size: 17px;
+  letter-spacing: -0.2px;
+}
+.card p{ margin:0; color: var(--muted); font-weight: 650; }
+
+/* =========================================
+   Global: colour ALL card titles (text only)
+   - BUT do NOT force emojis/icons to be colored
+   ========================================= */
+.card h3,
+.info-card h3,
+.club-card h3,
+.discount-card h3,
+.discount-card-wide h3,
+.discount-card-green h3,
+.qr-card h3,
+.price-card h3{
+  font-size: 22px;
+  font-weight: 1000;
+  margin: 0 0 10px;
+  letter-spacing: .2px;
+  color: #2563eb;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .card h3,
+  .info-card h3,
+  .club-card h3,
+  .discount-card h3,
+  .discount-card-wide h3,
+  .discount-card-green h3,
+  .qr-card h3,
+  .price-card h3{
+    background-image: linear-gradient(90deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Icons/emoji inside headings should remain normal color */
+h3 .ico{
+  color: var(--ink) !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* Escape hatch: add class="no-title-color" to a card to keep it plain */
+.no-title-color h3{
+  color: #1f2937 !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+.icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(245,158,11,.14);
+  border: 1px solid rgba(245,158,11,.22);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* linkable cards */
+a.card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
+}
+a.card:hover{
+  transform: none;
+  box-shadow: none;
+  border-color: inherit;
+  background: inherit;
+}
+a.card:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .45);
+  outline-offset: 3px;
+  border-radius: 16px;
+}
+
+/* program chips */
+.prog-chip{
+  display:inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1;
+  border: 2px solid rgba(15,23,42,.12);
+  background: rgba(255,255,255,.75);
+  color: var(--ink);
+}
+
+/* chips hover only inside clickable chooser cards */
+a.card .prog-chip{
+  cursor: pointer;
+  transition: background-color .14s ease, color .14s ease, transform .14s ease,
+              box-shadow .14s ease, border-color .14s ease;
+}
+a.card .prog-chip:hover{
+  background: var(--brand);
+  color: #fff;
+  border-color: rgba(11,94,215,.20);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
+}
+
+/* ============ CONTENT HELPERS (NEW: shared for about.html etc.) ============ */
+.clean-list{
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+  font-weight: 650;
+  color: var(--muted);
+}
+.clean-list li{ margin: 8px 0; }
+
+.note{
+  background:#e7f4ff;
+  border-left:6px solid #42a5f5;
+  border-radius:14px;
+  padding:14px 16px;
+  font-weight: 750;
+  line-height: 1.7;
+  color: #0f172a;
+}
+
+/* ============ FORMS ============ */
+.form{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+@media (max-width: 860px){
+  .form{ grid-template-columns: 1fr; }
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+label{
+  font-weight: 900;
+  font-size: 13px;
+}
+
+input, select, textarea{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 12px;
+  font: inherit;
+  background: rgba(255,255,255,.88);
+}
+textarea{
+  min-height: 120px;
+  resize: vertical;
+}
+.helper{
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* ============ FOOTER ============ */
+.footer{
+  margin-top: 22px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.footer a{
+  color: var(--brand2);
+  text-decoration: none;
+  font-weight: 900;
+  opacity: .9;
+}
+.footer a:hover{ text-decoration: underline; opacity: 1; }
+
+/* ✅ 3 equal columns so the right side never gets “squeezed” */
+.footer-inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-left{ justify-self: start; }
+
+/* Center links truly centered */
+.footer-center{
+  justify-self: center;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ✅ Emails pinned to the right edge and stacked */
+.footer-right{
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  text-align: right;
+  white-space: nowrap; /* prevents ugly wraps */
+}
+
+/* Active link styling (works with your script.js adding aria-current + .active) */
+.footer a.active,
+.footer a[aria-current="page"]{
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  opacity: 1;
+}
+
+/* Responsive: stack cleanly */
+@media (max-width: 820px){
+  .footer-inner{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-left,
+  .footer-center,
+  .footer-right{
+    justify-self: center;
+  }
+  .footer-right{
+    align-items: center;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+/* Current page styling */
+.footer a.active,
+.footer a[aria-current="page"]{
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  opacity: 1;
+}
+
+/* Responsive: stack cleanly */
+@media (max-width: 820px){
+  .footer-inner{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-left,
+  .footer-center,
+  .footer-right{
+    justify-self: center;
+  }
+  .footer-center{
+    justify-content: center;
+  }
+  .footer-right{
+    justify-content: center;
+    text-align: center;
+    gap: 14px;
+  }
+}
+/* ============ QUICK LINKS (panel) ============ */
+.quicklinks{
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow2);
+  padding: 14px;
+  margin: 14px 0 18px;
+}
+
+.quicklinks h2{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 1000;
+  text-align: center;
+  color: var(--brand2);
+}
+
+/* ===== Quick Links: up to 4 buttons per row ===== */
+.ql-grid{
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1100px){
+  .ql-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 780px){
+  .ql-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 420px){
+  .ql-grid{ grid-template-columns: 1fr; }
+}
+
+.ql-btn{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  font-weight: 1000;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: rgba(11,94,215,.06);
+  border: 1px solid rgba(11,94,215,.18);
+  color: var(--brand2);
+  cursor:pointer;
+  user-select:none;
+  transition: background-color .14s ease, color .14s ease, transform .14s ease,
+              box-shadow .14s ease, border-color .14s ease;
+}
+
+.ql-btn:hover{
+  background: var(--brand);
+  color: #fff;
+  border-color: rgba(0,0,0,.10);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
+}
+.ql-btn:active{ transform: translateY(0); }
+
+.ql-btn:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .45);
+  outline-offset: 3px;
+}
+
+/* ============ QUICK JUMP (chip row) ============ */
+.quick-jump{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin: 14px 0 6px;
+}
+
+.quick-jump a,
+.quick-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-weight: 1000;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration:none;
+  color: inherit;
+  border: 2px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.75);
+  cursor:pointer;
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background-color .14s ease;
+}
+
+.quick-jump a:hover,
+.quick-link:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(2, 6, 23, .10);
+  border-color: rgba(11, 94, 215, .35);
+  background: rgba(255,255,255,.92);
+}
+.quick-jump a:active,
+.quick-link:active{
+  transform: translateY(0);
+}
+.quick-jump a:focus-visible,
+.quick-link:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .45);
+  outline-offset: 3px;
+}
+
+/* ============ ANCHOR TARGET OFFSET ============ */
+.anchor-target{
+  scroll-margin-top: 110px;
+}
+
+/* =========================================================
+   Email button visibility helpers (3 tiers)
+   - Desktop/Laptop (>= 981px): show .desktop-only
+   - Tablet/iPad (601px–980px): show .tablet-only
+   - Phone (<= 600px): show .phone-only
+   ========================================================= */
+.desktop-only{ display: inline-flex; }
+.tablet-only{ display: none; }
+.phone-only{ display: none; }
+
+@media (max-width: 980px){
+  .desktop-only{ display: none !important; }
+  .tablet-only{ display: inline-flex !important; }
+}
+
+@media (max-width: 600px){
+  .tablet-only{ display: none !important; }
+  .phone-only{ display: inline-flex !important; }
+}
+
+/* IMPORTANT:
+   Removed old .mobile-only rules because they caused duplicate buttons on phones.
+*/
+@media (hover: none) and (pointer: coarse){
+  .desktop-only{ display: none !important; }
+  .mobile-only{ display: inline-flex !important; }
+}
+
+.best-value{
+  display:inline-block;
+  margin-left: 8px;
+  background: rgba(229,57,53,.95);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 1000;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* =========================================
+   LANGUAGE DROPDOWN (NEW IMAGE-FLAG VERSION)
+   ========================================= */
+.lang-menu{
+  position: relative;
+  display: inline-block;
+}
+
+.lang-btn{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 2px solid #ffffff;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0b5ed7, #38bdf8);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(11, 94, 215, .25);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.lang-btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.lang-btn:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .35);
+  outline-offset: 3px;
+}
+
+.lang-btn-text{
+  line-height: 1;
+}
+
+.lang-btn-caret{
+  font-size: 12px;
+  opacity: .9;
+  line-height: 1;
+}
+
+/* Rectangular flag images */
+.lang-btn-flag-img,
+.lang-flag-img{
+  width: 30px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 1px 2px rgba(0,0,0,.10);
+  display: inline-block;
+  flex: 0 0 30px;
+  vertical-align: middle;
+}
+
+.lang-dropdown{
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 170px;
+  background: #ffffff;
+  border: 1px solid rgba(11,94,215,.18);
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(2, 6, 23, .14);
+  padding: 10px;
+  z-index: 999;
+}
+
+.lang-option{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid rgba(15,23,42,.14);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0b3b91;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+
+.lang-option + .lang-option{
+  margin-top: 8px;
+}
+
+.lang-option:hover{
+  background: rgba(11,94,215,.06);
+  border-color: rgba(11,94,215,.22);
+  transform: translateY(-1px);
+}
+
+.lang-option.active{
+  background: rgba(11,94,215,.12);
+  border-color: rgba(11,94,215,.35);
+  box-shadow: 0 8px 16px rgba(11,94,215,.08);
+}
+
+.lang-label{
+  line-height: 1;
+}
+
+/* smaller sizing on phones */
+@media (max-width: 520px){
+  .lang-btn{
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .lang-btn-flag-img,
+  .lang-flag-img{
+    width: 28px;
+    height: 18px;
+    flex-basis: 28px;
+  }
+
+  .lang-dropdown{
+    min-width: 156px;
+    padding: 8px;
+  }
+
+  .lang-option{
+    padding: 10px 12px;
+    font-size: 15px;
+    gap: 10px;
+  }
+}
+
+.lang-flag-svg-rect{
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  flex: 0 0 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 1px 2px rgba(0,0,0,.10);
+  vertical-align: middle;
+}
+
+/* ===== Optional: club summary (kept as you had) ===== */
+.club-summary-wrap{
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(11,94,215,.14);
+  border-radius: 24px;
+  padding: 26px 22px;
+  box-shadow: var(--shadow2);
+}
+
+.club-badge{
+  display: table;
+  margin: 0 auto 16px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(245,158,11,.12);
+  border: 2px solid rgba(245,158,11,.45);
+  color: #6b4b00;
+  font-weight: 1000;
+  font-size: 16px;
+}
+
+.club-summary-title{
+  margin: 0 0 10px;
+  text-align: center;
+  color: var(--brand2);
+  font-size: 28px;
+  font-weight: 1100;
+}
+
+.club-summary-desc{
+  margin: 0 auto 18px;
+  max-width: 980px;
+  text-align: center;
+  color: #334155;
+  font-weight: 650;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.club-summary-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.club-summary-pill{
+  background: #eef3fb;
+  border: 1px solid rgba(11,94,215,.16);
+  border-radius: 18px;
+  padding: 14px 16px;
+  color: #1f2937;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 650;
+}
+
+.club-summary-pill strong{
+  font-weight: 1000;
+  color: #111827;
+}
+
+.club-summary-cta{
+  margin: 18px 0 0;
+  text-align: center;
+}
+
+@media (max-width: 900px){
+  .club-summary-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .club-summary-title{
+    font-size: 24px;
+  }
+
+  .club-summary-desc{
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   GLOBAL MOBILE OVERFLOW FIX (put at END of style.css)
+   Stops cards/sections from being wider than the screen
+   ========================================================= */
+
+/* 1) Prevent any accidental horizontal overflow */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2) Let grid/flex children shrink (CRITICAL fix) */
+.grid > *,
+.form > *,
+.footer-inner > *,
+.hero-actions > *,
+.nav > * {
+  min-width: 0;
+}
+
+/* 3) Long text must wrap instead of pushing layout */
+.section-sub,
+.card,
+.card p,
+.card h3,
+.hero-desc,
+.hero-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 4) Buttons: allow wrapping on small screens to avoid overflow */
+@media (max-width: 600px) {
+  .btn {
+    white-space: normal;   /* overrides nowrap */
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* Where buttons are in rows, allow wrapping safely */
+  .hero-actions,
+  .hero-snap-cta,
+  .footer-inner,
+  .quick-jump {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}
+
+/* 5) Generic table safety: tables should scroll inside a wrapper */
+.table-wrap,
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* If any table exists without a wrapper, at least don’t let it break the page */
+table {
+  max-width: 100%;
+}
+/* ===== Emoji fix for gradient headings ===== */
+.emoji{
+  color: initial !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  margin-right: 6px;
+}
+/* ===== Nice Thank-you Modal (Club Register) ===== */
+#clubThankYouModal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.45);
+  z-index: 9999;
+  padding: 18px;
+}
+
+#clubThankYouModal .modal-card{
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px;
+  width: min(440px, 100%);
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+#clubThankYouModal .modal-title{
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 1000;
+  color: var(--accent); /* blue */
+}
+
+#clubThankYouModal .modal-text{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.about-card{
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: center;
+
+  background: #f6ecd4;
+  border: 2px solid #f0b44c;
+  border-radius: 22px;
+  padding: 20px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.about-img{
+  width: 100%;
+  max-width: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+}
+
+.about-title{
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 1100;
+  color: #e58a00;
+}
+
+.about-text{
+  color: #334155;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.about-link{
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 1000;
+  color: var(--brand2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(11,94,215,.3);
+}
+
+.about-link:hover{
+  border-bottom-color: rgba(11,94,215,.6);
+}
+
+/* mobile */
+@media (max-width: 700px){
+  .about-card{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-img{
+    margin: 0 auto;
+  }
+}
+/* ===== COLOURED SECTION WRAPS ===== */
+
+/* Programs */
+.programs-wrap{
+  background: rgba(59,130,246,.06); /* soft blue */
+  border: 1px solid rgba(59,130,246,.18);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+/* Philosophy */
+.philosophy-wrap{
+  background: rgba(16,185,129,.06); /* soft green */
+  border: 1px solid rgba(16,185,129,.20);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+/* Make mini cards nicer inside coloured sections */
+.programs-wrap .mini-card,
+.philosophy-wrap .mini-card{
+  background: rgba(255,255,255,.9);
+  border-radius: 16px;
+}
+
+/* Optional: nicer headings */
+.programs-wrap h3{
+  color: #1d4ed8;
+}
+
+.philosophy-wrap h3{
+  color: #047857;
+}
+/* ===== MAKE PROGRAMS STAND OUT ===== */
+
+.programs-wrap{
+  background: linear-gradient(135deg, rgba(59,130,246,.10), rgba(11,94,215,.08));
+  border: 2px solid rgba(59,130,246,.25);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 12px 28px rgba(2,6,23,.08);
+  position: relative;
+}
+
+/* top badge */
+.programs-badge{
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #2563eb;
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(37,99,235,.25);
+}
+
+/* make cards nicer */
+.programs-wrap .mini-card{
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(2,6,23,.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.programs-wrap .mini-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(2,6,23,.12);
+}
+
+/* stronger headings */
+.programs-wrap .mini-card h3{
+  color: #1d4ed8;
+}
+/* ===== MATH CLUB STANDOUT ===== */
+
+.club-highlight{
+  background: linear-gradient(135deg, rgba(245,158,11,.12), rgba(255,193,7,.10));
+  border: 2px solid rgba(245,158,11,.35);
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 14px 32px rgba(2,6,23,.10);
+  position: relative;
+  overflow: hidden;
+}
+
+/* floating badge */
+.club-highlight-badge{
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #f59e0b;
+  color: white;
+  font-weight: 900;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(245,158,11,.35);
+}
+
+/* slightly stronger title */
+.club-highlight .club-summary-title{
+  font-size: 30px;
+}
+
+/* nicer pills */
+.club-highlight .club-summary-pill{
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(245,158,11,.25);
+  border-radius: 16px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.club-highlight .club-summary-pill:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 22px rgba(2,6,23,.08);
+}
+
+/* CTA stronger */
+.club-highlight .btn-primary{
+  box-shadow: 0 8px 18px rgba(245,158,11,.25);
+}
+/* ===== STRONG "RECOMMENDED" BADGE ===== */
+
+.club-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0 auto 18px;
+  padding: 10px 18px;
+
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: white;
+
+  font-weight: 1000;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+
+  box-shadow: 0 8px 20px rgba(245,158,11,.35);
+}
+
+/* subtle pulse to draw attention */
+.club-badge::before{
+  content: "⭐";
+  font-size: 16px;
+}
+
+/* optional: gentle animation */
+@keyframes badgePulse{
+  0%{ transform: scale(1); }
+  50%{ transform: scale(1.05); }
+  100%{ transform: scale(1); }
+}
+
+.club-badge{
+  animation: badgePulse 2.5s ease-in-out infinite;
+}
+.club-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0 auto 18px;
+  padding: 12px 20px;
+
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: white;
+
+  font-weight: 1100;          /* stronger */
+  font-size: 16px;            /* bigger */
+  letter-spacing: 0.4px;      /* clearer */
+
+  text-transform: uppercase;  /* makes it stand out */
+  
+  box-shadow: 0 10px 24px rgba(245,158,11,.35);
+}
+
+/* star icon */
+.club-badge::before{
+  content: "⭐";
+  font-size: 18px;
+}
+.club-badge:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(245,158,11,.45);
+}
+/* ===== STRONG POLICY BUTTON ===== */
+
+.note-btn{
+  display: inline-block;
+  padding: 10px 16px;
+
+  background: linear-gradient(135deg, #0b5ed7, #2563eb);
+  color: #fff;
+
+  font-weight: 900;
+  font-size: 14px;
+
+  border-radius: 10px;
+  text-decoration: none;
+
+  box-shadow: 0 8px 18px rgba(11,94,215,.25);
+  transition: all .15s ease;
+}
+
+/* hover effect */
+.note-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(11,94,215,.35);
+}
+
+/* optional: make it slightly larger on mobile */
+@media (max-width: 600px){
+  .note-btn{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Native radio/checkbox reset */
+input[type="radio"],
+input[type="checkbox"]{
+  appearance:auto;
+  -webkit-appearance:auto;
+  width:18px;
+  height:18px;
+  min-width:18px;
+  min-height:18px;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+input[type="checkbox"]{ border-radius:4px; }
+/* === Animated banner (2026-04 v13) ========================================
+   v13 changes:
+   - Index: hide the second .hero-snap-logoBox medallion (banner already has one).
+   - All hero-with-banner sections: stretch to FULL viewport width edge-to-edge,
+     overriding the page-hero margin/border-radius that constrain it.
+   =========================================================================*/
+
+/* ---- 1. Form pages iframe ---- */
+iframe.hero-banner,
+iframe.hero-banner.hero-banner {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 2047 / 523 !important;
+  max-height: none !important;
+  border: 0 !important;
+  background: #071851 !important;
+  pointer-events: none;
+  object-fit: unset !important;
+}
+
+/* ---- 2. Non-home page-hero with banner background ----
+   Stretch the page-hero to FULL viewport width, no margins or border-radius. */
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner {
+  position: relative !important;
+  background: #071851 !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  /* Edge-to-edge: cancel any inherited margin/border-radius. */
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner::after {
+  display: none !important;
+}
+
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner > .page-hero__banner {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner > .page-hero__banner > iframe {
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  background: #071851 !important;
+  pointer-events: none !important;
+}
+
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner > .page-hero__inner,
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner > .container.page-hero__inner,
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner > .container {
+  position: relative !important;
+  z-index: 2 !important;
+  /* Match banner's natural 2047:523 aspect ratio so the medallion fits fully. */
+  min-height: calc(100vw * 523 / 2047) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 12px 24px !important;
+}
+
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.6);
+}
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner p,
+body:not(.page-demo):not([class*="page-demo-"]) .page-hero.page-hero--banner .page-hero__kicker {
+  color: rgba(255,255,255,.96) !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.5);
+}
+
+/* ---- 3. Index pages — banner replaces card background, edge-to-edge ---- */
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner {
+  position: relative !important;
+  background: #071851 !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  /* Edge-to-edge full viewport width. */
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  padding: 0 !important;
+}
+
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner > .hero-banner-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner > .hero-banner-bg > iframe {
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  background: #071851 !important;
+  pointer-events: none !important;
+}
+
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner > .container {
+  position: relative !important;
+  z-index: 2 !important;
+  /* Match banner's natural 2047:523 aspect ratio so the medallion fits fully. */
+  min-height: calc(100vw * 523 / 2047) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 24px !important;
+}
+
+/* Make the .hero-snap card transparent so banner shows through. */
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+/* HIDE the second medallion logo on index — the banner already has one.  */
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-logoBox {
+  display: none !important;
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-grid-split {
+  grid-template-columns: 1fr !important;
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-tagline {
+  color: rgba(255,255,255,.92) !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.5);
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-desc {
+  color: rgba(255,255,255,.90) !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.45);
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-desc b {
+  color: #ffffff !important;
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-checks span {
+  color: rgba(255,255,255,.92) !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.45);
+}
+body:not(.page-demo):not([class*="page-demo-"]) .hero.hero--with-banner .hero-snap-pill {
+  background: rgba(255,255,255,.15) !important;
+  border-color: rgba(255,255,255,.3) !important;
+  color: #ffffff !important;
+}
+/* === End animated banner =================================================== */

@@ -1,0 +1,90 @@
+{% assign pricing_path = page.permalink | default: page.url | default: page.path | default: '' | downcase %}
+{% assign pricing_locale = page.pricing_lang | default: page.lang | default: '' | downcase %}
+{% assign is_zh = false %}
+{% assign is_vi = false %}
+{% if pricing_path contains '/cn/' or pricing_locale == 'zh' or pricing_locale == 'cn' %}
+  {% assign is_zh = true %}
+{% elsif pricing_path contains '/vi/' or pricing_locale == 'vi' %}
+  {% assign is_vi = true %}
+{% endif %}
+<section class="section data-grid-section">
+  <div class="container">
+    <div class="section-head premium-section-head">
+      <h2>{% if is_zh %}费用概览{% elsif is_vi %}Tổng quan học phí{% else %}Fees at a glance{% endif %}</h2>
+      <p>{% if is_zh %}此摘要区块现在直接来自数据，后续更新收费页面会更方便。{% elsif is_vi %}Khối tóm tắt này hiện lấy từ dữ liệu, nên việc cập nhật trang học phí sau này sẽ dễ hơn.{% else %}This summary block now comes from data, so future fee-page updates are easier.{% endif %}</p>
+    </div>
+    <div class="premium-card-grid premium-card-grid--4">
+      {% if is_zh %}
+        <article class="premium-card premium-card--pricing">
+          <h3>线上</h3>
+          <div class="premium-price">以当前收费表为准</div>
+          <p>灵活方便的课程安排，延续同样平和、清晰的教学结构与家庭沟通。</p>
+        </article>
+        <article class="premium-card premium-card--pricing">
+          <h3>线下</h3>
+          <div class="premium-price">以当前收费表为准</div>
+          <p>在时间与地点允许的情况下，提供更深入的面对面支持。</p>
+        </article>
+        <article class="premium-card premium-card--pricing">
+          <h3>短课时</h3>
+          <div class="premium-price">可选</div>
+          <p>适合年龄较小的学生，或需要高度聚焦支持的学习情境。</p>
+        </article>
+        <article class="premium-card premium-card--pricing">
+          <h3>数学俱乐部</h3>
+          <div class="premium-price">请见下方俱乐部收费</div>
+          <p>以拓展提升为主的小组学习，氛围温暖、积极，并能持续保持学习动力。</p>
+        </article>
+      {% elsif is_vi %}
+        <article class="premium-card premium-card--pricing">
+          <h3>Học online</h3>
+          <div class="premium-price">Theo bảng học phí hiện tại</div>
+          <p>Các buổi học linh hoạt, thuận tiện với cùng cấu trúc nhẹ nhàng và cách trao đổi rõ ràng với gia đình.</p>
+        </article>
+        <article class="premium-card premium-card--pricing">
+          <h3>Học trực tiếp</h3>
+          <div class="premium-price">Theo bảng học phí hiện tại</div>
+          <p>Hỗ trợ trực tiếp chuyên sâu hơn khi lịch sắp xếp và địa điểm phù hợp.</p>
+        </article>
+        <article class="premium-card premium-card--pricing">
+          <h3>Buổi ngắn</h3>
+          <div class="premium-price">Có sẵn</div>
+          <p>Lựa chọn phù hợp cho học sinh nhỏ tuổi hơn hoặc khi cần hỗ trợ rất tập trung.</p>
+        </article>
+        <article class="premium-card premium-card--pricing">
+          <h3>Câu lạc bộ Toán</h3>
+          <div class="premium-price">Xem học phí CLB bên dưới</div>
+          <p>Học nhóm theo hướng bồi dưỡng, với bầu không khí ấm áp, tích cực và tạo động lực.</p>
+        </article>
+      {% else %}
+        {% for tier in site.data.pricing.tiers %}
+          <article class="premium-card premium-card--pricing">
+            <h3>{{ tier.name }}</h3>
+            <div class="premium-price">{{ tier.price }}</div>
+            <p>{{ tier.note }}</p>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="premium-inclusions">
+      <h3>{% if is_zh %}家长可期待什么{% elsif is_vi %}Gia đình có thể mong đợi điều gì{% else %}What families can expect{% endif %}</h3>
+      <ul>
+        {% if is_zh %}
+          <li>课程结构清晰，重视先建立理解与信心</li>
+          <li>与家庭保持细致、周到的沟通</li>
+          <li>优质学习资料与循序渐进的练习引导</li>
+          <li>平和、可信赖的辅导体验</li>
+        {% elsif is_vi %}
+          <li>Cấu trúc buổi học rõ ràng, ưu tiên xây hiểu bài và sự tự tin</li>
+          <li>Trao đổi chu đáo với gia đình</li>
+          <li>Tài liệu học chất lượng và luyện tập có hướng dẫn</li>
+          <li>Trải nghiệm học nhẹ nhàng, đáng tin cậy</li>
+        {% else %}
+          {% for item in site.data.pricing.inclusions %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</section>

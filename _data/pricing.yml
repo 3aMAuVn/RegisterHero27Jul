@@ -1,0 +1,18 @@
+tiers:
+- name: Online
+  price: From the current fee table
+  note: Flexible, convenient lessons with the same calm structure and family communication.
+- name: In-person
+  price: From the current fee table
+  note: Premium face-to-face support when availability and location allow.
+- name: Short session
+  price: Available
+  note: A practical option for younger learners or highly targeted support.
+- name: Maths Club
+  price: See club rates below
+  note: Enrichment-focused group learning with a warm, motivating atmosphere.
+inclusions:
+- Clear lesson structure and confidence-first teaching
+- Thoughtful communication with families
+- Premium learning materials and guided practice
+- A calm, high-trust tutoring experience

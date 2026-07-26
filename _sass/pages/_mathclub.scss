@@ -1,0 +1,145 @@
+
+    .brand-title span{ display:none !important; }
+
+    .club-wrap{
+      display: grid;
+      gap: 16px;
+    }
+
+    .club-card{
+      background: rgba(255,255,255,.84);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+
+    .club-grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px){
+      .club-grid{ grid-template-columns: 1fr; }
+    }
+
+    .club-panel{
+      background: rgba(255, 248, 231, .94);
+      border: 1px solid rgba(245,158,11,.28);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 18px;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, .06);
+    }
+    .club-panel.blue{
+      background: rgba(237, 246, 255, .94);
+      border-color: rgba(11,94,215,.20);
+    }
+    .club-panel h3{
+      margin: 0 0 12px;
+      font-size: 20px;
+      font-weight: 1100;
+      color: #f59e0b;
+    }
+    .club-panel.blue h3{
+      color: #2563eb;
+    }
+    .club-panel ul{
+      margin: 0;
+      padding-left: 20px;
+      color: #334155;
+      font-weight: 650;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    .club-panel li + li{
+      margin-top: 6px;
+    }
+    .club-panel strong{
+      color: #111827;
+      font-weight: 1000;
+    }
+    .club-panel em{
+      font-style: italic;
+    }
+
+    .club-note{
+      margin-top: 2px;
+      background: rgba(11,94,215,.06);
+      border: 1px solid rgba(11,94,215,.20);
+      border-radius: 16px;
+      padding: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+    .club-note strong{
+      color: var(--brand2);
+      font-weight: 1100;
+    }
+
+    .club-links{
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .btn.btn-blue{
+      background: #0b5ed7;
+      color: #fff;
+    }
+    .btn.btn-cyan{
+      background: #0ea5b7;
+      color: #fff;
+    }
+
+    .club-bottom{
+      text-align: center;
+    }
+    .club-bottom h3{
+      margin: 0 0 8px;
+      color: var(--brand2);
+      font-size: 24px;
+      font-weight: 1100;
+    }
+    .club-bottom p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .club-small-links{
+      margin-top: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .club-small-links a{
+      color: var(--brand2);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(11,94,215,.28);
+    }
+    .club-small-links a:hover{
+      border-bottom-color: rgba(11,94,215,.60);
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+      font-weight:700;
+    }
+    .footer-links a{
+      text-decoration:none;
+      color:inherit;
+      opacity:.9;
+    }
+    .footer-links a:hover{
+      opacity:1;
+      text-decoration:underline;
+    }
+  

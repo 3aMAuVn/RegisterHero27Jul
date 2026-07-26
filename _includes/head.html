@@ -1,0 +1,22 @@
+{% assign asset_prefix = '.' %}
+{% if page.url contains '/demo/' %}{% assign asset_prefix = '../..' %}{% elsif page.url contains '/vi/' or page.url contains '/cn/' %}{% assign asset_prefix = '..' %}{% endif %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{% if page.meta_title %}{{ page.meta_title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page.description | default: site.description | escape }}" />
+<link rel="canonical" href="{{ page.canonical | default: page.url | absolute_url }}" />
+<meta property="og:title" content="{% if page.meta_title %}{{ page.meta_title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}">
+<meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon-192.png?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+
+<meta name="theme-color" content="#0b1f4d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Magic Math Master">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="{{ asset_prefix }}/assets/css/main.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">

@@ -1,0 +1,34 @@
+title: "✨ Try a Free Maths Demo Test!"
+intro: >
+  Let your child explore the fun side of maths with a short demo test before signing up.
+  Our free demo tests are open to everyone, giving families a joyful and easy way to discover
+  the platform with confidence.
+
+highlights:
+  - title: "🌼 Choose a Level"
+    text: "Pick the demo that best matches your child’s year level."
+    modifier: "sun"
+  - title: "🎯 Learn with Confidence"
+    text: "Enjoy instant feedback that helps children learn, grow, and feel proud."
+    modifier: "mint"
+  - title: "🚀 Unlock More"
+    text: "Members get full practice tests, adaptive levels, and extra learning materials after registration."
+    modifier: "violet"
+
+levels_title: "📚 Demo Levels"
+levels:
+  - title: "Prep–Grade 2"
+    url: "/demo/prep-2/"
+  - title: "Grade 3–6"
+    url: "/demo/3-6/"
+  - title: "Grade 7–10"
+    url: "/demo/7-10/"
+  - title: "Grade 11–12"
+    url: "/demo/11-12/"
+
+included_title: "🌟 What’s Included"
+included:
+  - "Short and fun demo tests for first-time users"
+  - "Instant feedback to support learning right away"
+  - "Different demo options for each year-level group"
+  - "Sample maths questions across a variety of topics"

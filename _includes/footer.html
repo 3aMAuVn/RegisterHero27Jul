@@ -1,0 +1,25 @@
+{% assign is_vi = false %}
+{% assign is_zh = false %}
+{% if page.lang == 'vi' or page.url contains '/vi/' or page.body_class contains 'page-vi' %}{% assign is_vi = true %}{% endif %}
+{% if page.lang == 'zh' or page.url contains '/cn/' or page.body_class contains 'page-cn' %}{% assign is_zh = true %}{% endif %}
+{% if is_vi %}{% assign footer_links = site.data.navigation.footer_quicklinks_vi %}{% elsif is_zh %}{% assign footer_links = site.data.navigation.footer_quicklinks_cn %}{% else %}{% assign footer_links = site.data.navigation.footer_quicklinks %}{% endif %}
+<footer class="footer premium-footer footer-inline">
+  <div class="container footer-inline__inner">
+    <div class="footer-inline__copy">
+      <img class="footer-brand-mark" src="{{ '/assets/brand-mark.svg' | relative_url }}" alt="" aria-hidden="true" />
+      <span>© {{ site.time | date: '%Y' }} {% if is_zh %}{{ site.data.site.brand_zh }}{% else %}{{ site.data.site.brand }}{% endif %} • {% if is_vi %}Úc{% elsif is_zh %}澳大利亚{% else %}Australia{% endif %}</span>
+    </div>
+
+    <nav class="footer-inline__nav" aria-label="{% if is_vi %}Liên kết chân trang{% elsif is_zh %}页脚链接{% else %}Footer links{% endif %}">
+      {% assign current_footer_url = page.url | default: page.permalink | replace: 'index.html', '' %}
+      {% for item in footer_links %}
+      {% assign item_footer_url = item.url | replace: 'index.html', '' %}
+      <a href="{{ item.url | relative_url }}" class="{% if current_footer_url == item_footer_url or page.permalink == item.url or page.url == item.url %}is-active{% endif %}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="footer-inline__email">
+      <a href="mailto:{{ site.data.site.email }}">{{ site.data.site.email }}</a>
+    </div>
+  </div>
+</footer>

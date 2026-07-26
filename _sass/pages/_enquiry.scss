@@ -1,0 +1,160 @@
+
+    html, body { overflow-x:hidden; }
+
+    main { padding: 18px 0 40px; }
+
+    /* ===== Hero actions ===== */
+    .hero-actions{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+    }
+
+    .btn-secondary{
+      background: rgba(11,94,215,.08);
+      color: var(--accent);
+      border: 1px solid rgba(11,94,215,.25);
+      box-shadow: none;
+    }
+
+    .badge{
+      display:inline-block;
+      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 900;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(11,94,215,.2);
+    }
+
+    /* ===== Form card ===== */
+    .wrap{
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-card{
+      background: rgba(255,255,255,.86);
+      border-radius: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.12);
+      overflow:hidden;
+    }
+
+    .form-card-head{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .form-card-title{
+      margin: 0;
+      font-size: 18px;
+      font-weight: 1000;
+    }
+
+    .form-card-body{
+      padding: 16px;
+    }
+
+    form{
+      display:grid;
+      gap: 16px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 720px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    /* ===== Inputs (match club-register.html) ===== */
+    .form-card label{
+      display:block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 1000;
+      color: var(--brand-dark);
+    }
+
+    .form-card input[type="text"],
+    .form-card input[type="email"],
+    .form-card input[type="tel"],
+    .form-card textarea{
+      width:100%;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      color: var(--ink);
+      font: inherit;
+      outline:none;
+    }
+
+    .form-card textarea{
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-card input:focus,
+    .form-card textarea:focus{
+      border-color: rgba(11,94,215,.45);
+      box-shadow: 0 0 0 4px rgba(11,94,215,.10);
+    }
+
+    .note{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 650;
+      line-height: 1.6;
+    }
+
+    .option{
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+      margin-top: 8px;
+    }
+
+    .option input{
+      margin-top: 3px;
+      accent-color: var(--accent);
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    /* ===== Thank you modal ===== */
+    #thankYouModal{
+      position: fixed;
+      inset: 0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,.45);
+      z-index:9999;
+      padding:18px;
+    }
+
+    #thankYouModal .modal-card{
+      background:#fff;
+      border-radius:18px;
+      padding:22px;
+      width:min(420px,100%);
+      text-align:center;
+      box-shadow:0 18px 40px rgba(0,0,0,.22);
+    }
+  

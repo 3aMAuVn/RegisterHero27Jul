@@ -1,0 +1,172 @@
+
+    /* =========================
+       FIX: keep hero + main the same width (even when zooming)
+       ========================= */
+    .hero{
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      overflow-x: clip;
+      padding: 22px 0 18px;
+    }
+    html, body{ max-width:100%; overflow-x: clip; }
+
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .hero-snap-logoBox img{
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+
+    /* Buttons hover */
+    .btn{
+      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+      will-change: transform, filter;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      filter: brightness(0.96);
+      box-shadow: 0 10px 22px rgba(2, 6, 23, .12);
+    }
+
+    /* Blue button */
+    .btn-blue{
+      background: #2563eb;
+      color: #fff;
+      border: 2px solid rgba(0,0,0,.10);
+    }
+    .btn-blue:hover{ filter: brightness(.96); }
+
+    /* =========================
+       Device-aware buttons (ROBUST)
+       Desktop/Laptop: show .desktop-only (Gmail)
+       Touch devices (phones/tablets): show .app-only (mailto)
+       iPad: show BOTH (Gmail + App)
+       ========================= */
+    .desktop-only{ display: inline-flex !important; }
+    .app-only{ display: none !important; }
+
+    /* Phones/tablets (touch): prefer email app */
+    @media (pointer: coarse){
+      .desktop-only{ display: none !important; }
+      .app-only{ display: inline-flex !important; }
+    }
+
+    /* iPad override: show Gmail button too */
+    body.is-ipad .desktop-only{ display: inline-flex !important; }
+    body.is-ipad .app-only{ display: inline-flex !important; }
+
+    /* FORCE: contact cards full width, equal columns */
+    .grid{
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      width: 100% !important;
+      max-width: none !important;
+      align-items: stretch !important;
+    }
+    .grid > .card{
+      width: 100% !important;
+      max-width: none !important;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr !important; }
+    }
+
+    /* QR/workflow layout */
+    .qr-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+      width: 100%;
+    }
+    @media (max-width: 980px){
+      .qr-grid{ grid-template-columns: 1fr; }
+    }
+    .qr-card{
+      border-radius: 18px;
+      padding: 18px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+    }
+    .qr-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+    .qr-title{
+      margin:0;
+      font-size: 22px;
+      font-weight: 1000;
+    }
+    .qr-badge{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .qr-body{
+      display:grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      align-items:center;
+    }
+    @media (max-width: 520px){
+      .qr-body{ grid-template-columns: 1fr; }
+    }
+    .qr-img{
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 14px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+      padding: 10px;
+    }
+    .qr-actions{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    /* Contact details list */
+    .contact-list{
+      margin:0;
+      padding-left: 18px;
+      line-height: 1.8;
+      font-weight: 650;
+      opacity: .95;
+    }
+
+    /* Helper block */
+    .help-box{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    /* Anchor offset */
+    [id]{ scroll-margin-top: 110px; }
+  

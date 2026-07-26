@@ -1,0 +1,177 @@
+
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .hero-snap-logoBox img{
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+    .hero { padding: 22px 0 18px; }
+
+    /* ===== TOP AREA (2 columns) ===== */
+    .about-top-grid{
+      display:grid;
+      grid-template-columns: minmax(280px, 420px) 1fr; /* keep left from getting too wide */
+      gap: 18px;
+      align-items: stretch; /* both columns same height */
+    }
+
+    /* Left: make the founder card fill the full column height */
+    .about-top-grid > .founder-card,
+    .about-top-grid > .founder-card .card{
+      height: 100%;
+    }
+
+    /* Right: 2 rows (story card + note) whose combined height equals left column */
+    .right-stack{
+      display: grid;
+      grid-template-rows: 1fr auto; /* story fills, note natural height */
+      gap: 14px;
+      height: 100%;
+    }
+    .right-stack > .card{ height: 100%; }
+
+    /* No sticky */
+    .founder-card{
+      position: static;
+      top: auto;
+    }
+
+    /* Founder card styles */
+    .founder-photo{
+      border-radius: 18px;
+      overflow:hidden;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.72);
+    }
+    .founder-photo img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .founder-caption{
+      padding: 12px 14px 14px;
+      line-height: 1.6;
+      font-weight: 750;
+    }
+    .founder-caption b{ display:block; font-size: 16px; margin-bottom: 6px; }
+
+    .about-chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:10px; }
+    .about-chip{
+      display:inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+    }
+
+    /* Timeline list */
+    .clean-list{
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.8;
+      font-weight: 650;
+    }
+    .clean-list li{ margin: 8px 0; }
+
+    /* Note box */
+    .note{
+      background:#e7f4ff;
+      border-left:6px solid #42a5f5;
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    /* Mini grid inside cards */
+    .mini-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 780px){
+      .mini-grid{ grid-template-columns: 1fr; }
+    }
+
+    .badge-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .badge{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+    }
+
+    /* Make external links look like links (blue) */
+    #real-world a{
+      color: #1565c0 !important;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+    #real-world a:hover{ text-decoration: none; }
+
+    /* ===== QUICK LINKS ===== */
+    .ql-btn.is-active{
+      background: rgba(11,94,215,.18);
+      border-color: rgba(11,94,215,.35);
+      box-shadow: 0 10px 18px rgba(11,94,215,.12);
+      color: var(--brand2);
+    }
+
+    html{ scroll-behavior: smooth; }
+
+    @keyframes mmmFlash {
+      0%   { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+      35%  { box-shadow: 0 0 0 6px rgba(11,94,215,.18); border-color: rgba(11,94,215,.55); }
+      100% { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+    }
+    .anchor-flash .card,
+    .anchor-flash.card{
+      animation: mmmFlash 1.15s ease;
+    }
+
+    .anchor-target{ scroll-margin-top: 120px; }
+
+    /* ===== Section titles ===== */
+    #founder-message .section-title{ color: #9E3201; }
+    #qualifications  .section-title{ color: var(--brand2); }
+    #real-world      .section-title{ color: #1565c0; }
+    #background      .section-title{ color: #7a4a00; }
+    #awards          .section-title{ color: #d97706; }
+    #child-success   .section-title{ color: #15803d; }
+
+    /* ✅ Make ALL card paragraph text span the full card width
+       (your shared style.css likely sets .section-sub max-width for readability) */
+    main.container .card .section-sub{
+      max-width: none !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* Responsive: stack columns */
+    @media (max-width: 980px){
+      .about-top-grid{ grid-template-columns: 1fr; }
+      .right-stack{ height: auto; grid-template-rows: auto; }
+      .about-top-grid > .founder-card,
+      .about-top-grid > .founder-card .card{ height: auto; }
+    }
+  

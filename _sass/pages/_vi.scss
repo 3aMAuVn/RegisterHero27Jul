@@ -1,0 +1,215 @@
+
+    /* ✅ No subtitle under the brand name (index-only) */
+    .brand-title span{ display:none !important; }
+
+    /* ===== Accordion sections (index-only) ===== */
+    details.acc{
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      margin: 0 0 12px;
+      overflow:hidden;
+      scroll-margin-top: 180px;
+    }
+    summary.acc-sum{
+      list-style:none;
+      cursor:pointer;
+      padding: 14px 16px;
+      font-weight: 1000;
+      color: var(--brand2);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      user-select:none;
+    }
+    summary.acc-sum::-webkit-details-marker{ display:none; }
+    .caret{ font-weight: 1000; opacity:.85; transition: transform .12s ease; }
+    details[open] summary .caret{ transform: rotate(180deg); }
+    .acc-body{ padding: 0 16px 16px; }
+
+    .h2-center{
+      margin: 14px 0 8px;
+      text-align:center;
+      font-size: 24px;
+      font-weight: 1000;
+      letter-spacing: -0.3px;
+      color: var(--brand2);
+    }
+    .sub-center{
+      margin: 0 0 14px;
+      text-align:center;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .two-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .two-grid{ grid-template-columns: 1fr; }
+    }
+
+    .mini-card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .mini-card h3{
+      margin: 0 0 8px;
+      color: #7a4a00;
+      font-size: 18px;
+      font-weight: 1000;
+    }
+    .mini-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.7;
+    }
+
+    .link-strong{
+      color: var(--brand2);
+      font-weight: 1000;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .link-strong:hover{ border-bottom-color: rgba(11,94,215,.60); }
+
+    /* ===== "What makes us different" block (index-only) ===== */
+    .diff-wrap{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .diff-head{
+      text-align:center;
+      padding: 8px 6px 6px;
+    }
+    .diff-title{
+      margin: 0 0 8px;
+      font-size: 34px;
+      font-weight: 1100;
+      letter-spacing: -0.4px;
+      color: var(--brand2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      line-height: 1.15;
+    }
+    .diff-title .spark{
+      font-size: 22px;
+      line-height: 1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(245,158,11,.15);
+      border: 1px solid rgba(245,158,11,.28);
+    }
+    .diff-sub{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .diff-note{
+      margin: 14px auto 16px;
+      max-width: 980px;
+      background: rgba(11,94,215,.06);
+      border: 1px solid rgba(11,94,215,.22);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .diff-note strong{
+      color: var(--brand2);
+      font-weight: 1100;
+    }
+    .diff-note .note-text{
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.55;
+      flex: 1 1 520px;
+      min-width: 240px;
+    }
+    .diff-note .note-link{
+      white-space: nowrap;
+      font-weight: 1100;
+      text-decoration:none;
+      color: var(--brand2);
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .diff-note .note-link:hover{
+      border-bottom-color: rgba(11,94,215,.60);
+    }
+
+    .diff-grid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 1100px){
+      .diff-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px){
+      .diff-grid{ grid-template-columns: 1fr; }
+      .diff-title{ font-size: 28px; }
+    }
+
+    .diff-card{
+      background: rgba(255, 248, 231, .92);
+      border: 1px solid rgba(245,158,11,.30);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, .06);
+      min-height: 170px;
+    }
+    .diff-card .diff-top{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .diff-ico{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(245,158,11,.30);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 22px;
+      flex: 0 0 42px;
+    }
+    .diff-card h3{
+      margin: 0;
+      color: #cc7a00;
+      font-size: 18px;
+      font-weight: 1100;
+      line-height: 1.15;
+    }
+    .diff-card p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+  

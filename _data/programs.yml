@@ -1,0 +1,49 @@
+items:
+- title: Catch up & rebuild foundations
+  icon: 🧱
+  theme: catchup
+  summary: Diagnostic support for students who need to close gaps, rebuild confidence
+    and feel secure again in maths.
+  url: /register.html
+- title: Keep up & stay consistent
+  icon: 📘
+  theme: keepup
+  summary: Steady weekly tutoring for school success, homework support and calm progress
+    without panic.
+  url: /register.html
+- title: Get ahead & extend with joy
+  icon: 🚀
+  theme: getahead
+  summary: Extension-focused learning for students ready to move faster, think deeper
+    and enjoy challenge.
+  url: /register.html
+- title: Aim for competitions
+  icon: 🏅
+  theme: comp
+  summary: Problem-solving pathways for capable students who want contest-style challenge
+    and mathematical elegance.
+  url: /register.html
+- title: 1-to-1 Tutoring
+  icon: 👩‍🏫
+  theme: premium
+  summary: High-touch personalised tuition with tailored pacing, parent communication
+    and targeted lesson design.
+  url: /register.html
+- title: Small-Group Tutorials
+  icon: 👥
+  theme: premium
+  summary: Warm, focused small-group learning for students who benefit from structure
+    and shared momentum.
+  url: /register.html
+- title: Maths Club
+  icon: ✨
+  theme: premium
+  summary: Joyful enrichment for curious learners who want maths to feel playful,
+    creative and social.
+  url: /mathclub.html
+- title: Competition Training
+  icon: 🎯
+  theme: premium
+  summary: Stretch thinking, strategic problem-solving and resilient habits for high-performing
+    students.
+  url: /register.html

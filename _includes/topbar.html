@@ -1,0 +1,64 @@
+{% assign asset_prefix = '.' %}
+{% if page.url contains '/demo/' %}{% assign asset_prefix = '../..' %}{% elsif page.url contains '/vi/' or page.url contains '/cn/' %}{% assign asset_prefix = '..' %}{% endif %}
+{% assign is_vi = false %}
+{% assign is_zh = false %}
+{% if page.lang == 'vi' or page.url contains '/vi/' or page.body_class contains 'page-vi' %}{% assign is_vi = true %}{% endif %}
+{% if page.lang == 'zh' or page.url contains '/cn/' or page.body_class contains 'page-cn' %}{% assign is_zh = true %}{% endif %}
+{% assign nav_key = page.nav_key | default: 'main' %}
+{% if is_vi %}{% assign nav_key = 'main_vi' %}{% endif %}
+{% if is_zh %}{% assign nav_key = 'main_cn' %}{% endif %}
+{% assign hide_lang_menu = false %}
+{% if page.url contains '/demo/' or page.body_class contains 'page-demo' %}{% assign hide_lang_menu = true %}{% endif %}
+<div class="topbar premium-topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="{% if is_vi %}{{ '/vi/' | relative_url }}{% elsif is_zh %}{{ '/cn/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="{% if is_vi %}Trang chủ {{ site.data.site.brand }}{% elsif is_zh %}{{ site.data.site.brand_zh }} 首页{% else %}{{ site.data.site.brand }} home{% endif %}">
+      <img class="brand-logo" src="{{ asset_prefix }}/assets/brand-mark.svg" alt="{% if is_zh %}{{ site.data.site.brand_zh }} 标志{% else %}{{ site.data.site.brand }} logo{% endif %}" />
+      <div class="brand-title" aria-hidden="true">
+        <b>{% if is_zh %}{{ site.data.site.brand_zh }}{% else %}{{ site.data.site.brand }}{% endif %}</b>
+        <span>{% if is_vi %}{{ site.data.site.tagline_vi }}{% elsif is_zh %}{{ site.data.site.tagline_zh }}{% else %}{{ site.data.site.tagline }}{% endif %}</span>
+      </div>
+    </a>
+
+    <div class="nav-wrap">
+      <nav class="nav premium-nav" aria-label="{% if is_vi %}Điều hướng chính{% elsif is_zh %}主导航{% else %}Primary navigation{% endif %}">
+        {% for item in site.data.navigation[nav_key] %}
+          <a href="{{ item.url | relative_url }}" class="{% if item.cta %}nav-cta{% endif %}" data-nav>{{ item.title }}</a>
+        {% endfor %}
+        <a href="{{ site.data.site.student_login }}" class="nav-login">{% if is_vi %}{{ site.data.site.student_login_label_vi }}{% elsif is_zh %}{{ site.data.site.student_login_label_zh }}{% else %}{{ site.data.site.student_login_label | default: 'Student login' }}{% endif %}</a>
+      </nav>
+
+      {% unless hide_lang_menu %}
+      <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="{% if is_vi %}Chọn ngôn ngữ{% elsif is_zh %}选择语言{% else %}Choose language{% endif %}">
+          {% if is_vi %}
+          <img class="lang-btn-flag-img" id="currentLangFlag" src="{{ asset_prefix }}/assets/flags/vn-round.svg" alt="Tiếng Việt" />
+          {% elsif is_zh %}
+          <img class="lang-btn-flag-img" id="currentLangFlag" src="{{ asset_prefix }}/assets/flags/cn-round.svg" alt="中文" />
+          {% else %}
+          <img class="lang-btn-flag-img" id="currentLangFlag" src="{{ asset_prefix }}/assets/flags/globe-round.svg" alt="Language" />
+          {% endif %}
+          <span class="sr-only" id="currentLangText">{% if is_vi %}Tiếng Việt{% elsif is_zh %}中文{% else %}English / Language{% endif %}</span>
+          <span class="lang-btn-caret">▾</span>
+        </button>
+
+        <div class="lang-dropdown" id="langDropdown" hidden>
+          <button class="lang-option" type="button" data-lang="en" data-label="En">
+            <img class="lang-flag-icon" src="{{ asset_prefix }}/assets/flags/en-round.svg" alt="" aria-hidden="true" />
+            <span class="lang-label">En</span>
+          </button>
+
+          <button class="lang-option" type="button" data-lang="vi" data-label="Vn">
+            <img class="lang-flag-icon" src="{{ asset_prefix }}/assets/flags/vn-round.svg" alt="" aria-hidden="true" />
+            <span class="lang-label">Vn</span>
+          </button>
+
+          <button class="lang-option" type="button" data-lang="zh" data-label="Zh">
+            <img class="lang-flag-icon" src="{{ asset_prefix }}/assets/flags/cn-round.svg" alt="" aria-hidden="true" />
+            <span class="lang-label">中文</span>
+          </button>
+        </div>
+      </div>
+      {% endunless %}
+    </div>
+  </div>
+</div>

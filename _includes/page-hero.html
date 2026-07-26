@@ -1,0 +1,16 @@
+{% assign is_vi = false %}
+{% assign is_zh = false %}
+{% if page.lang == 'vi' or page.nav_key == 'main_vi' or page.url contains '/vi/' or page.permalink contains '/vi/' %}{% assign is_vi = true %}{% endif %}
+{% if page.lang == 'zh' or page.nav_key == 'main_cn' or page.url contains '/cn/' or page.permalink contains '/cn/' %}{% assign is_zh = true %}{% endif %}
+<section class="page-hero page-hero--banner {{ page.hero_class | default: '' }}">
+  <div class="page-hero__banner" aria-hidden="true"></div>
+  <div class="container page-hero__inner">
+    {% if page.kicker %}<p class="page-hero__kicker">{{ page.kicker }}</p>{% endif %}
+    <h1>{{ page.hero_title | default: page.title }}</h1>
+    {% if page.hero_subtitle %}<p>{{ page.hero_subtitle }}</p>{% endif %}
+    <div class="page-hero__actions">
+      <a class="btn btn-amber" href="{% if is_vi %}{{ '/vi/register.html' | relative_url }}{% elsif is_zh %}{{ '/cn/register.html' | relative_url }}{% else %}{{ '/register.html' | relative_url }}{% endif %}">{% if is_vi %}Đăng ký{% elsif is_zh %}报名{% else %}Register{% endif %}</a>
+      <a class="btn btn-success" href="{% if is_vi %}{{ '/vi/enquiry.html' | relative_url }}{% elsif is_zh %}{{ '/cn/enquiry.html' | relative_url }}{% else %}{{ '/enquiry.html' | relative_url }}{% endif %}">{% if is_vi %}Gửi yêu cầu{% elsif is_zh %}咨询{% else %}Enquire{% endif %}</a>
+    </div>
+  </div>
+</section>

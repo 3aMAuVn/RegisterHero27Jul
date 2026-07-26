@@ -1,0 +1,52 @@
+
+    /* Sections */
+    .philo-list{
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.85;
+      font-weight: 650;
+    }
+    .philo-list li{ margin: 8px 0; }
+
+    /* Teaching grid (uses your style.css grid/card vibe) */
+    .teach-grid{
+      display:grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+    @media (max-width: 1050px){
+      .teach-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px){
+      .teach-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Small note card */
+    .note{
+      background: rgba(255,255,255,.72);
+      border: 2px solid rgba(0,0,0,.10);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    /* ===== Quick links: “Programs-like” behaviour ===== */
+    .ql-btn.is-active{
+      background: rgba(11,94,215,.18);
+      border-color: rgba(11,94,215,.35);
+      box-shadow: 0 10px 18px rgba(11,94,215,.12);
+      color: var(--brand2);
+    }
+
+    @keyframes mmmFlash {
+      0%   { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+      35%  { box-shadow: 0 0 0 6px rgba(11,94,215,.18); border-color: rgba(11,94,215,.55); }
+      100% { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+    }
+    .anchor-flash.card{ animation: mmmFlash 1.15s ease; }
+
+    /* Anchor jump offset (topbar height) */
+    .anchor-target{ scroll-margin-top: 110px; }
+  

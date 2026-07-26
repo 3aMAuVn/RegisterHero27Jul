@@ -1,0 +1,105 @@
+
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .hero-snap-logoBox img{
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+    .hero { padding: 22px 0 18px; }
+
+    /* Summary card */
+    .policy-summary{
+      background:#eaf4ff;
+      border:2px solid #9ec9ff;
+      border-radius:18px;
+      padding:16px 18px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.06);
+    }
+    .policy-summary h2{
+      margin:0 0 10px;
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .policy-summary ul{
+      margin:0;
+      padding-left: 20px;
+      line-height:1.7;
+      font-weight: 650;
+    }
+
+    /* Policy blocks */
+    .policy-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 900px){
+      .policy-grid{ grid-template-columns: 1fr; }
+    }
+
+    .policy-block{
+      background: rgba(255,255,255,.72);
+      border: 2px solid rgba(0,0,0,.10);
+      border-radius:18px;
+      padding: 18px;
+      scroll-margin-top: 180px;
+    }
+    .policy-block h3{
+      margin:0 0 10px;
+      font-size: 20px;
+      font-weight: 900;
+    }
+    .policy-block ul{
+      margin:0;
+      padding-left: 20px;
+      line-height:1.7;
+      font-weight: 650;
+      opacity: .95;
+    }
+
+    /* Note */
+    .policy-note{
+      background:#e7f4ff;
+      border-left:6px solid #42a5f5;
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    /* Language hint card */
+    .lang-hint{
+      margin-top: 14px;
+      background: rgba(255,255,255,.72);
+      border: 2px solid rgba(0,0,0,.10);
+      border-radius:18px;
+      padding: 14px 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    /* Purple button (Email app) */
+    .btn-purple{
+      background: #7c3aed;
+      color: #fff;
+      border: 2px solid rgba(0,0,0,.10);
+    }
+    .btn-purple:hover{ filter: brightness(.96); }
+
+    /* ✅ HARD GUARANTEE: Only one button shows (no matter what style.css does) */
+    .policy-email-cta .desktop-only{ display: inline-flex !important; }
+    .policy-email-cta .mobile-only{ display: none !important; }
+
+    /* Touch devices with coarse pointer (iPhone/iPad): show Email app, hide Gmail */
+    html[data-email-mode="touch"] .policy-email-cta .desktop-only{ display: none !important; }
+    html[data-email-mode="touch"] .policy-email-cta .mobile-only{ display: inline-flex !important; }
+  

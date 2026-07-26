@@ -1,0 +1,8 @@
+html { scroll-behavior: smooth; }
+body {
+  background: radial-gradient(circle at top, rgba(232,164,54,.10), transparent 34%), linear-gradient(180deg, #fffaf5 0%, #f6eee7 100%);
+  color: var(--premium-ink);
+}
+.container { width: min(var(--premium-max), calc(100% - 32px)); }
+h1,h2,h3,h4 { letter-spacing: -0.02em; }
+.section { padding-top: 22px; padding-bottom: 22px; }

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Magic Math Master Ma cubed book logo</title>
+  <desc id="desc">A deep teal open book with gold Ma cubed lettering and a small sparkle.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd66b"/>
+      <stop offset="0.52" stop-color="#f2b632"/>
+      <stop offset="1" stop-color="#d89200"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b6c70"/>
+      <stop offset="1" stop-color="#064b50"/>
+    </linearGradient>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#062c32" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M14 33c17-8 33-7 50 4 17-11 33-12 50-4v64c-17-6-33-3-50 9-17-12-33-15-50-9z" fill="url(#teal)" stroke="url(#gold)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M64 38v67" fill="none" stroke="#f7c94d" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+    <path d="M18 34c16-5 30-3 46 6v10c-15-8-29-10-46-5z" fill="#fff7d2" stroke="#f2b632" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M110 34c-16-5-30-3-46 6v10c15-8 29-10 46-5z" fill="#fff7d2" stroke="#f2b632" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M24 42c13-2 24 0 36 6" fill="none" stroke="#edc45a" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+    <path d="M104 42c-13-2-24 0-36 6" fill="none" stroke="#edc45a" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <text x="63" y="88" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="50" font-weight="700" fill="url(#gold)" letter-spacing="-3">Ma</text>
+  <text x="99" y="67" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#ffd66b">3</text>
+
+  <g fill="#ffe58f">
+    <path d="M102 12l2.6 7.4L112 22l-7.4 2.6L102 32l-2.6-7.4L92 22l7.4-2.6z"/>
+    <path d="M82 18l1.3 3.7L87 23l-3.7 1.3L82 28l-1.3-3.7L77 23l3.7-1.3z" opacity="0.9"/>
+    <circle cx="112" cy="36" r="2.2" opacity="0.8"/>
+  </g>
+</svg>

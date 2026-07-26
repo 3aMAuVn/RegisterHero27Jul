@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Magic Math Master app icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b234f"/>
+      <stop offset="1" stop-color="#07153f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="13" flood-color="#020817" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+  <rect x="18" y="18" width="476" height="476" rx="116" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="205" fill="none" stroke="#f2b632" stroke-width="10" opacity="0.85"/>
+  <g transform="translate(92 92) scale(2.55)" filter="url(#shadow)">
+    <path d="M14 33c17-8 33-7 50 4 17-11 33-12 50-4v64c-17-6-33-3-50 9-17-12-33-15-50-9z" fill="#075e63" stroke="#f2b632" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M64 38v67" fill="none" stroke="#f7c94d" stroke-width="3" stroke-linecap="round"/>
+    <path d="M18 34c16-5 30-3 46 6v10c-15-8-29-10-46-5z" fill="#fff7d2" stroke="#f2b632" stroke-width="2"/>
+    <path d="M110 34c-16-5-30-3-46 6v10c15-8 29-10 46-5z" fill="#fff7d2" stroke="#f2b632" stroke-width="2"/>
+    <text x="63" y="88" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="50" font-weight="700" fill="#f7c94d" letter-spacing="-3">Ma</text>
+    <text x="99" y="67" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#ffd66b">3</text>
+    <path d="M102 12l2.6 7.4L112 22l-7.4 2.6L102 32l-2.6-7.4L92 22l7.4-2.6z" fill="#ffe58f"/>
+  </g>
+</svg>
